@@ -4,47 +4,56 @@
 
 /* ==========================================================================
    PIXVARSE GLOBAL DESIGN SYSTEM TOKENS
-   Master Reference: Approved Homepage Header & Hero Section
+   Palette: Navy Blue (#2C4058) + Olive Green (#738B46) + Black (#000000) + White (#FFFFFF)
    ========================================================================== */
 
 :root {
-  /* Brand Palette */
-  --brand-primary: #063F2E;      /* Primary dark green */
-  --brand-deep: #092D23;         /* Deep forest green / dark text */
-  --brand-lime: #C7F532;         /* Electric lime accent */
-  --brand-lime-hover: #B6E228;   /* Slightly deeper electric lime for hovers */
-  --brand-mint: #E6F4EC;         /* Soft mint / subtle highlight surface */
-  --brand-gray: #E7EAE5;         /* Neutral light border/divider gray */
+  /* Core Brand Colors */
+  --brand-navy: #2C4058;          /* Primary Navy Blue */
+  --brand-navy-dark: #1E2D3E;     /* Deep Navy for dark sections/shadows */
+  --brand-navy-deeper: #141E2A;   /* Deepest Navy for high contrast */
+  --brand-olive: #738B46;         /* Secondary Olive Green */
+  --brand-olive-hover: #5E7337;   /* Deeper Olive for active/hover */
+  --brand-olive-light: #EEF3E6;   /* Pale Olive wash for surfaces & badges */
+  --brand-olive-tint: #F4F7F0;    /* Very light subtle olive tint */
+
+  /* Semantic Brand Tokens */
+  --brand-primary: #2C4058;       /* Primary brand: Navy */
+  --brand-secondary: #738B46;     /* Secondary brand: Olive */
+  --brand-accent: #738B46;        /* Accent brand: Olive */
+  --brand-black: #000000;         /* Pure Black */
+  --brand-white: #FFFFFF;         /* Pure White */
 
   /* Semantic Background Tokens */
-  --bg-primary: #FFFFFF;         /* Main white background */
-  --bg-secondary: #F8FAF6;       /* Soft warm off-white secondary background */
-  --bg-accent: #E6F4EC;          /* Pale mint accent background */
-  --bg-dark: #092D23;            /* Deep forest green for dark sections */
-  --bg-dark-surface: #063F2E;    /* Dark surface cards & badges */
+  --bg-primary: #FFFFFF;          /* Pure White main background */
+  --bg-secondary: #F7F9FA;        /* Very light navy-tinted secondary background */
+  --bg-accent: #EEF3E6;           /* Pale Olive accent background */
+  --bg-dark: #2C4058;             /* Navy Blue dark section background */
+  --bg-dark-surface: #1E2D3E;     /* Deep Navy surface for cards/badges */
 
   /* Semantic Text Tokens */
-  --text-primary: #092D23;       /* Main dark text */
-  --text-secondary: rgba(9, 45, 35, 0.78); /* High contrast supporting text */
-  --text-muted: rgba(9, 45, 35, 0.55);     /* Subdued caption / helper text */
-  --text-inverse: #FFFFFF;       /* White text on dark surfaces */
-  --text-inverse-muted: rgba(255, 255, 255, 0.75);
-  --text-lime: #C7F532;          /* Accent lime text */
+  --text-primary: #2C4058;        /* Main Navy text for headings and key copy */
+  --text-body: #111827;           /* High contrast dark/black text for reading */
+  --text-secondary: rgba(44, 64, 88, 0.82); /* High contrast supporting text */
+  --text-muted: rgba(44, 64, 88, 0.58);     /* Subdued caption / helper text */
+  --text-inverse: #FFFFFF;        /* White text on dark navy surfaces */
+  --text-inverse-muted: rgba(255, 255, 255, 0.78);
+  --text-olive: #738B46;          /* Olive Green accent text */
 
   /* Semantic Border Tokens */
-  --border-default: rgba(9, 45, 35, 0.15); /* Standard crisp card/section border */
-  --border-subtle: rgba(9, 45, 35, 0.08);  /* Hairline divider */
-  --border-strong: #092D23;                /* Heavy neo-brutalist border */
-  --border-dark: rgba(255, 255, 255, 0.12);/* Dark section border */
-  --border-lime: rgba(199, 245, 50, 0.35); /* Lime accent border */
+  --border-default: rgba(44, 64, 88, 0.16);  /* Standard crisp card/section border */
+  --border-subtle: rgba(44, 64, 88, 0.08);   /* Hairline divider */
+  --border-strong: #2C4058;                  /* Heavy neo-brutalist border */
+  --border-dark: rgba(255, 255, 255, 0.14);  /* Dark section border */
+  --border-olive: rgba(115, 139, 70, 0.35);  /* Olive accent border */
 
   /* Neo-Brutalist Shadow Tokens */
-  --shadow-neo-sm: 2px 2px 0px 0px #092D23;
-  --shadow-neo: 4px 4px 0px 0px #092D23;
-  --shadow-neo-lg: 6px 6px 0px 0px #092D23;
-  --shadow-neo-lime: 4px 4px 0px 0px #C7F532;
-  --shadow-neo-lime-sm: 2px 2px 0px 0px #C7F532;
-  --shadow-neo-forest: 3px 3px 0px 0px #063F2E;
+  --shadow-neo-sm: 2px 2px 0px 0px #2C4058;
+  --shadow-neo: 4px 4px 0px 0px #2C4058;
+  --shadow-neo-lg: 6px 6px 0px 0px #2C4058;
+  --shadow-neo-olive: 4px 4px 0px 0px #738B46;
+  --shadow-neo-olive-sm: 2px 2px 0px 0px #738B46;
+  --shadow-neo-navy-dark: 4px 4px 0px 0px #1E2D3E;
 
   /* Typography Scale Fallbacks */
   --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -57,7 +66,7 @@ html {
 }
 
 body {
-  background-color: var(--bg-secondary);
+  background-color: var(--bg-primary);
   color: var(--text-primary);
   font-family: var(--font-sans);
   overflow-x: hidden;
@@ -84,14 +93,14 @@ body {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #092D23;
+  background: #1E2D3E;
 }
 ::-webkit-scrollbar-thumb {
-  background: #063F2E;
+  background: #2C4058;
   border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #C7F532;
+  background: #738B46;
 }
 
 /* ==========================================================================
@@ -170,6 +179,6 @@ body {
   outline-offset: 2px;
 }
 .focus-ring:focus-visible {
-  outline: 2px solid #C7F532;
+  outline: 2px solid #738B46;
   outline-offset: 2px;
 }

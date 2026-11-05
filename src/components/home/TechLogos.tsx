@@ -1,6 +1,6 @@
 import React from "react";
 
-// Official WordPress SVG
+// Official WordPress SVG (Preserved authentic official brand logo)
 export function WordPressLogo({ className = "h-5 w-5" }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor">
@@ -13,7 +13,7 @@ export function WordPressLogo({ className = "h-5 w-5" }: { className?: string })
   );
 }
 
-// Official Divi SVG
+// Official Divi SVG (Preserved authentic official brand logo)
 export function DiviLogo({ className = "h-5 w-5" }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 32 32" fill="none">
@@ -26,7 +26,7 @@ export function DiviLogo({ className = "h-5 w-5" }: { className?: string }) {
   );
 }
 
-// Official Elementor SVG
+// Official Elementor SVG (Preserved authentic official brand logo)
 export function ElementorLogo({ className = "h-5 w-5" }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="none">
@@ -39,7 +39,7 @@ export function ElementorLogo({ className = "h-5 w-5" }: { className?: string })
   );
 }
 
-// Official Laravel SVG
+// Official Laravel SVG (Preserved authentic official brand logo)
 export function LaravelLogo({ className = "h-5 w-5" }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="none">
@@ -56,7 +56,7 @@ export function LaravelLogo({ className = "h-5 w-5" }: { className?: string }) {
   );
 }
 
-// Official React SVG
+// Official React SVG (Preserved authentic official brand logo)
 export function ReactLogo({ className = "h-5 w-5" }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="none">
@@ -68,73 +68,73 @@ export function ReactLogo({ className = "h-5 w-5" }: { className?: string }) {
   );
 }
 
-// Plugin Development Icon
+// Plugin Development Icon (Navy Blue + Olive Accent)
 export function PluginDevIcon({ className = "h-5 w-5" }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="#063F2E" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="#2C4058" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
-      <rect x="8" y="8" width="8" height="8" rx="1" fill="#C7F532" fillOpacity="0.4" stroke="#063F2E" />
+      <rect x="8" y="8" width="8" height="8" rx="1" fill="#738B46" fillOpacity="0.35" stroke="#2C4058" />
     </svg>
   );
 }
 
-// Custom Web Apps Icon
+// Custom Web Apps Icon (Navy Blue + Olive Accent)
 export function CustomWebAppsIcon({ className = "h-5 w-5" }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="#063F2E" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="#2C4058" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <rect x="2" y="3" width="20" height="14" rx="1" />
       <path d="M8 21h8M12 17v4" />
-      <path d="M6 8l3 3-3 3M11 14h4" stroke="#063F2E" />
+      <path d="M6 8l3 3-3 3M11 14h4" stroke="#738B46" />
     </svg>
   );
 }
 
-// Mobile Apps Icon
+// Mobile Apps Icon (Navy Blue + Olive Accent)
 export function MobileAppsIcon({ className = "h-5 w-5" }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="#063F2E" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="#2C4058" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <rect x="6" y="2" width="12" height="20" rx="2" />
-      <path d="M11 18h2" />
-      <path d="M9 6h6" strokeOpacity="0.5" />
+      <path d="M11 18h2" stroke="#738B46" />
+      <path d="M9 6h6" strokeOpacity="0.4" />
     </svg>
   );
 }
 
-// Full-Stack Development Icon
+// Full-Stack Development Icon (Navy Blue + Pale Olive Accent)
 export function FullStackIcon({ className = "h-5 w-5" }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="#063F2E" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <polygon points="12 2 2 7 12 12 22 7 12 2" fill="#E6F4EC" />
-      <polyline points="2 12 12 17 22 12" />
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="#2C4058" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <polygon points="12 2 2 7 12 12 22 7 12 2" fill="#EEF3E6" />
+      <polyline points="2 12 12 17 22 12" stroke="#738B46" />
       <polyline points="2 17 12 22 22 17" />
     </svg>
   );
 }
 
-// AI Solutions Icon
+// AI Solutions Icon (Olive Accent + Navy Blue)
 export function AISolutionsIcon({ className = "h-5 w-5" }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="none">
       <path
         d="M12 2L14.39 8.26L21 9.27L16 13.82L17.5 20.27L12 16.9L6.5 20.27L8 13.82L3 9.27L9.61 8.26L12 2Z"
-        fill="#C7F532"
-        stroke="#063F2E"
+        fill="#738B46"
+        stroke="#2C4058"
         strokeWidth="1.5"
         strokeLinejoin="round"
       />
-      <circle cx="12" cy="11" r="1.5" fill="#063F2E" />
+      <circle cx="12" cy="11" r="1.5" fill="#FFFFFF" />
     </svg>
   );
 }
 
-// Team Support Icon
+// Team Support Icon (Navy Blue + Olive Accent)
 export function TeamSupportIcon({ className = "h-5 w-5" }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="#063F2E" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="#2C4058" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-      <circle cx="9" cy="7" r="4" />
-      <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+      <circle cx="9" cy="7" r="4" fill="#EEF3E6" />
+      <path d="M22 21v-2a4 4 0 0 0-3-3.87" stroke="#738B46" />
+      <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="#738B46" />
     </svg>
   );
 }

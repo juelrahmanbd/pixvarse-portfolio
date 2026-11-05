@@ -1,13 +1,22 @@
 import React from "react";
 
-export type BadgeVariant = "forest" | "lime" | "mint" | "surface" | "outline" | "dark";
+export type BadgeVariant =
+  | "surface"
+  | "olive"
+  | "navy"
+  | "forest"
+  | "lime"
+  | "mint"
+  | "dark"
+  | "outline";
+
 export type BadgeSize = "sm" | "md";
 
 export interface BadgeProps {
   children: React.ReactNode;
   variant?: BadgeVariant;
   dot?: boolean;
-  dotColor?: "lime" | "forest" | "emerald";
+  dotColor?: "olive" | "navy" | "forest" | "lime" | "emerald";
   className?: string;
   size?: BadgeSize;
   icon?: React.ReactNode;
@@ -17,7 +26,7 @@ export function Badge({
   children,
   variant = "surface",
   dot = false,
-  dotColor = "forest",
+  dotColor = "olive",
   className = "",
   size = "md",
   icon,
@@ -28,28 +37,34 @@ export function Badge({
   };
 
   const variantClasses: Record<BadgeVariant, string> = {
-    // Master Eyebrow style: soft background with dark border and forest shadow
+    // Master Eyebrow style: clean surface with navy border and olive shadow
     surface:
-      "bg-[#F8FAF6] text-[#092D23] border border-[#092D23]/20 shadow-[2px_2px_0px_0px_#063F2E]",
+      "bg-[#FFFFFF] text-[#2C4058] border border-[#2C4058]/20 shadow-[2px_2px_0px_0px_#738B46]",
+    olive:
+      "bg-[#738B46] text-[#FFFFFF] font-black border border-[#2C4058] shadow-[2px_2px_0px_0px_#2C4058]",
     lime:
-      "bg-[#C7F532] text-[#092D23] font-black border border-[#092D23] shadow-[2px_2px_0px_0px_#092D23]",
+      "bg-[#738B46] text-[#FFFFFF] font-black border border-[#2C4058] shadow-[2px_2px_0px_0px_#2C4058]",
+    navy:
+      "bg-[#2C4058] text-[#FFFFFF] border border-[#738B46]/40 shadow-[2px_2px_0px_0px_#738B46]",
     forest:
-      "bg-[#063F2E] text-[#C7F532] border border-[#C7F532]/30 shadow-[2px_2px_0px_0px_#C7F532]",
+      "bg-[#2C4058] text-[#FFFFFF] border border-[#738B46]/40 shadow-[2px_2px_0px_0px_#738B46]",
     mint:
-      "bg-[#E6F4EC] text-[#092D23] border border-[#092D23]/15 shadow-[1px_1px_0px_0px_#063F2E]",
+      "bg-[#EEF3E6] text-[#2C4058] border border-[#738B46]/30 shadow-[1px_1px_0px_0px_#738B46]",
     dark:
-      "bg-[#092D23] text-white border border-white/10 shadow-[2px_2px_0px_0px_#C7F532]",
+      "bg-[#1E2D3E] text-white border border-white/15 shadow-[2px_2px_0px_0px_#738B46]",
     outline:
-      "bg-transparent text-[#092D23] border border-[#092D23]/30 shadow-[1px_1px_0px_0px_#092D23]",
+      "bg-transparent text-[#2C4058] border border-[#2C4058]/30 shadow-[1px_1px_0px_0px_#2C4058]",
   };
 
   const dotClasses = {
-    forest: { ping: "bg-[#C7F532]", dot: "bg-[#063F2E]" },
-    lime: { ping: "bg-[#C7F532]", dot: "bg-[#092D23]" },
-    emerald: { ping: "bg-[#10B981]", dot: "bg-[#059669]" },
+    olive: { ping: "bg-[#738B46]", dot: "bg-[#738B46]" },
+    lime: { ping: "bg-[#738B46]", dot: "bg-[#738B46]" },
+    navy: { ping: "bg-[#2C4058]", dot: "bg-[#2C4058]" },
+    forest: { ping: "bg-[#738B46]", dot: "bg-[#2C4058]" },
+    emerald: { ping: "bg-[#738B46]", dot: "bg-[#5E7337]" },
   };
 
-  const activeDot = dotClasses[dotColor] || dotClasses.forest;
+  const activeDot = dotClasses[dotColor] || dotClasses.olive;
 
   return (
     <span

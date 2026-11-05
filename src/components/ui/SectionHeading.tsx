@@ -43,9 +43,9 @@ export function SectionHeading({
       {eyebrow && (
         <div className="mb-4 sm:mb-5">
           <Badge
-            variant={isDark ? "forest" : "surface"}
+            variant={isDark ? "navy" : "surface"}
             dot={true}
-            dotColor={isDark ? "lime" : "forest"}
+            dotColor="olive"
             size="sm"
           >
             {eyebrow}
@@ -55,7 +55,7 @@ export function SectionHeading({
 
       <h2
         className={`text-3xl sm:text-4xl md:text-5xl font-black tracking-[-0.025em] leading-[1.12] ${
-          isDark ? "text-white" : "text-[#092D23]"
+          isDark ? "text-white" : "text-[#2C4058]"
         }`}
       >
         {highlight ? (
@@ -63,7 +63,11 @@ export function SectionHeading({
             {titleParts.before}
             <span className="relative inline-block my-1">
               <span
-                className="relative inline-block text-[#C7F532] bg-[#063F2E] px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-sm -rotate-1 shadow-[3px_3px_0px_0px_#C7F532] mx-1"
+                className={`relative inline-block px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-sm -rotate-1 mx-1 ${
+                  isDark
+                    ? "text-[#FFFFFF] bg-[#738B46] shadow-[3px_3px_0px_0px_#1E2D3E]"
+                    : "text-[#FFFFFF] bg-[#738B46] shadow-[3px_3px_0px_0px_#2C4058]"
+                }`}
                 aria-hidden="true"
               >
                 {titleParts.match}
@@ -79,7 +83,7 @@ export function SectionHeading({
       {description && (
         <p
           className={`mt-4 sm:mt-5 text-base sm:text-lg leading-relaxed ${
-            isDark ? "text-white/80" : "text-[#092D23]/80"
+            isDark ? "text-white/80" : "text-[#2C4058]/80"
           }`}
         >
           {description}
