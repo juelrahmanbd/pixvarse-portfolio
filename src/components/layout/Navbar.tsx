@@ -61,12 +61,12 @@ export function Navbar() {
 
             {/* Right Side: CTA & Status */}
             <div className="hidden lg:flex items-center gap-4">
-              <div className="flex items-center gap-2 text-xs font-mono text-[#063F2E]">
+              <div className="flex items-center gap-2 text-xs font-mono">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C7F532] opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-[#C7F532]" />
                 </span>
-                <span className={isScrolled ? "text-emerald-200 text-[11px]" : "text-[#063F2E] text-[11px] font-semibold"}>
+                <span className="text-emerald-200 text-[11px] font-semibold">
                   Available for Hire
                 </span>
               </div>

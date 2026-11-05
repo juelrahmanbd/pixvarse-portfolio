@@ -7,8 +7,8 @@ interface LogoProps {
   showTagline?: boolean;
 }
 
-export function Logo({ className = "", variant = "default", showTagline = false }: LogoProps) {
-  const isLight = variant === "light";
+export function Logo({ className = "", variant = "light", showTagline = false }: LogoProps) {
+  const isLight = variant === "light" || variant === "default";
 
   return (
     <Link
@@ -53,8 +53,8 @@ export function Logo({ className = "", variant = "default", showTagline = false 
       <div className="flex flex-col">
         <div className="flex items-center gap-1">
           <span
-            className={`font-black tracking-[-0.03em] text-xl font-mono leading-none ${
-              isLight ? "text-white" : "text-[#171A18] group-hover:text-[#063F2E]"
+            className={`font-black tracking-[-0.03em] text-xl font-mono leading-none transition-colors ${
+              isLight ? "text-white group-hover:text-[#C7F532]" : "text-[#171A18] group-hover:text-[#063F2E]"
             }`}
           >
             PIXVARSE
