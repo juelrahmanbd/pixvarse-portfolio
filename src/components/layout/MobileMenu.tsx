@@ -37,7 +37,7 @@ export function MobileMenu({ isOpen, onClose, activePath }: MobileMenuProps) {
         </div>
         <button
           onClick={onClose}
-          className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 text-white hover:bg-white/20 transition-colors"
+          className="flex h-10 w-10 items-center justify-center rounded-sm bg-white/10 text-white hover:bg-white/20 transition-colors"
           aria-label="Close navigation menu"
         >
           <X className="h-5 w-5" />
@@ -74,7 +74,7 @@ export function MobileMenu({ isOpen, onClose, activePath }: MobileMenuProps) {
 
         {/* Bottom Contact Details */}
         <div className="pt-8 mt-6 border-t border-white/10 space-y-6">
-          <div className="rounded-xl bg-[#063F2E] p-4 border border-[#C7F532]/20">
+          <div className="rounded-sm bg-[#063F2E] p-4 border border-[#C7F532]/20">
             <span className="text-xs uppercase tracking-widest text-[#C7F532] font-mono block mb-1">
               Direct Contact
             </span>
@@ -93,7 +93,7 @@ export function MobileMenu({ isOpen, onClose, activePath }: MobileMenuProps) {
                 href={siteConfig.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 hover:bg-[#C7F532] hover:text-[#092D23] transition-colors"
+                className="flex h-10 w-10 items-center justify-center rounded-sm bg-white/10 hover:bg-[#C7F532] hover:text-[#092D23] transition-colors"
                 aria-label="GitHub Profile"
               >
                 <GithubIcon className="h-4 w-4" />
@@ -102,7 +102,7 @@ export function MobileMenu({ isOpen, onClose, activePath }: MobileMenuProps) {
                 href={siteConfig.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 hover:bg-[#C7F532] hover:text-[#092D23] transition-colors"
+                className="flex h-10 w-10 items-center justify-center rounded-sm bg-white/10 hover:bg-[#C7F532] hover:text-[#092D23] transition-colors"
                 aria-label="LinkedIn Profile"
               >
                 <LinkedinIcon className="h-4 w-4" />
@@ -114,6 +114,7 @@ export function MobileMenu({ isOpen, onClose, activePath }: MobileMenuProps) {
               variant="primary"
               size="sm"
               onClick={onClose}
+              className="rounded-sm"
               icon={<ArrowRight className="h-3.5 w-3.5" />}
             >
               Start a Project

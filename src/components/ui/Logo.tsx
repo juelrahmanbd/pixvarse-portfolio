@@ -7,22 +7,22 @@ interface LogoProps {
   showTagline?: boolean;
 }
 
-export function Logo({ className = "", variant = "light", showTagline = false }: LogoProps) {
-  const isLight = variant === "light" || variant === "default";
+export function Logo({ className = "", variant = "dark", showTagline = false }: LogoProps) {
+  const isDarkText = variant === "dark" || variant === "default";
 
   return (
     <Link
       href="/"
-      className={`group inline-flex items-center gap-3 transition-transform hover:scale-[1.01] ${className}`}
+      className={`group inline-flex items-center gap-3 select-none transition-transform hover:scale-[1.01] ${className}`}
       aria-label="Pixvarse Homepage"
     >
-      {/* Geometric Symbol */}
-      <div className="relative flex h-10 w-10 items-center justify-center rounded-lg bg-[#063F2E] border border-[#C7F532]/40 shadow-[2px_2px_0px_0px_#C7F532] transition-all duration-300 group-hover:shadow-[3px_3px_0px_0px_#C7F532] group-hover:border-[#C7F532]">
+      {/* Precision Geometric Symbol */}
+      <div className="relative flex h-9 w-9 items-center justify-center rounded-sm bg-[#063F2E] border border-[#C7F532]/40 shadow-[2px_2px_0px_0px_#C7F532] transition-all duration-300 group-hover:shadow-[3px_3px_0px_0px_#C7F532] group-hover:border-[#C7F532]">
         <svg
           viewBox="0 0 32 32"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6"
+          className="h-5 w-5"
         >
           {/* Geometric Topographic Prism / Vertex Emblem */}
           <polygon
@@ -53,8 +53,10 @@ export function Logo({ className = "", variant = "light", showTagline = false }:
       <div className="flex flex-col">
         <div className="flex items-center gap-1">
           <span
-            className={`font-black tracking-[-0.03em] text-xl font-mono leading-none transition-colors ${
-              isLight ? "text-white group-hover:text-[#C7F532]" : "text-[#171A18] group-hover:text-[#063F2E]"
+            className={`font-black tracking-[-0.03em] text-lg sm:text-xl font-mono leading-none transition-colors ${
+              isDarkText
+                ? "text-[#092D23] group-hover:text-[#063F2E]"
+                : "text-white group-hover:text-[#C7F532]"
             }`}
           >
             PIXVARSE
@@ -63,8 +65,8 @@ export function Logo({ className = "", variant = "light", showTagline = false }:
         </div>
         {showTagline ? (
           <span
-            className={`text-[9px] uppercase tracking-[0.2em] font-semibold mt-1 ${
-              isLight ? "text-emerald-200/70" : "text-[#063F2E]/70"
+            className={`text-[9px] uppercase tracking-[0.2em] font-semibold mt-0.5 ${
+              isDarkText ? "text-[#063F2E]/70" : "text-emerald-200/70"
             }`}
           >
             Digital Studio
@@ -74,4 +76,3 @@ export function Logo({ className = "", variant = "light", showTagline = false }:
     </Link>
   );
 }
-
