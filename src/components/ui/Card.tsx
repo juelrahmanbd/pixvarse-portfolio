@@ -19,19 +19,19 @@ export function Card({
 }: CardProps) {
   const variantStyles: Record<CardVariant, string> = {
     white:
-      "bg-[#FFFFFF] text-[#2C4058] border border-[#2C4058]/15 shadow-[4px_4px_0px_0px_#2C4058]",
+      "bg-[#FFFFFF] text-[#092D23] border border-[#092D23]/15 shadow-[4px_4px_0px_0px_#092D23]",
     soft:
-      "bg-[#F7F9FA] text-[#2C4058] border border-[#2C4058]/15 shadow-[4px_4px_0px_0px_#2C4058]",
+      "bg-[#F8FAF6] text-[#092D23] border border-[#092D23]/15 shadow-[4px_4px_0px_0px_#092D23]",
     mint:
-      "bg-[#EEF3E6] text-[#2C4058] border border-[#738B46]/30 shadow-[4px_4px_0px_0px_#738B46]",
+      "bg-[#E6F4EC] text-[#092D23] border border-[#092D23]/20 shadow-[4px_4px_0px_0px_#063F2E]",
     dark:
-      "bg-[#2C4058] text-white border border-[#738B46]/35 shadow-[4px_4px_0px_0px_#738B46]",
+      "bg-[#092D23] text-white border border-[#C7F532]/25 shadow-[4px_4px_0px_0px_#C7F532]",
     outline:
-      "bg-transparent text-[#2C4058] border-2 border-[#2C4058] shadow-[3px_3px_0px_0px_#2C4058]",
+      "bg-transparent text-[#092D23] border-2 border-[#092D23] shadow-[3px_3px_0px_0px_#092D23]",
   };
 
   const hoverClasses = hoverEffect
-    ? "transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_#738B46]"
+    ? "transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_#092D23]"
     : "";
 
   const roundedClasses = sharp ? "rounded-sm" : "rounded-md";
@@ -64,7 +64,7 @@ export function CardContent({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
-    <div className={`text-[#2C4058]/80 leading-relaxed font-sans ${className}`} {...props}>
+    <div className={`text-[#092D23]/80 leading-relaxed ${className}`} {...props}>
       {children}
     </div>
   );
@@ -77,7 +77,7 @@ export function CardFooter({
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
-      className={`mt-6 pt-4 border-t border-[#2C4058]/10 flex items-center justify-between ${className}`}
+      className={`mt-6 pt-4 border-t border-[#092D23]/10 flex items-center justify-between ${className}`}
       {...props}
     >
       {children}

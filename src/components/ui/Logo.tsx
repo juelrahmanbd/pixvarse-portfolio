@@ -17,7 +17,7 @@ export function Logo({ className = "", variant = "dark", showTagline = false }: 
       aria-label="Pixvarse Homepage"
     >
       {/* Precision Geometric Symbol */}
-      <div className="relative flex h-9 w-9 items-center justify-center rounded-sm bg-[#2C4058] border border-[#738B46]/40 shadow-[2px_2px_0px_0px_#738B46] transition-all duration-200 group-hover:shadow-[3px_3px_0px_0px_#738B46] group-hover:border-[#738B46]">
+      <div className="relative flex h-9 w-9 items-center justify-center rounded-sm bg-[#063F2E] border border-[#C7F532]/40 shadow-[2px_2px_0px_0px_#C7F532] transition-all duration-300 group-hover:shadow-[3px_3px_0px_0px_#C7F532] group-hover:border-[#C7F532]">
         <svg
           viewBox="0 0 32 32"
           fill="none"
@@ -27,25 +27,25 @@ export function Logo({ className = "", variant = "dark", showTagline = false }: 
           {/* Geometric Topographic Prism / Vertex Emblem */}
           <polygon
             points="16,3 28,10 28,22 16,29 4,22 4,10"
-            stroke="#738B46"
+            stroke="#C7F532"
             strokeWidth="1.5"
             strokeLinejoin="round"
             className="transition-opacity opacity-90 group-hover:opacity-100"
           />
           <polygon
             points="16,8 24,12.5 24,19.5 16,24 8,19.5 8,12.5"
-            stroke="#EEF3E6"
+            stroke="#E6F4EC"
             strokeWidth="1"
             strokeLinejoin="round"
-            strokeOpacity="0.5"
+            strokeOpacity="0.4"
           />
           <path
             d="M16 3V29M4 10L28 22M28 10L4 22"
-            stroke="#738B46"
+            stroke="#C7F532"
             strokeWidth="0.75"
-            strokeOpacity="0.7"
+            strokeOpacity="0.6"
           />
-          <circle cx="16" cy="16" r="2.5" fill="#738B46" />
+          <circle cx="16" cy="16" r="2.5" fill="#C7F532" />
         </svg>
       </div>
 
@@ -55,18 +55,18 @@ export function Logo({ className = "", variant = "dark", showTagline = false }: 
           <span
             className={`font-black tracking-[-0.03em] text-lg sm:text-xl font-mono leading-none transition-colors ${
               isDarkText
-                ? "text-[#2C4058] group-hover:text-[#738B46]"
-                : "text-white group-hover:text-[#738B46]"
+                ? "text-[#092D23] group-hover:text-[#063F2E]"
+                : "text-white group-hover:text-[#C7F532]"
             }`}
           >
             PIXVARSE
           </span>
-          <span className="h-1.5 w-1.5 rounded-full bg-[#738B46]" />
+          <span className="h-1.5 w-1.5 rounded-full bg-[#C7F532]" />
         </div>
         {showTagline ? (
           <span
             className={`text-[9px] uppercase tracking-[0.2em] font-semibold mt-0.5 ${
-              isDarkText ? "text-[#738B46]" : "text-white/70"
+              isDarkText ? "text-[#063F2E]/70" : "text-emerald-200/70"
             }`}
           >
             Digital Studio

@@ -5,7 +5,6 @@ import { Loader2 } from "lucide-react";
 export type ButtonVariant =
   | "primary"
   | "secondary"
-  | "accent"
   | "forest"
   | "outline"
   | "lime-outline"
@@ -40,7 +39,7 @@ export function Button({
   disabled,
   ...props
 }: ButtonProps) {
-  // Base structural styles honoring the Master sharp neo-brutalist geometry
+  // Base structural styles honoring the Master Hero design reference
   const baseStyles =
     "inline-flex items-center justify-center font-mono font-black uppercase tracking-wider rounded-sm select-none transition-all duration-150 focus-ring disabled:opacity-50 disabled:pointer-events-none disabled:shadow-none cursor-pointer group";
 
@@ -51,39 +50,35 @@ export function Button({
     lg: "text-sm sm:text-base px-6 sm:px-8 py-3.5 sm:py-4 gap-2.5 border-2",
   };
 
-  // Button variants strictly using Navy Blue (#2C4058) + Olive Green (#738B46) + White (#FFFFFF)
+  // Neo-brutalist variants directly matching the approved Hero styling language
   const variantStyles: Record<ButtonVariant, string> = {
-    // Official Primary Button: Navy Blue with Olive Green hover
+    // Master Hero Primary CTA
     primary:
-      "bg-[#2C4058] text-[#FFFFFF] hover:bg-[#738B46] border-[#2C4058] shadow-[4px_4px_0px_0px_#738B46] hover:shadow-[2px_2px_0px_0px_#2C4058] hover:translate-x-[2px] hover:translate-y-[2px]",
+      "bg-[#C7F532] text-[#092D23] hover:bg-[#B6E228] border-[#092D23] shadow-[4px_4px_0px_0px_#092D23] hover:shadow-[2px_2px_0px_0px_#092D23] hover:translate-x-[2px] hover:translate-y-[2px]",
 
-    // Official Secondary Button: White with Navy Blue border, text & hover
+    // Master Hero Secondary CTA
     secondary:
-      "bg-[#FFFFFF] text-[#2C4058] hover:bg-[#2C4058] hover:text-[#FFFFFF] border-[#2C4058] shadow-[4px_4px_0px_0px_#2C4058] hover:shadow-[2px_2px_0px_0px_#738B46] hover:translate-x-[2px] hover:translate-y-[2px]",
+      "bg-[#FFFFFF] text-[#092D23] hover:bg-[#E6F4EC] border-[#092D23] shadow-[4px_4px_0px_0px_#092D23] hover:shadow-[2px_2px_0px_0px_#092D23] hover:translate-x-[2px] hover:translate-y-[2px]",
 
-    // Official Accent Button: Olive Green with Navy Blue hover
-    accent:
-      "bg-[#738B46] text-[#FFFFFF] hover:bg-[#2C4058] hover:text-[#FFFFFF] border-[#738B46] shadow-[4px_4px_0px_0px_#2C4058] hover:shadow-[2px_2px_0px_0px_#738B46] hover:translate-x-[2px] hover:translate-y-[2px]",
-
-    // Alias for accent/forest for backwards compatibility
+    // Forest Green Dark Variant (for dark surfaces or high contrast CTA)
     forest:
-      "bg-[#738B46] text-[#FFFFFF] hover:bg-[#2C4058] hover:text-[#FFFFFF] border-[#738B46] shadow-[4px_4px_0px_0px_#2C4058] hover:shadow-[2px_2px_0px_0px_#738B46] hover:translate-x-[2px] hover:translate-y-[2px]",
+      "bg-[#063F2E] text-[#C7F532] hover:bg-[#092D23] border-[#C7F532]/40 shadow-[4px_4px_0px_0px_#C7F532] hover:shadow-[2px_2px_0px_0px_#C7F532] hover:translate-x-[2px] hover:translate-y-[2px]",
 
     // Outline Variant
     outline:
-      "bg-transparent text-[#2C4058] hover:bg-[#EEF3E6] border-[#2C4058]/30 hover:border-[#2C4058] shadow-[2px_2px_0px_0px_#2C4058] hover:shadow-[1px_1px_0px_0px_#2C4058] hover:translate-x-[1px] hover:translate-y-[1px]",
+      "bg-transparent text-[#092D23] hover:bg-[#E6F4EC] border-[#092D23]/30 hover:border-[#092D23] shadow-[2px_2px_0px_0px_#092D23] hover:shadow-[1px_1px_0px_0px_#092D23] hover:translate-x-[1px] hover:translate-y-[1px]",
 
-    // Olive Outline Variant (designed for dark Navy sections like Footer / CTA)
+    // Lime Outline Variant (for dark backgrounds)
     "lime-outline":
-      "bg-transparent text-[#FFFFFF] hover:bg-[#738B46] hover:text-[#FFFFFF] border-white/60 hover:border-[#738B46] shadow-[3px_3px_0px_0px_#738B46] hover:shadow-[1px_1px_0px_0px_#738B46] hover:translate-x-[2px] hover:translate-y-[2px]",
+      "bg-transparent text-[#C7F532] hover:bg-[#C7F532] hover:text-[#092D23] border-[#C7F532] shadow-[3px_3px_0px_0px_#C7F532] hover:shadow-[1px_1px_0px_0px_#C7F532] hover:translate-x-[2px] hover:translate-y-[2px]",
 
-    // Text Link Button (minimal inline action with olive underline)
+    // Text Link Button (minimal inline action with underline/arrow hover)
     text:
-      "bg-transparent text-[#2C4058] hover:text-[#738B46] underline decoration-[#738B46] decoration-2 underline-offset-4 border-0 shadow-none px-0 py-0 hover:translate-x-0 hover:translate-y-0",
+      "bg-transparent text-[#092D23] hover:text-[#063F2E] underline decoration-[#C7F532] decoration-2 underline-offset-4 border-0 shadow-none px-0 py-0 hover:translate-x-0 hover:translate-y-0",
 
     // Ghost / Subdued
     ghost:
-      "bg-transparent text-[#2C4058] hover:bg-[#EEF3E6] border-transparent hover:border-[#2C4058]/20 shadow-none",
+      "bg-transparent text-[#092D23] hover:bg-[#E6F4EC] border-transparent hover:border-[#092D23]/10 shadow-none",
   };
 
   const combinedClasses = `${baseStyles} ${sizeStyles[size]} ${variantStyles[variant]} ${className}`;

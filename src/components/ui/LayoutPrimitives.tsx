@@ -45,10 +45,10 @@ export function Section({
   ...props
 }: SectionProps) {
   const variantClasses = {
-    white: "bg-[#FFFFFF] text-[#2C4058]",
-    soft: "bg-[#F7F9FA] text-[#2C4058]",
-    mint: "bg-[#EEF3E6] text-[#2C4058]",
-    dark: "bg-[#2C4058] text-white",
+    white: "bg-[#FFFFFF] text-[#092D23]",
+    soft: "bg-[#F8FAF6] text-[#092D23]",
+    mint: "bg-[#E6F4EC] text-[#092D23]",
+    dark: "bg-[#092D23] text-white",
   };
 
   const paddingClasses = {
@@ -58,8 +58,8 @@ export function Section({
     spacious: "py-20 sm:py-32",
   };
 
-  const borders = `${borderTop ? "border-t border-[#2C4058]/10" : ""} ${
-    borderBottom ? "border-b border-[#2C4058]/10" : ""
+  const borders = `${borderTop ? "border-t border-[#092D23]/10" : ""} ${
+    borderBottom ? "border-b border-[#092D23]/10" : ""
   }`;
 
   return (
@@ -102,14 +102,14 @@ export function PageHeader({
 
   return (
     <section
-      className={`relative pt-32 sm:pt-36 pb-16 sm:pb-20 bg-[#2C4058] text-white overflow-hidden border-b border-[#738B46]/30 ${className}`}
+      className={`relative pt-32 sm:pt-36 pb-16 sm:pb-20 bg-[#092D23] text-white overflow-hidden border-b border-[#C7F532]/20 ${className}`}
     >
       {/* Topographic line overlay */}
-      <TopographicBackground opacity={0.06} strokeColor="#738B46" />
+      <TopographicBackground opacity={0.07} strokeColor="#C7F532" />
 
       {/* Subtle radial glow */}
       <div
-        className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#1E2D3E] rounded-full blur-[140px] pointer-events-none"
+        className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#063F2E] rounded-full blur-[140px] pointer-events-none"
         aria-hidden="true"
       />
 
@@ -117,7 +117,7 @@ export function PageHeader({
         <div className="max-w-4xl space-y-5">
           {eyebrow && (
             <div>
-              <Badge variant="navy" dot={true} dotColor="olive" size="sm">
+              <Badge variant="forest" dot={true} dotColor="lime" size="sm">
                 {eyebrow}
               </Badge>
             </div>
@@ -129,7 +129,7 @@ export function PageHeader({
                 {titleParts.before}
                 <span className="relative inline-block my-1">
                   <span
-                    className="relative inline-block text-[#FFFFFF] bg-[#738B46] px-3 py-1 rounded-sm -rotate-1 border border-[#738B46]/40 shadow-[3px_3px_0px_0px_#1E2D3E] mx-1"
+                    className="relative inline-block text-[#C7F532] bg-[#063F2E] px-3 py-1 rounded-sm -rotate-1 border border-[#C7F532]/30 shadow-[3px_3px_0px_0px_#C7F532] mx-1"
                     aria-hidden="true"
                   >
                     {titleParts.match}

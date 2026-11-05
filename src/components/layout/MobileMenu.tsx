@@ -28,16 +28,16 @@ export function MobileMenu({ isOpen, onClose, activePath }: MobileMenuProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col bg-[#2C4058]/98 backdrop-blur-xl text-white transition-all duration-300">
+    <div className="fixed inset-0 z-50 flex flex-col bg-[#092D23]/98 backdrop-blur-xl text-white transition-all duration-300">
       {/* Top Bar inside Menu */}
       <div className="flex items-center justify-between px-6 py-5 border-b border-white/10">
         <div className="flex items-center gap-2">
           <span className="font-mono font-black text-lg text-white">PIXVARSE</span>
-          <span className="h-1.5 w-1.5 rounded-full bg-[#738B46]" />
+          <span className="h-1.5 w-1.5 rounded-full bg-[#C7F532]" />
         </div>
         <button
           onClick={onClose}
-          className="flex h-10 w-10 items-center justify-center rounded-sm bg-white/10 text-white hover:bg-white/20 transition-colors cursor-pointer"
+          className="flex h-10 w-10 items-center justify-center rounded-sm bg-white/10 text-white hover:bg-white/20 transition-colors"
           aria-label="Close navigation menu"
         >
           <X className="h-5 w-5" />
@@ -55,7 +55,7 @@ export function MobileMenu({ isOpen, onClose, activePath }: MobileMenuProps) {
                 href={item.href}
                 onClick={onClose}
                 className={`group flex items-center justify-between py-3 border-b border-white/10 text-2xl font-black tracking-tight transition-colors ${
-                  isActive ? "text-[#738B46]" : "text-white hover:text-[#738B46]"
+                  isActive ? "text-[#C7F532]" : "text-white hover:text-[#C7F532]"
                 }`}
               >
                 <div className="flex items-center gap-3">
@@ -64,7 +64,7 @@ export function MobileMenu({ isOpen, onClose, activePath }: MobileMenuProps) {
                 </div>
                 <ArrowRight
                   className={`h-5 w-5 transition-transform group-hover:translate-x-1 ${
-                    isActive ? "text-[#738B46]" : "text-white/40"
+                    isActive ? "text-[#C7F532]" : "text-white/40"
                   }`}
                 />
               </Link>
@@ -74,15 +74,15 @@ export function MobileMenu({ isOpen, onClose, activePath }: MobileMenuProps) {
 
         {/* Bottom Contact Details */}
         <div className="pt-8 mt-6 border-t border-white/10 space-y-6">
-          <div className="rounded-sm bg-[#1E2D3E] p-4 border border-[#738B46]/30 shadow-[2px_2px_0px_0px_#738B46]">
-            <span className="text-xs uppercase tracking-widest text-[#738B46] font-mono block mb-1 font-bold">
+          <div className="rounded-sm bg-[#063F2E] p-4 border border-[#C7F532]/20">
+            <span className="text-xs uppercase tracking-widest text-[#C7F532] font-mono block mb-1">
               Direct Contact
             </span>
             <a
               href={`mailto:${siteConfig.email}`}
-              className="text-white hover:text-[#738B46] text-sm font-medium flex items-center gap-2 transition-colors"
+              className="text-white hover:text-[#C7F532] text-sm font-medium flex items-center gap-2 transition-colors"
             >
-              <Mail className="h-4 w-4 text-[#738B46]" />
+              <Mail className="h-4 w-4 text-[#C7F532]" />
               {siteConfig.email}
             </a>
           </div>
@@ -93,7 +93,7 @@ export function MobileMenu({ isOpen, onClose, activePath }: MobileMenuProps) {
                 href={siteConfig.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-sm bg-white/10 hover:bg-[#738B46] hover:text-white border border-white/15 transition-colors"
+                className="flex h-10 w-10 items-center justify-center rounded-sm bg-white/10 hover:bg-[#C7F532] hover:text-[#092D23] transition-colors"
                 aria-label="GitHub Profile"
               >
                 <GithubIcon className="h-4 w-4" />
@@ -102,7 +102,7 @@ export function MobileMenu({ isOpen, onClose, activePath }: MobileMenuProps) {
                 href={siteConfig.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-sm bg-white/10 hover:bg-[#738B46] hover:text-white border border-white/15 transition-colors"
+                className="flex h-10 w-10 items-center justify-center rounded-sm bg-white/10 hover:bg-[#C7F532] hover:text-[#092D23] transition-colors"
                 aria-label="LinkedIn Profile"
               >
                 <LinkedinIcon className="h-4 w-4" />
@@ -111,9 +111,10 @@ export function MobileMenu({ isOpen, onClose, activePath }: MobileMenuProps) {
 
             <Button
               href="/contact"
-              variant="accent"
+              variant="primary"
               size="sm"
               onClick={onClose}
+              className="rounded-sm"
               icon={<ArrowRight className="h-3.5 w-3.5" />}
             >
               Start a Project

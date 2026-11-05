@@ -10,78 +10,69 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Official Brand Colors: Navy Blue + Olive Green + Black + White
+        // Master Design Reference Brand Tokens
         brand: {
-          navy: "#2C4058",
-          "navy-dark": "#1E2D3E",
-          "navy-deeper": "#141E2A",
-          olive: "#738B46",
-          "olive-hover": "#5E7337",
-          "olive-light": "#EEF3E6",
-          "olive-tint": "#F4F7F0",
-          black: "#000000",
-          white: "#FFFFFF",
-          // Primary/Secondary aliases
-          primary: "#2C4058",
-          secondary: "#738B46",
-          accent: "#738B46",
+          primary: "#063F2E",
+          deep: "#092D23",
+          lime: "#C7F532",
+          "lime-hover": "#B6E228",
+          mint: "#E6F4EC",
+          gray: "#E7EAE5",
         },
-        // Semantic Surfaces
+        // Semantic Surface Tokens
         surface: {
           primary: "#FFFFFF",
-          secondary: "#F7F9FA",
-          accent: "#EEF3E6",
-          dark: "#2C4058",
-          "dark-deep": "#1E2D3E",
+          secondary: "#F8FAF6",
+          accent: "#E6F4EC",
+          dark: "#092D23",
+          "dark-subtle": "#063F2E",
         },
-        // Semantic Typography
+        // Semantic Text Tokens
         ink: {
-          primary: "#2C4058",
-          body: "#111827",
-          secondary: "rgba(44, 64, 88, 0.82)",
-          muted: "rgba(44, 64, 88, 0.58)",
+          primary: "#092D23",
+          secondary: "rgba(9, 45, 35, 0.78)",
+          muted: "rgba(9, 45, 35, 0.55)",
           light: "#FFFFFF",
-          "light-muted": "rgba(255, 255, 255, 0.78)",
-          olive: "#738B46",
+          "light-muted": "rgba(255, 255, 255, 0.75)",
         },
-        // Semantic Borders
+        // Semantic Line/Border Tokens
         edge: {
-          default: "rgba(44, 64, 88, 0.16)",
-          subtle: "rgba(44, 64, 88, 0.08)",
-          strong: "#2C4058",
-          dark: "rgba(255, 255, 255, 0.14)",
-          olive: "rgba(115, 139, 70, 0.35)",
+          default: "rgba(9, 45, 35, 0.15)",
+          subtle: "rgba(9, 45, 35, 0.08)",
+          strong: "#092D23",
+          dark: "rgba(255, 255, 255, 0.12)",
+          lime: "rgba(199, 245, 50, 0.35)",
         },
-        // Legacy fallbacks mapped cleanly to the new palette to guarantee backwards compatibility
+        // Legacy compatibility mappings
         forest: {
-          DEFAULT: "#2C4058",
-          dark: "#1E2D3E",
-          deep: "#141E2A",
-          light: "#3A5372",
+          DEFAULT: "#063F2E",
+          dark: "#092D23",
+          deep: "#032118",
+          light: "#0d4d3a",
         },
         lime: {
-          DEFAULT: "#738B46",
-          hover: "#5E7337",
+          DEFAULT: "#C7F532",
+          hover: "#b6e228",
         },
-        offwhite: "#F7F9FA",
-        mint: "#EEF3E6",
+        offwhite: "#F8FAF6",
+        mint: "#E6F4EC",
         charcoal: {
-          DEFAULT: "#111827",
-          light: "#1F2937",
+          DEFAULT: "#171A18",
+          light: "#242926",
         },
-        lightgray: "#E2E8F0",
+        lightgray: "#E7EAE5",
       },
       fontFamily: {
         sans: ["var(--font-geist-sans)", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
         mono: ["var(--font-geist-mono)", "ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "monospace"],
       },
       boxShadow: {
-        "neo-sm": "2px 2px 0px 0px #2C4058",
-        neo: "4px 4px 0px 0px #2C4058",
-        "neo-lg": "6px 6px 0px 0px #2C4058",
-        "neo-olive": "4px 4px 0px 0px #738B46",
-        "neo-olive-sm": "2px 2px 0px 0px #738B46",
-        "neo-navy-dark": "4px 4px 0px 0px #1E2D3E",
+        "neo-sm": "2px 2px 0px 0px #092D23",
+        neo: "4px 4px 0px 0px #092D23",
+        "neo-lg": "6px 6px 0px 0px #092D23",
+        "neo-lime": "4px 4px 0px 0px #C7F532",
+        "neo-lime-sm": "2px 2px 0px 0px #C7F532",
+        "neo-forest": "3px 3px 0px 0px #063F2E",
       },
     },
   },

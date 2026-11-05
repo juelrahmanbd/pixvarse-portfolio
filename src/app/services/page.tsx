@@ -86,7 +86,7 @@ export default function ServicesPage() {
       />
 
       {/* Services List Section */}
-      <section className="py-16 sm:py-24 bg-[#F7F9FA] border-b border-[#2C4058]/10">
+      <section className="py-16 sm:py-24 bg-[#F8FAF6] border-b border-[#092D23]/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
           {servicesData.map((service) => {
             const icon = iconMap[service.iconName] || <Code2 className="h-5 w-5" />;
@@ -95,38 +95,38 @@ export default function ServicesPage() {
               <div
                 key={service.id}
                 id={service.id}
-                className="scroll-mt-32 rounded-sm bg-white border border-[#2C4058]/15 p-6 sm:p-10 lg:p-12 shadow-[4px_4px_0px_0px_#2C4058] hover:shadow-[6px_6px_0px_0px_#738B46] hover:border-[#2C4058] transition-all duration-200"
+                className="scroll-mt-32 rounded-sm bg-white border border-[#092D23]/15 p-6 sm:p-10 lg:p-12 shadow-[4px_4px_0px_0px_#092D23] hover:shadow-[6px_6px_0px_0px_#C7F532] hover:border-[#092D23] transition-all duration-200"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
                   {/* Left Column: Number, Title, Overview */}
                   <div className="lg:col-span-5 space-y-5">
                     <div className="flex items-center gap-3">
-                      <span className="font-mono text-xl sm:text-2xl font-black text-[#2C4058] bg-[#EEF3E6] px-3 py-1 rounded-sm border border-[#738B46]/30">
+                      <span className="font-mono text-xl sm:text-2xl font-black text-[#063F2E] bg-[#E6F4EC] px-3 py-1 rounded-sm border border-[#092D23]/15">
                         {service.number}
                       </span>
-                      <div className="flex h-10 w-10 items-center justify-center rounded-sm bg-[#2C4058] text-[#FFFFFF] border border-[#2C4058] shadow-[2px_2px_0px_0px_#738B46]">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-sm bg-[#063F2E] text-[#C7F532] border border-[#092D23] shadow-[2px_2px_0px_0px_#092D23]">
                         {icon}
                       </div>
                     </div>
 
-                    <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-[#2C4058]">
+                    <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-[#092D23]">
                       {service.title}
                     </h2>
 
-                    <p className="text-base text-[#2C4058]/80 leading-relaxed font-sans">
+                    <p className="text-base text-[#092D23]/80 leading-relaxed font-sans">
                       {service.fullDescription}
                     </p>
 
                     {/* Technologies Tag Group */}
                     <div className="pt-2">
-                      <span className="text-[11px] font-mono uppercase tracking-wider text-[#738B46] block mb-2 font-bold">
+                      <span className="text-[11px] font-mono uppercase tracking-wider text-[#063F2E] block mb-2 font-bold">
                         Technologies &amp; Frameworks
                       </span>
                       <div className="flex flex-wrap gap-2">
                         {service.technologies.map((tech) => (
                           <span
                             key={tech}
-                            className="rounded-sm bg-[#EEF3E6] text-[#2C4058] px-2.5 py-1 text-xs font-mono font-bold uppercase tracking-wider border border-[#738B46]/30"
+                            className="rounded-sm bg-[#063F2E] text-[#C7F532] px-2.5 py-1 text-xs font-mono font-bold uppercase tracking-wider border border-[#C7F532]/20"
                           >
                             {tech}
                           </span>
@@ -147,17 +147,17 @@ export default function ServicesPage() {
                   </div>
 
                   {/* Right Column: Deliverables & Business Benefits */}
-                  <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6 bg-[#F7F9FA] p-6 sm:p-8 rounded-sm border border-[#2C4058]/15 shadow-[2px_2px_0px_0px_#2C4058]">
+                  <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6 bg-[#F8FAF6] p-6 sm:p-8 rounded-sm border border-[#092D23]/15 shadow-[2px_2px_0px_0px_#092D23]">
                     {/* Deliverables */}
                     <div className="space-y-4">
-                      <h3 className="font-mono text-xs uppercase tracking-widest text-[#2C4058] font-bold flex items-center gap-2">
-                        <CheckCircle2 className="h-4 w-4 text-[#738B46]" />
+                      <h3 className="font-mono text-xs uppercase tracking-widest text-[#063F2E] font-bold flex items-center gap-2">
+                        <CheckCircle2 className="h-4 w-4 text-[#063F2E]" />
                         <span>Key Deliverables</span>
                       </h3>
-                      <ul className="space-y-2.5 text-xs sm:text-sm text-[#2C4058]/85 font-sans">
+                      <ul className="space-y-2.5 text-xs sm:text-sm text-[#092D23]/85 font-sans">
                         {service.deliverables.map((item, i) => (
                           <li key={i} className="flex items-start gap-2">
-                            <span className="h-1.5 w-1.5 rounded-full bg-[#738B46] shrink-0 mt-2" />
+                            <span className="h-1.5 w-1.5 rounded-full bg-[#063F2E] shrink-0 mt-2" />
                             <span>{item}</span>
                           </li>
                         ))}
@@ -166,14 +166,14 @@ export default function ServicesPage() {
 
                     {/* Commercial Benefits */}
                     <div className="space-y-4">
-                      <h3 className="font-mono text-xs uppercase tracking-widest text-[#2C4058] font-bold flex items-center gap-2">
-                        <Zap className="h-4 w-4 text-[#738B46]" />
+                      <h3 className="font-mono text-xs uppercase tracking-widest text-[#063F2E] font-bold flex items-center gap-2">
+                        <Zap className="h-4 w-4 text-[#063F2E]" />
                         <span>Project Benefits</span>
                       </h3>
-                      <ul className="space-y-2.5 text-xs sm:text-sm text-[#2C4058]/85 font-sans">
+                      <ul className="space-y-2.5 text-xs sm:text-sm text-[#092D23]/85 font-sans">
                         {service.benefits.map((item, i) => (
                           <li key={i} className="flex items-start gap-2">
-                            <span className="h-1.5 w-1.5 rounded-full bg-[#738B46] border border-[#2C4058] shrink-0 mt-2" />
+                            <span className="h-1.5 w-1.5 rounded-full bg-[#C7F532] border border-[#092D23] shrink-0 mt-2" />
                             <span>{item}</span>
                           </li>
                         ))}
@@ -188,8 +188,8 @@ export default function ServicesPage() {
       </section>
 
       {/* Engagement Models Section */}
-      <section className="py-20 sm:py-28 bg-[#2C4058] text-white relative overflow-hidden">
-        <TopographicBackground opacity={0.05} strokeColor="#738B46" />
+      <section className="py-20 sm:py-28 bg-[#092D23] text-white relative overflow-hidden">
+        <TopographicBackground opacity={0.06} strokeColor="#C7F532" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
@@ -205,10 +205,10 @@ export default function ServicesPage() {
             {engagementModels.map((model, idx) => (
               <div
                 key={idx}
-                className="rounded-sm bg-[#1E2D3E]/90 border border-white/12 p-6 sm:p-8 flex flex-col justify-between hover:border-[#738B46] hover:bg-[#1E2D3E] transition-all duration-200 shadow-[4px_4px_0px_0px_#141E2A] hover:shadow-[4px_4px_0px_0px_#738B46]"
+                className="rounded-sm bg-[#063F2E]/80 border border-white/10 p-6 sm:p-8 flex flex-col justify-between hover:border-[#C7F532]/60 hover:bg-[#063F2E] transition-all duration-200 shadow-[4px_4px_0px_0px_#032118] hover:shadow-[4px_4px_0px_0px_#C7F532]"
               >
                 <div>
-                  <span className="font-mono text-xs text-[#738B46] uppercase tracking-widest block mb-1 font-bold">
+                  <span className="font-mono text-xs text-[#C7F532] uppercase tracking-widest block mb-1 font-bold">
                     {model.subtitle}
                   </span>
                   <h3 className="text-xl sm:text-2xl font-bold text-white mb-4">
@@ -221,7 +221,7 @@ export default function ServicesPage() {
                   <div className="space-y-2.5 pt-4 border-t border-white/10 text-xs text-white/90">
                     {model.points.map((point, i) => (
                       <div key={i} className="flex items-center gap-2">
-                        <CheckCircle2 className="h-4 w-4 text-[#738B46] shrink-0" />
+                        <CheckCircle2 className="h-4 w-4 text-[#C7F532] shrink-0" />
                         <span>{point}</span>
                       </div>
                     ))}
@@ -231,7 +231,7 @@ export default function ServicesPage() {
                 <div className="mt-8 pt-6 border-t border-white/10">
                   <Button
                     href="/contact"
-                    variant="accent"
+                    variant="primary"
                     size="sm"
                     className="w-full"
                     icon={<ArrowUpRight className="h-3.5 w-3.5 stroke-[2.5]" />}

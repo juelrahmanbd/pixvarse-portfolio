@@ -21,7 +21,7 @@ export default function WorkPage() {
       />
 
       {/* Main Filterable Projects Section */}
-      <section className="py-16 sm:py-24 bg-[#F7F9FA] border-b border-[#2C4058]/10">
+      <section className="py-16 sm:py-24 bg-[#F8FAF6] border-b border-[#092D23]/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <WorkClientView initialProjects={projectsData} />
         </div>

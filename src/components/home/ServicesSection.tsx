@@ -28,9 +28,9 @@ export function ServicesSection() {
   const coreServices = servicesData.slice(0, 6);
 
   return (
-    <section className="py-16 sm:py-24 bg-[#2C4058] text-white relative overflow-hidden border-b border-white/10">
+    <section className="py-16 sm:py-24 bg-[#092D23] text-white relative overflow-hidden border-b border-white/10">
       {/* Background radial accent */}
-      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#1E2D3E] rounded-full blur-[140px] opacity-70 pointer-events-none" />
+      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#063F2E] rounded-full blur-[140px] opacity-60 pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
@@ -60,22 +60,22 @@ export function ServicesSection() {
             return (
               <div
                 key={service.id}
-                className="group relative rounded-sm bg-[#1E2D3E]/90 border border-white/12 p-6 sm:p-8 flex flex-col justify-between hover:border-[#738B46] hover:bg-[#1E2D3E] transition-all duration-200 shadow-[4px_4px_0px_0px_#141E2A] hover:shadow-[4px_4px_0px_0px_#738B46] hover:-translate-y-0.5"
+                className="group relative rounded-sm bg-[#063F2E]/80 border border-white/10 p-6 sm:p-8 flex flex-col justify-between hover:border-[#C7F532]/60 hover:bg-[#063F2E] transition-all duration-200 shadow-[4px_4px_0px_0px_#032118] hover:shadow-[4px_4px_0px_0px_#C7F532] hover:-translate-y-0.5"
               >
                 <div>
                   {/* Top Row: Number & Icon */}
                   <div className="flex items-center justify-between pb-6 border-b border-white/10">
-                    <span className="font-mono text-2xl font-black text-[#738B46]">
+                    <span className="font-mono text-2xl font-black text-[#C7F532]">
                       {service.number}
                     </span>
-                    <div className="flex h-11 w-11 items-center justify-center rounded-sm bg-[#2C4058] text-[#738B46] border border-[#738B46]/30 group-hover:scale-105 group-hover:bg-[#738B46] group-hover:text-white transition-all duration-200">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-sm bg-[#092D23] text-[#C7F532] border border-[#C7F532]/30 group-hover:scale-105 group-hover:bg-[#C7F532] group-hover:text-[#092D23] transition-all duration-200">
                       {icon}
                     </div>
                   </div>
 
                   {/* Title & Short Description */}
                   <div className="mt-6">
-                    <h3 className="text-xl font-bold tracking-tight text-white group-hover:text-[#738B46] transition-colors">
+                    <h3 className="text-xl font-bold tracking-tight text-white group-hover:text-[#C7F532] transition-colors">
                       {service.title}
                     </h3>
                     <p className="mt-3 text-sm text-white/80 leading-relaxed font-sans font-normal">
@@ -85,12 +85,12 @@ export function ServicesSection() {
 
                   {/* Deliverables snippet */}
                   <div className="mt-6 pt-5 border-t border-white/10 space-y-2">
-                    <span className="text-[10px] uppercase tracking-wider font-mono text-[#738B46] block font-bold">
+                    <span className="text-[10px] uppercase tracking-wider font-mono text-[#C7F532] block font-bold">
                       Key Highlights
                     </span>
                     {service.deliverables.slice(0, 3).map((item, i) => (
                       <div key={i} className="flex items-start gap-2 text-xs text-white/85">
-                        <Check className="h-3.5 w-3.5 text-[#738B46] shrink-0 mt-0.5" />
+                        <Check className="h-3.5 w-3.5 text-[#C7F532] shrink-0 mt-0.5" />
                         <span className="line-clamp-1">{item}</span>
                       </div>
                     ))}
@@ -104,7 +104,7 @@ export function ServicesSection() {
                   </span>
                   <Link
                     href={`/services#${service.id}`}
-                    className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-[#738B46] hover:text-white group-hover:translate-x-1 transition-transform"
+                    className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-[#C7F532] group-hover:translate-x-1 transition-transform"
                   >
                     <span>Learn More</span>
                     <ArrowRight className="h-3.5 w-3.5" />
