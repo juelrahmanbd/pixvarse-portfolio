@@ -173,3 +173,4 @@ export const techStackData: TechItem[] = [
     badge: "Production Ready",
   },
 ];
+

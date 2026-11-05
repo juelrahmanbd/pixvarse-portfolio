@@ -56,3 +56,4 @@ export const siteConfig: SiteConfig = {
     { name: "Contact", href: "/contact" },
   ],
 };
+

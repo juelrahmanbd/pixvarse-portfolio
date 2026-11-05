@@ -135,3 +135,4 @@ export function WorkClientView({ initialProjects }: WorkClientViewProps) {
     </div>
   );
 }
+

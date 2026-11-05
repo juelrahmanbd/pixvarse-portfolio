@@ -41,3 +41,4 @@ export function WhatsAppIcon({ className = "h-5 w-5" }: { className?: string }) 
     </svg>
   );
 }
+

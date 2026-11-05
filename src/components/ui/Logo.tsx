@@ -74,3 +74,4 @@ export function Logo({ className = "", variant = "default", showTagline = false 
     </Link>
   );
 }
+
