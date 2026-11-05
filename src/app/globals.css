@@ -2,23 +2,84 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ==========================================================================
+   PIXVARSE GLOBAL DESIGN SYSTEM TOKENS
+   Master Reference: Approved Homepage Header & Hero Section
+   ========================================================================== */
+
 :root {
-  --background: #F8FAF6;
-  --foreground: #171A18;
+  /* Brand Palette */
+  --brand-primary: #063F2E;      /* Primary dark green */
+  --brand-deep: #092D23;         /* Deep forest green / dark text */
+  --brand-lime: #C7F532;         /* Electric lime accent */
+  --brand-lime-hover: #B6E228;   /* Slightly deeper electric lime for hovers */
+  --brand-mint: #E6F4EC;         /* Soft mint / subtle highlight surface */
+  --brand-gray: #E7EAE5;         /* Neutral light border/divider gray */
+
+  /* Semantic Background Tokens */
+  --bg-primary: #FFFFFF;         /* Main white background */
+  --bg-secondary: #F8FAF6;       /* Soft warm off-white secondary background */
+  --bg-accent: #E6F4EC;          /* Pale mint accent background */
+  --bg-dark: #092D23;            /* Deep forest green for dark sections */
+  --bg-dark-surface: #063F2E;    /* Dark surface cards & badges */
+
+  /* Semantic Text Tokens */
+  --text-primary: #092D23;       /* Main dark text */
+  --text-secondary: rgba(9, 45, 35, 0.78); /* High contrast supporting text */
+  --text-muted: rgba(9, 45, 35, 0.55);     /* Subdued caption / helper text */
+  --text-inverse: #FFFFFF;       /* White text on dark surfaces */
+  --text-inverse-muted: rgba(255, 255, 255, 0.75);
+  --text-lime: #C7F532;          /* Accent lime text */
+
+  /* Semantic Border Tokens */
+  --border-default: rgba(9, 45, 35, 0.15); /* Standard crisp card/section border */
+  --border-subtle: rgba(9, 45, 35, 0.08);  /* Hairline divider */
+  --border-strong: #092D23;                /* Heavy neo-brutalist border */
+  --border-dark: rgba(255, 255, 255, 0.12);/* Dark section border */
+  --border-lime: rgba(199, 245, 50, 0.35); /* Lime accent border */
+
+  /* Neo-Brutalist Shadow Tokens */
+  --shadow-neo-sm: 2px 2px 0px 0px #092D23;
+  --shadow-neo: 4px 4px 0px 0px #092D23;
+  --shadow-neo-lg: 6px 6px 0px 0px #092D23;
+  --shadow-neo-lime: 4px 4px 0px 0px #C7F532;
+  --shadow-neo-lime-sm: 2px 2px 0px 0px #C7F532;
+  --shadow-neo-forest: 3px 3px 0px 0px #063F2E;
+
+  /* Typography Scale Fallbacks */
+  --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
+/* Base Document Styles */
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom scrollbar */
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -27,13 +88,63 @@ body {
 }
 ::-webkit-scrollbar-thumb {
   background: #063F2E;
-  border-radius: 4px;
+  border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #C7F532;
 }
 
-/* Infinite Marquee */
+/* ==========================================================================
+   GLOBAL TYPOGRAPHY UTILITIES
+   ========================================================================== */
+
+.type-display {
+  font-family: var(--font-sans);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.06;
+}
+
+.type-h1 {
+  font-family: var(--font-sans);
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+}
+
+.type-h2 {
+  font-family: var(--font-sans);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.type-h3 {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+}
+
+.type-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.type-button {
+  font-family: var(--font-mono);
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   GLOBAL MARQUEE ANIMATION
+   ========================================================================== */
+
 @keyframes marquee {
   0% {
     transform: translateX(0%);
@@ -51,4 +162,14 @@ body {
 
 .animate-marquee:hover {
   animation-play-state: paused;
+}
+
+/* Focus Ring Accessibility */
+.focus-ring {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+.focus-ring:focus-visible {
+  outline: 2px solid #C7F532;
+  outline-offset: 2px;
 }

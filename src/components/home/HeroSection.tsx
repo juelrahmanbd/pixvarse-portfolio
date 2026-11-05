@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
 import { siteConfig } from "@/data/siteConfig";
 import { TechSlider } from "./TechSlider";
 import { TopographicBackground } from "../ui/TopographicBackground";
+import { Button } from "../ui/Button";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -102,25 +102,27 @@ export function HeroSection() {
             </p>
           </div>
 
-          {/* Call-To-Action Buttons */}
+          {/* Call-To-Action Buttons using Global Button Component */}
           <div className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-4">
             {/* Primary CTA */}
-            <Link
+            <Button
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 bg-[#C7F532] text-[#092D23] hover:bg-[#b6e228] text-sm sm:text-base font-mono font-black uppercase tracking-wider rounded-sm border-2 border-[#092D23] shadow-[4px_4px_0px_0px_#092D23] hover:shadow-[2px_2px_0px_0px_#092D23] hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-150 select-none group cursor-pointer"
+              variant="primary"
+              size="lg"
+              icon={<ArrowUpRight className="h-5 w-5 stroke-[2.5]" />}
             >
-              <span>Start Your Project</span>
-              <ArrowUpRight className="h-5 w-5 stroke-[2.5] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </Link>
+              Start Your Project
+            </Button>
 
             {/* Secondary CTA */}
-            <Link
+            <Button
               href="/work"
-              className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 bg-[#FFFFFF] text-[#092D23] hover:bg-[#E6F4EC] text-sm sm:text-base font-mono font-black uppercase tracking-wider rounded-sm border-2 border-[#092D23] shadow-[4px_4px_0px_0px_#092D23] hover:shadow-[2px_2px_0px_0px_#092D23] hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-150 select-none group cursor-pointer"
+              variant="secondary"
+              size="lg"
+              icon={<ArrowRight className="h-5 w-5 stroke-[2.5]" />}
             >
-              <span>Explore My Work</span>
-              <ArrowRight className="h-5 w-5 stroke-[2.5] transition-transform group-hover:translate-x-1" />
-            </Link>
+              Explore My Work
+            </Button>
           </div>
 
           {/* Professional Trust Indicators Row */}
@@ -131,7 +133,7 @@ export function HeroSection() {
                   key={idx}
                   className="flex items-center justify-center gap-2 text-xs sm:text-sm font-mono font-semibold text-[#092D23]"
                 >
-                  <div className="flex h-7 w-7 items-center justify-center rounded-sm bg-[#E6F4EC] border border-[#063F2E]/20 shrink-0">
+                  <div className="flex h-7 w-7 items-center justify-center rounded-sm bg-[#E6F4EC] border border-[#063F2E]/20 shrink-0 shadow-[1px_1px_0px_0px_#063F2E]">
                     {item.icon}
                   </div>
                   <span className="whitespace-nowrap tracking-tight">{item.title}</span>

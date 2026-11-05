@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import React, { useState, useEffect } from "react";
 import { siteConfig } from "@/data/siteConfig";
 import { Logo } from "../ui/Logo";
+import { Button } from "../ui/Button";
 import { MobileMenu } from "./MobileMenu";
 import { Menu, ArrowUpRight } from "lucide-react";
 
@@ -43,7 +44,7 @@ export function Navbar() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`relative px-4 py-1.5 text-xs font-bold uppercase tracking-wider font-mono transition-all duration-200 rounded-sm select-none ${
+                    className={`relative px-4 py-1.5 text-xs font-bold uppercase tracking-wider font-mono transition-all duration-150 rounded-sm select-none ${
                       isActive
                         ? "bg-[#092D23] text-[#C7F532] shadow-sm"
                         : "text-[#092D23]/80 hover:text-[#063F2E] hover:bg-[#E6F4EC]"
@@ -58,37 +59,40 @@ export function Navbar() {
             {/* Right Side: Available Indicator & Let's Talk CTA */}
             <div className="hidden lg:flex items-center gap-4">
               {/* Availability Indicator */}
-              <div className="flex items-center gap-2 px-3 py-1 bg-[#F8FAF6] border border-[#092D23]/15 rounded-sm">
+              <div className="flex items-center gap-2 px-3 py-1 bg-[#F8FAF6] border border-[#092D23]/15 rounded-sm shadow-[1px_1px_0px_0px_#063F2E]">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#063F2E] opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-[#063F2E]" />
                 </span>
                 <span className="text-[#092D23] text-[11px] font-mono font-bold uppercase tracking-wider">
-                  Available for New Projects
+                  {siteConfig.status.badgeText}
                 </span>
               </div>
 
               {/* Let's Talk Button */}
-              <Link
+              <Button
                 href="/contact"
-                className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#C7F532] text-[#092D23] hover:bg-[#b6e228] text-xs font-mono font-bold uppercase tracking-wider rounded-sm border border-[#092D23] shadow-[2px_2px_0px_0px_#092D23] hover:shadow-[1px_1px_0px_0px_#092D23] hover:translate-x-[1px] hover:translate-y-[1px] transition-all duration-150"
+                variant="primary"
+                size="sm"
+                icon={<ArrowUpRight className="h-3.5 w-3.5 stroke-[2.5]" />}
               >
-                <span>Let&apos;s Talk</span>
-                <ArrowUpRight className="h-3.5 w-3.5 stroke-[2.5]" />
-              </Link>
+                Let&apos;s Talk
+              </Button>
             </div>
 
             {/* Mobile Actions */}
             <div className="flex items-center gap-2 md:hidden">
-              <Link
+              <Button
                 href="/contact"
-                className="inline-flex items-center gap-1 px-3 py-1.5 bg-[#C7F532] text-[#092D23] text-xs font-mono font-bold uppercase tracking-wider rounded-sm border border-[#092D23] shadow-[2px_2px_0px_0px_#092D23]"
+                variant="primary"
+                size="sm"
+                className="px-3 py-1 text-[11px]"
               >
-                <span>Let&apos;s Talk</span>
-              </Link>
+                Let&apos;s Talk
+              </Button>
               <button
                 onClick={() => setMobileMenuOpen(true)}
-                className="flex h-9 w-9 items-center justify-center rounded-sm border border-[#092D23]/20 bg-[#F8FAF6] text-[#092D23] hover:bg-[#E6F4EC] transition-colors"
+                className="flex h-9 w-9 items-center justify-center rounded-sm border border-[#092D23]/20 bg-[#F8FAF6] text-[#092D23] hover:bg-[#E6F4EC] transition-colors cursor-pointer"
                 aria-label="Open navigation menu"
               >
                 <Menu className="h-5 w-5" />
@@ -98,7 +102,7 @@ export function Navbar() {
         </div>
       </header>
 
-      {/* Mobile Drawer */}
+      {/* Responsive Mobile Drawer Menu */}
       <MobileMenu
         isOpen={mobileMenuOpen}
         onClose={() => setMobileMenuOpen(false)}

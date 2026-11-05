@@ -1,8 +1,7 @@
 import React from "react";
 import { siteConfig } from "@/data/siteConfig";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Badge } from "@/components/ui/Badge";
-import { TopographicBackground } from "@/components/ui/TopographicBackground";
+import { PageHeader } from "@/components/ui/LayoutPrimitives";
 import { ContactForm } from "@/components/contact/ContactForm";
 import {
   Mail,
@@ -38,33 +37,17 @@ export default function ContactPage() {
   ];
 
   return (
-    <div className="pt-28 pb-20">
-      {/* Hero Section */}
-      <section className="relative py-16 sm:py-24 bg-[#092D23] text-white overflow-hidden">
-        <TopographicBackground opacity={0.08} strokeColor="#C7F532" />
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl space-y-6">
-            <Badge variant="forest" dot={true} className="border-[#C7F532]/30 text-[#C7F532]">
-              PROJECT INQUIRY // DIRECT CONNECTION
-            </Badge>
-
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.1]">
-              Let&apos;s Talk About Your{" "}
-              <span className="relative inline-block text-[#C7F532] bg-[#063F2E] px-3 py-1 rounded-lg border border-[#C7F532]/30 shadow-[3px_3px_0px_0px_#C7F532] -rotate-1">
-                Next Project.
-              </span>
-            </h1>
-
-            <p className="text-lg sm:text-xl text-slate-200 leading-relaxed max-w-3xl font-normal">
-              Whether you need a bespoke WordPress platform, a tailored web application, or a reliable white-label development partner for your agency, fill out the inquiry form below or reach out directly.
-            </p>
-          </div>
-        </div>
-      </section>
+    <div className="flex flex-col">
+      {/* Master Page Header */}
+      <PageHeader
+        eyebrow="PROJECT BRIEF // DIRECT CONNECTION"
+        title="Let's Talk About Your"
+        highlight="Next Project."
+        description="Whether you need a bespoke WordPress platform, a tailored web application, or a reliable white-label development partner for your agency, fill out the inquiry form below or reach out directly."
+      />
 
       {/* Main Form & Contact Info Section */}
-      <section className="py-20 bg-[#F8FAF6]">
+      <section className="py-16 sm:py-24 bg-[#F8FAF6] border-b border-[#092D23]/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* Left Column: Interactive Form */}
@@ -82,23 +65,23 @@ export default function ContactPage() {
             {/* Right Column: Direct Channels & Guarantee */}
             <div className="lg:col-span-5 space-y-8">
               {/* Direct Info Card */}
-              <div className="rounded-3xl bg-[#092D23] text-white p-8 border border-[#C7F532]/30 shadow-[6px_6px_0px_0px_#032118] space-y-6">
+              <div className="rounded-sm bg-[#092D23] text-white p-6 sm:p-8 border border-[#C7F532]/30 shadow-[4px_4px_0px_0px_#C7F532] space-y-6">
                 <div>
                   <span className="text-[10px] font-mono uppercase tracking-widest text-[#C7F532] font-bold block mb-1">
                     DIRECT COMMUNICATION
                   </span>
-                  <h3 className="text-2xl font-bold font-sans text-white">
+                  <h3 className="text-xl sm:text-2xl font-bold font-sans text-white">
                     Get in Touch Directly
                   </h3>
                 </div>
 
-                <div className="space-y-4 pt-2">
+                <div className="space-y-3.5 pt-2">
                   {/* Email */}
                   <a
                     href={`mailto:${siteConfig.email}`}
-                    className="group flex items-start gap-4 p-4 rounded-2xl bg-[#063F2E] border border-white/10 hover:border-[#C7F532]/60 hover:bg-[#063F2E]/90 transition-all"
+                    className="group flex items-start gap-4 p-4 rounded-sm bg-[#063F2E] border border-white/10 hover:border-[#C7F532]/60 hover:bg-[#063F2E]/90 transition-all shadow-[2px_2px_0px_0px_#092D23]"
                   >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#092D23] text-[#C7F532] border border-[#C7F532]/20 shrink-0 group-hover:scale-105 transition-transform">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-sm bg-[#092D23] text-[#C7F532] border border-[#C7F532]/20 shrink-0 group-hover:scale-105 transition-transform">
                       <Mail className="h-5 w-5" />
                     </div>
                     <div>
@@ -116,9 +99,9 @@ export default function ContactPage() {
                     href={siteConfig.whatsapp}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-start gap-4 p-4 rounded-2xl bg-[#063F2E] border border-white/10 hover:border-[#C7F532]/60 hover:bg-[#063F2E]/90 transition-all"
+                    className="group flex items-start gap-4 p-4 rounded-sm bg-[#063F2E] border border-white/10 hover:border-[#C7F532]/60 hover:bg-[#063F2E]/90 transition-all shadow-[2px_2px_0px_0px_#092D23]"
                   >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#092D23] text-[#C7F532] border border-[#C7F532]/20 shrink-0 group-hover:scale-105 transition-transform">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-sm bg-[#092D23] text-[#C7F532] border border-[#C7F532]/20 shrink-0 group-hover:scale-105 transition-transform">
                       <MessageSquare className="h-5 w-5" />
                     </div>
                     <div>
@@ -136,9 +119,9 @@ export default function ContactPage() {
                     href={siteConfig.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-start gap-4 p-4 rounded-2xl bg-[#063F2E] border border-white/10 hover:border-[#C7F532]/60 hover:bg-[#063F2E]/90 transition-all"
+                    className="group flex items-start gap-4 p-4 rounded-sm bg-[#063F2E] border border-white/10 hover:border-[#C7F532]/60 hover:bg-[#063F2E]/90 transition-all shadow-[2px_2px_0px_0px_#092D23]"
                   >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#092D23] text-[#C7F532] border border-[#C7F532]/20 shrink-0 group-hover:scale-105 transition-transform">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-sm bg-[#092D23] text-[#C7F532] border border-[#C7F532]/20 shrink-0 group-hover:scale-105 transition-transform">
                       <GithubIcon className="h-5 w-5" />
                     </div>
                     <div>
@@ -156,9 +139,9 @@ export default function ContactPage() {
                     href={siteConfig.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-start gap-4 p-4 rounded-2xl bg-[#063F2E] border border-white/10 hover:border-[#C7F532]/60 hover:bg-[#063F2E]/90 transition-all"
+                    className="group flex items-start gap-4 p-4 rounded-sm bg-[#063F2E] border border-white/10 hover:border-[#C7F532]/60 hover:bg-[#063F2E]/90 transition-all shadow-[2px_2px_0px_0px_#092D23]"
                   >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#092D23] text-[#C7F532] border border-[#C7F532]/20 shrink-0 group-hover:scale-105 transition-transform">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-sm bg-[#092D23] text-[#C7F532] border border-[#C7F532]/20 shrink-0 group-hover:scale-105 transition-transform">
                       <LinkedinIcon className="h-5 w-5" />
                     </div>
                     <div>
@@ -179,19 +162,19 @@ export default function ContactPage() {
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C7F532] opacity-75" />
                       <span className="relative inline-flex rounded-full h-2 w-2 bg-[#C7F532]" />
                     </span>
-                    <span>Currently Accepting Projects</span>
+                    <span className="font-bold">{siteConfig.status.badgeText}</span>
                   </div>
                   <span className="text-white/40">Remote Worldwide</span>
                 </div>
               </div>
 
               {/* Service SLA Commitment */}
-              <div className="rounded-2xl bg-white p-6 border border-[#063F2E]/15 shadow-[4px_4px_0px_0px_#063F2E] space-y-3">
+              <div className="rounded-sm bg-white p-6 sm:p-8 border border-[#092D23]/15 shadow-[4px_4px_0px_0px_#092D23] space-y-3">
                 <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-[#063F2E] font-bold">
                   <Clock className="h-4 w-4" />
                   <span>24-Hour Response Guarantee</span>
                 </div>
-                <p className="text-xs sm:text-sm text-[#171A18]/75 leading-relaxed font-sans">
+                <p className="text-xs sm:text-sm text-[#092D23]/75 leading-relaxed font-sans">
                   Every inquiry receives a personal, technical evaluation from Juel Rahman within 24 business hours. No automated robot answers — just real assessment and next steps.
                 </p>
               </div>
@@ -201,7 +184,7 @@ export default function ContactPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-white border-t border-[#063F2E]/10">
+      <section className="py-16 sm:py-24 bg-white border-b border-[#092D23]/10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <SectionHeading
             eyebrow="FAQ // FREQUENTLY ASKED QUESTIONS"
@@ -215,15 +198,15 @@ export default function ContactPage() {
             {faqs.map((faq, idx) => (
               <div
                 key={idx}
-                className="rounded-2xl bg-[#F8FAF6] border border-[#063F2E]/15 p-6 shadow-sm space-y-2"
+                className="rounded-sm bg-[#F8FAF6] border border-[#092D23]/15 p-6 shadow-[2px_2px_0px_0px_#092D23] space-y-2"
               >
-                <h3 className="text-base sm:text-lg font-bold text-[#171A18] flex items-start gap-2">
-                  <span className="font-mono text-xs text-[#063F2E] bg-[#E6F4EC] px-2 py-0.5 rounded border border-[#063F2E]/15 mt-0.5">
+                <h3 className="text-base sm:text-lg font-bold text-[#092D23] flex items-start gap-2">
+                  <span className="font-mono text-xs text-[#063F2E] bg-[#E6F4EC] px-2 py-0.5 rounded-sm border border-[#092D23]/15 mt-0.5 font-bold">
                     Q{idx + 1}
                   </span>
                   <span>{faq.q}</span>
                 </h3>
-                <p className="text-sm text-[#171A18]/80 leading-relaxed font-sans pl-8">
+                <p className="text-sm text-[#092D23]/80 leading-relaxed font-sans pl-8">
                   {faq.a}
                 </p>
               </div>

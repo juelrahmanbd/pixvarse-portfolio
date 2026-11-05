@@ -4,10 +4,12 @@ import { siteConfig } from "@/data/siteConfig";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
+import { PageHeader } from "@/components/ui/LayoutPrimitives";
 import { TopographicBackground } from "@/components/ui/TopographicBackground";
 import {
   CheckCircle2,
   ArrowRight,
+  ArrowUpRight,
   ExternalLink,
   Zap,
 } from "lucide-react";
@@ -65,33 +67,17 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="pt-28 pb-20">
-      {/* Hero Section */}
-      <section className="relative py-16 sm:py-24 bg-[#092D23] text-white overflow-hidden">
-        <TopographicBackground opacity={0.08} strokeColor="#C7F532" />
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl space-y-6">
-            <Badge variant="forest" dot={true} className="border-[#C7F532]/30 text-[#C7F532]">
-              BEHIND THE BRAND // JUEL RAHMAN
-            </Badge>
-
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.1]">
-              Behind Every Great Digital Experience Is a{" "}
-              <span className="relative inline-block text-[#C7F532] bg-[#063F2E] px-3 py-1 rounded-lg border border-[#C7F532]/30 shadow-[3px_3px_0px_0px_#C7F532] -rotate-1">
-                Clear Vision.
-              </span>
-            </h1>
-
-            <p className="text-lg sm:text-xl text-slate-200 leading-relaxed max-w-3xl font-normal">
-              I&apos;m <span className="text-white font-semibold">{siteConfig.creatorName}</span>, an independent web developer, creative technologist, and the founder of <span className="text-[#C7F532] font-mono font-semibold">Pixvarse</span>. I build modern, resilient websites and web applications for businesses, startups, and creative agencies worldwide.
-            </p>
-          </div>
-        </div>
-      </section>
+    <div className="flex flex-col">
+      {/* Master Page Header */}
+      <PageHeader
+        eyebrow="BEHIND THE BRAND // JUEL RAHMAN"
+        title="Behind Every Great Digital Experience Is a"
+        highlight="Clear Vision."
+        description={`I'm ${siteConfig.creatorName}, an independent web developer, creative technologist, and the founder of Pixvarse, collaborating with a skilled professional team to build modern, resilient websites and digital platforms for ambitious clients worldwide.`}
+      />
 
       {/* Narrative & Background Section */}
-      <section className="py-20 bg-[#F8FAF6] border-b border-[#063F2E]/10">
+      <section className="py-16 sm:py-24 bg-[#F8FAF6] border-b border-[#092D23]/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* Left Story Column */}
@@ -103,12 +89,12 @@ export default function AboutPage() {
                 description="How passion for technology evolved into an independent digital studio."
               />
 
-              <div className="space-y-4 text-base sm:text-lg text-[#171A18]/80 leading-relaxed font-sans">
+              <div className="space-y-4 text-base sm:text-lg text-[#092D23]/80 leading-relaxed font-sans font-normal">
                 <p>
-                  My journey into software and web engineering began with a genuine curiosity: understanding how digital interfaces influence human decisions and empower business operations. Over the years, I honed deep technical expertise across both traditional CMS systems like <strong>WordPress, Divi, and Elementor</strong> and modern application frameworks like <strong>Laravel, React, and Next.js</strong>.
+                  My journey into software and web engineering began with a genuine curiosity: understanding how digital interfaces influence human decisions and empower business operations. Over the years, I honed deep technical expertise across both traditional CMS systems like <strong className="text-[#092D23] font-semibold">WordPress, Divi, and Elementor</strong> and modern application frameworks like <strong className="text-[#092D23] font-semibold">Laravel, React, and Next.js</strong>.
                 </p>
                 <p>
-                  I created <strong>Pixvarse</strong> as an independent studio brand to represent this standard of work: agile, modern, and uncompromising in quality. In an industry frequently bogged down by bloated multi-layer agencies and cookie-cutter templates, Pixvarse delivers direct, engineer-led solutions.
+                  I created <strong className="text-[#092D23] font-semibold">Pixvarse</strong> as an independent studio brand to represent this standard of work: agile, modern, and uncompromising in quality. In an industry frequently bogged down by bloated multi-layer agencies and cookie-cutter templates, Pixvarse delivers direct, engineer-led solutions.
                 </p>
                 <p>
                   Whether I&apos;m writing a custom WordPress Gutenberg block, architecting a normalized MySQL database schema in Laravel, or tuning client-side JavaScript for sub-second First Contentful Paint, my philosophy remains identical: build it cleanly, test it rigorously, and deliver on time.
@@ -116,11 +102,11 @@ export default function AboutPage() {
               </div>
 
               {/* Developer Credentials Card */}
-              <div className="mt-8 rounded-2xl bg-white p-6 border border-[#063F2E]/15 shadow-[4px_4px_0px_0px_#063F2E] space-y-4">
+              <div className="mt-8 rounded-sm bg-white p-6 sm:p-8 border border-[#092D23]/15 shadow-[4px_4px_0px_0px_#092D23] space-y-4">
                 <h3 className="font-mono text-xs uppercase tracking-widest text-[#063F2E] font-bold">
                   Core Competencies &amp; Focus Areas
                 </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm font-medium text-[#171A18]">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 text-xs sm:text-sm font-medium text-[#092D23]">
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="h-4 w-4 text-[#063F2E] shrink-0" />
                     <span>Custom WordPress &amp; ACF Block Development</span>
@@ -151,18 +137,18 @@ export default function AboutPage() {
 
             {/* Right Quick Bio Card */}
             <div className="lg:col-span-5 space-y-6">
-              <div className="rounded-2xl bg-[#092D23] text-white p-8 border border-[#C7F532]/30 shadow-[6px_6px_0px_0px_#032118]">
+              <div className="rounded-sm bg-[#092D23] text-white p-6 sm:p-8 border border-[#C7F532]/30 shadow-[4px_4px_0px_0px_#C7F532]">
                 <div className="flex items-center justify-between pb-6 border-b border-white/10 mb-6">
                   <div>
                     <h3 className="text-xl font-bold font-sans text-white">{siteConfig.creatorName}</h3>
-                    <p className="text-xs font-mono text-[#C7F532] mt-0.5">Founder &amp; Principal Developer</p>
+                    <p className="text-xs font-mono text-[#C7F532] mt-0.5">{siteConfig.creatorRole}</p>
                   </div>
                   <Badge variant="lime" size="sm">
                     Verified
                   </Badge>
                 </div>
 
-                <div className="space-y-4 text-xs sm:text-sm text-slate-300">
+                <div className="space-y-4 text-xs sm:text-sm text-white/80">
                   <div className="flex justify-between py-2 border-b border-white/10">
                     <span className="font-mono text-white/50">Studio Brand:</span>
                     <span className="font-bold text-white font-mono">{siteConfig.brandName}</span>
@@ -199,7 +185,7 @@ export default function AboutPage() {
                     variant="primary"
                     size="md"
                     className="w-full"
-                    icon={<ArrowRight className="h-4 w-4" />}
+                    icon={<ArrowUpRight className="h-4 w-4 stroke-[2.5]" />}
                   >
                     Start a Conversation
                   </Button>
@@ -207,11 +193,11 @@ export default function AboutPage() {
               </div>
 
               {/* Quick Quote Card */}
-              <div className="rounded-2xl bg-[#E6F4EC] p-6 border border-[#063F2E]/20 text-[#063F2E]">
-                <span className="font-mono text-xs uppercase tracking-widest font-bold block mb-2">
+              <div className="rounded-sm bg-[#E6F4EC] p-6 border border-[#063F2E]/20 text-[#092D23] shadow-[2px_2px_0px_0px_#063F2E]">
+                <span className="font-mono text-xs uppercase tracking-widest font-bold block mb-2 text-[#063F2E]">
                   Studio Creed
                 </span>
-                <p className="text-sm italic font-serif leading-relaxed">
+                <p className="text-sm italic font-serif leading-relaxed text-[#092D23]/90">
                   &ldquo;Great digital products are built at the intersection of disciplined architecture, aesthetic precision, and empathetic communication.&rdquo;
                 </p>
               </div>
@@ -221,7 +207,7 @@ export default function AboutPage() {
       </section>
 
       {/* Philosophy Section */}
-      <section className="py-20 bg-[#092D23] text-white">
+      <section className="py-16 sm:py-24 bg-[#092D23] text-white border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="PHILOSOPHY // ENGINEERING VALUES"
@@ -232,24 +218,24 @@ export default function AboutPage() {
             className="mb-14"
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             {philosophies.map((phil) => (
               <div
                 key={phil.number}
-                className="group rounded-2xl bg-[#063F2E]/70 border border-white/10 p-8 hover:border-[#C7F532]/50 hover:bg-[#063F2E] transition-all duration-300 shadow-[4px_4px_0px_0px_#032118] hover:shadow-[5px_5px_0px_0px_#C7F532]"
+                className="group rounded-sm bg-[#063F2E]/80 border border-white/10 p-6 sm:p-8 hover:border-[#C7F532]/60 hover:bg-[#063F2E] transition-all duration-200 shadow-[4px_4px_0px_0px_#032118] hover:shadow-[4px_4px_0px_0px_#C7F532]"
               >
                 <div className="flex items-center justify-between pb-4 border-b border-white/10 mb-4">
                   <span className="font-mono text-2xl font-black text-[#C7F532]">
                     {phil.number}
                   </span>
-                  <span className="font-mono text-[10px] uppercase tracking-wider text-slate-400">
+                  <span className="font-mono text-[10px] uppercase tracking-wider text-white/50">
                     CORE PRINCIPLE
                   </span>
                 </div>
                 <h3 className="text-xl font-bold text-white group-hover:text-[#C7F532] transition-colors">
                   {phil.title}
                 </h3>
-                <p className="mt-3 text-sm text-slate-300 leading-relaxed font-sans">
+                <p className="mt-3 text-sm text-white/80 leading-relaxed font-sans">
                   {phil.description}
                 </p>
               </div>
@@ -259,7 +245,7 @@ export default function AboutPage() {
       </section>
 
       {/* Engagement Models Section */}
-      <section className="py-20 bg-[#F8FAF6] border-b border-[#063F2E]/10">
+      <section className="py-16 sm:py-24 bg-[#F8FAF6] border-b border-[#092D23]/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="COLLABORATION // HOW WE WORK TOGETHER"
@@ -269,31 +255,31 @@ export default function AboutPage() {
             className="mb-14"
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {workApproaches.map((approach, i) => (
               <div
                 key={i}
-                className="rounded-2xl bg-white border border-[#063F2E]/15 p-7 shadow-[4px_4px_0px_0px_#063F2E] flex flex-col justify-between"
+                className="rounded-sm bg-white border border-[#092D23]/15 p-6 sm:p-8 shadow-[4px_4px_0px_0px_#092D23] hover:shadow-[6px_6px_0px_0px_#092D23] transition-all duration-200 flex flex-col justify-between"
               >
                 <div>
-                  <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[#063F2E] text-[#C7F532]">
+                  <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-sm bg-[#063F2E] text-[#C7F532] shadow-[2px_2px_0px_0px_#C7F532]">
                     <Zap className="h-5 w-5" />
                   </div>
-                  <h3 className="text-xl font-bold text-[#171A18] mb-3">
+                  <h3 className="text-xl font-bold text-[#092D23] mb-3">
                     {approach.title}
                   </h3>
-                  <p className="text-sm text-[#171A18]/75 leading-relaxed font-sans">
+                  <p className="text-sm text-[#092D23]/75 leading-relaxed font-sans">
                     {approach.description}
                   </p>
                 </div>
 
-                <div className="mt-6 pt-5 border-t border-[#063F2E]/10">
+                <div className="mt-6 pt-5 border-t border-[#092D23]/10">
                   <Link
                     href="/contact"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#063F2E] hover:text-[#092D23]"
+                    className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-[#063F2E] hover:text-[#092D23] group"
                   >
                     <span>Inquire About Partnership</span>
-                    <ArrowRight className="h-3.5 w-3.5" />
+                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </div>
               </div>
@@ -303,14 +289,14 @@ export default function AboutPage() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="py-20 bg-[#092D23] text-white text-center relative overflow-hidden">
+      <section className="py-20 sm:py-28 bg-[#092D23] text-white text-center relative overflow-hidden">
         <TopographicBackground opacity={0.06} strokeColor="#C7F532" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight">
             Ready to collaborate with a{" "}
-            <span className="text-[#C7F532] underline decoration-2 underline-offset-4">dedicated developer</span>?
+            <span className="text-[#C7F532] underline decoration-4 underline-offset-4">dedicated developer</span>?
           </h2>
-          <p className="text-base sm:text-lg text-slate-200 max-w-xl mx-auto">
+          <p className="text-base sm:text-lg text-white/80 max-w-xl mx-auto font-sans font-normal">
             Let&apos;s discuss your upcoming project or review how Pixvarse can support your development pipeline.
           </p>
           <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
@@ -318,7 +304,7 @@ export default function AboutPage() {
               href="/contact"
               variant="primary"
               size="lg"
-              icon={<ArrowRight className="h-4 w-4" />}
+              icon={<ArrowUpRight className="h-5 w-5 stroke-[2.5]" />}
             >
               Get in Touch
             </Button>

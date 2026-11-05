@@ -97,25 +97,25 @@ export function ContactForm() {
   };
 
   return (
-    <div className="rounded-3xl bg-white border border-[#063F2E]/15 p-7 sm:p-10 shadow-[6px_6px_0px_0px_#063F2E]">
+    <div className="rounded-sm bg-white border border-[#092D23]/15 p-6 sm:p-10 shadow-[4px_4px_0px_0px_#092D23]">
       {isSubmitted ? (
         <div className="space-y-6 text-center py-8">
-          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#E6F4EC] border border-[#063F2E]/20 text-[#063F2E]">
+          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-sm bg-[#E6F4EC] border border-[#063F2E]/20 text-[#063F2E] shadow-[2px_2px_0px_0px_#063F2E]">
             <CheckCircle2 className="h-8 w-8 text-[#063F2E]" />
           </div>
 
-          <h3 className="text-2xl font-black text-[#171A18]">
+          <h3 className="text-2xl font-black text-[#092D23]">
             Inquiry Prepared &amp; Email Triggered!
           </h3>
 
-          <p className="text-sm sm:text-base text-[#171A18]/80 max-w-lg mx-auto leading-relaxed">
+          <p className="text-sm sm:text-base text-[#092D23]/80 max-w-lg mx-auto leading-relaxed font-sans">
             Your default email client should have opened with your project inquiry pre-filled. If it didn&apos;t open automatically, use the buttons below:
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
             <a
               href={generateMailtoUrl()}
-              className="inline-flex items-center gap-2 rounded-lg bg-[#C7F532] px-5 py-2.5 text-sm font-bold text-[#092D23] border border-[#092D23] shadow-[3px_3px_0px_0px_#063F2E] hover:bg-[#b6e228] transition-colors"
+              className="inline-flex items-center gap-2 rounded-sm bg-[#C7F532] px-5 py-2.5 text-xs sm:text-sm font-mono font-black uppercase tracking-wider text-[#092D23] border-2 border-[#092D23] shadow-[3px_3px_0px_0px_#092D23] hover:bg-[#b6e228] transition-all hover:translate-x-[1px] hover:translate-y-[1px]"
             >
               <Mail className="h-4 w-4" />
               <span>Open in Email Client</span>
@@ -123,17 +123,17 @@ export function ContactForm() {
 
             <button
               onClick={copyEmailToClipboard}
-              className="inline-flex items-center gap-2 rounded-lg bg-[#F8FAF6] px-5 py-2.5 text-sm font-bold text-[#063F2E] border border-[#063F2E]/20 hover:bg-[#E6F4EC] transition-colors"
+              className="inline-flex items-center gap-2 rounded-sm bg-[#F8FAF6] px-5 py-2.5 text-xs sm:text-sm font-mono font-bold uppercase tracking-wider text-[#092D23] border-2 border-[#092D23]/30 hover:border-[#092D23] hover:bg-[#E6F4EC] transition-all cursor-pointer"
             >
               <Copy className="h-4 w-4" />
               <span>{copied ? "Copied!" : "Copy Email Address"}</span>
             </button>
           </div>
 
-          <div className="pt-6 border-t border-[#063F2E]/10">
+          <div className="pt-6 border-t border-[#092D23]/10">
             <button
               onClick={() => setIsSubmitted(false)}
-              className="text-xs font-mono font-bold text-[#063F2E] hover:underline"
+              className="text-xs font-mono font-bold text-[#063F2E] hover:underline cursor-pointer"
             >
               ← Edit details or send another inquiry
             </button>
@@ -156,8 +156,8 @@ export function ContactForm() {
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 placeholder="e.g. Sarah Jenkins or Apex Agency"
-                className={`w-full rounded-xl border bg-[#F8FAF6] px-4 py-3 text-sm text-[#171A18] placeholder:text-[#171A18]/40 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#C7F532] transition-colors ${
-                  errors.name ? "border-rose-500 bg-rose-50/30" : "border-[#063F2E]/20"
+                className={`w-full rounded-sm border-2 bg-[#F8FAF6] px-4 py-3 text-sm text-[#092D23] placeholder:text-[#092D23]/40 focus:bg-white focus:outline-none focus:border-[#092D23] focus:ring-2 focus:ring-[#C7F532] transition-colors ${
+                  errors.name ? "border-rose-500 bg-rose-50/30" : "border-[#092D23]/20"
                 }`}
               />
               {errors.name && (
@@ -181,8 +181,8 @@ export function ContactForm() {
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 placeholder="sarah@company.com"
-                className={`w-full rounded-xl border bg-[#F8FAF6] px-4 py-3 text-sm text-[#171A18] placeholder:text-[#171A18]/40 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#C7F532] transition-colors ${
-                  errors.email ? "border-rose-500 bg-rose-50/30" : "border-[#063F2E]/20"
+                className={`w-full rounded-sm border-2 bg-[#F8FAF6] px-4 py-3 text-sm text-[#092D23] placeholder:text-[#092D23]/40 focus:bg-white focus:outline-none focus:border-[#092D23] focus:ring-2 focus:ring-[#C7F532] transition-colors ${
+                  errors.email ? "border-rose-500 bg-rose-50/30" : "border-[#092D23]/20"
                 }`}
               />
               {errors.email && (
@@ -207,7 +207,7 @@ export function ContactForm() {
                 id="projectType"
                 value={formData.projectType}
                 onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
-                className="w-full rounded-xl border border-[#063F2E]/20 bg-[#F8FAF6] px-4 py-3 text-sm text-[#171A18] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#C7F532] transition-colors"
+                className="w-full rounded-sm border-2 border-[#092D23]/20 bg-[#F8FAF6] px-4 py-3 text-sm text-[#092D23] focus:bg-white focus:outline-none focus:border-[#092D23] focus:ring-2 focus:ring-[#C7F532] transition-colors"
               >
                 {projectTypes.map((type) => (
                   <option key={type} value={type}>
@@ -228,7 +228,7 @@ export function ContactForm() {
                 id="budget"
                 value={formData.budget}
                 onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                className="w-full rounded-xl border border-[#063F2E]/20 bg-[#F8FAF6] px-4 py-3 text-sm text-[#171A18] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#C7F532] transition-colors"
+                className="w-full rounded-sm border-2 border-[#092D23]/20 bg-[#F8FAF6] px-4 py-3 text-sm text-[#092D23] focus:bg-white focus:outline-none focus:border-[#092D23] focus:ring-2 focus:ring-[#C7F532] transition-colors"
               >
                 {budgetRanges.map((range) => (
                   <option key={range} value={range}>
@@ -253,10 +253,10 @@ export function ContactForm() {
                   type="button"
                   key={time}
                   onClick={() => setFormData({ ...formData, timeline: time })}
-                  className={`px-3 py-2 text-xs font-mono rounded-lg border text-center transition-all cursor-pointer ${
+                  className={`px-3 py-2 text-xs font-mono font-bold rounded-sm border-2 text-center transition-all cursor-pointer ${
                     formData.timeline === time
-                      ? "bg-[#063F2E] text-[#C7F532] border-[#063F2E] font-bold"
-                      : "bg-[#F8FAF6] text-[#171A18]/70 border-[#063F2E]/15 hover:bg-[#E6F4EC]"
+                      ? "bg-[#063F2E] text-[#C7F532] border-[#092D23] shadow-[2px_2px_0px_0px_#C7F532]"
+                      : "bg-[#F8FAF6] text-[#092D23]/70 border-[#092D23]/20 hover:bg-[#E6F4EC] hover:text-[#092D23]"
                   }`}
                 >
                   {time}
@@ -279,8 +279,8 @@ export function ContactForm() {
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               placeholder="Tell me about your project, website goals, target audience, technical preferences, or existing website URL..."
-              className={`w-full rounded-xl border bg-[#F8FAF6] px-4 py-3 text-sm text-[#171A18] placeholder:text-[#171A18]/40 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#C7F532] transition-colors ${
-                errors.message ? "border-rose-500 bg-rose-50/30" : "border-[#063F2E]/20"
+              className={`w-full rounded-sm border-2 bg-[#F8FAF6] px-4 py-3 text-sm text-[#092D23] placeholder:text-[#092D23]/40 focus:bg-white focus:outline-none focus:border-[#092D23] focus:ring-2 focus:ring-[#C7F532] transition-colors ${
+                errors.message ? "border-rose-500 bg-rose-50/30" : "border-[#092D23]/20"
               }`}
             />
             {errors.message && (
@@ -302,7 +302,7 @@ export function ContactForm() {
             >
               Send Project Inquiry
             </Button>
-            <p className="mt-3 text-xs text-[#171A18]/60 font-mono">
+            <p className="mt-3 text-xs text-[#092D23]/60 font-mono">
               Generates a verified message to {siteConfig.email}. Guaranteed reply within 24 hours.
             </p>
           </div>

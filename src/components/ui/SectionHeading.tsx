@@ -1,7 +1,7 @@
 import React from "react";
 import { Badge } from "./Badge";
 
-interface SectionHeadingProps {
+export interface SectionHeadingProps {
   eyebrow?: string;
   title: string;
   highlight?: string;
@@ -41,12 +41,12 @@ export function SectionHeading({
       } ${className}`}
     >
       {eyebrow && (
-        <div className="mb-3.5">
+        <div className="mb-4 sm:mb-5">
           <Badge
-            variant={isDark ? "forest" : "mint"}
+            variant={isDark ? "forest" : "surface"}
             dot={true}
+            dotColor={isDark ? "lime" : "forest"}
             size="sm"
-            className="tracking-widest"
           >
             {eyebrow}
           </Badge>
@@ -54,15 +54,20 @@ export function SectionHeading({
       )}
 
       <h2
-        className={`text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.12] ${
-          isDark ? "text-white" : "text-[#171A18]"
+        className={`text-3xl sm:text-4xl md:text-5xl font-black tracking-[-0.025em] leading-[1.12] ${
+          isDark ? "text-white" : "text-[#092D23]"
         }`}
       >
         {highlight ? (
           <>
             {titleParts.before}
-            <span className="relative inline-block text-[#C7F532] bg-[#063F2E] px-2 py-0.5 rounded-md -rotate-1 shadow-[2px_2px_0px_0px_#C7F532] mx-1">
-              {titleParts.match}
+            <span className="relative inline-block my-1">
+              <span
+                className="relative inline-block text-[#C7F532] bg-[#063F2E] px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-sm -rotate-1 shadow-[3px_3px_0px_0px_#C7F532] mx-1"
+                aria-hidden="true"
+              >
+                {titleParts.match}
+              </span>
             </span>
             {titleParts.after}
           </>
@@ -73,8 +78,8 @@ export function SectionHeading({
 
       {description && (
         <p
-          className={`mt-4 text-base sm:text-lg leading-relaxed ${
-            isDark ? "text-slate-300" : "text-[#171A18]/75"
+          className={`mt-4 sm:mt-5 text-base sm:text-lg leading-relaxed ${
+            isDark ? "text-white/80" : "text-[#092D23]/80"
           }`}
         >
           {description}
@@ -83,4 +88,3 @@ export function SectionHeading({
     </div>
   );
 }
-
