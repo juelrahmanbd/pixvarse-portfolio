@@ -71,9 +71,9 @@ export function ReactLogo({ className = "h-5 w-5" }: { className?: string }) {
 // Plugin Development Icon
 export function PluginDevIcon({ className = "h-5 w-5" }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="#063F2E" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="#00F5A0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
       <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
-      <rect x="8" y="8" width="8" height="8" rx="1" fill="#C7F532" fillOpacity="0.4" stroke="#063F2E" />
+      <rect x="8" y="8" width="8" height="8" rx="1.5" fill="rgba(0,245,160,0.15)" stroke="#00F5A0" />
     </svg>
   );
 }
@@ -81,10 +81,10 @@ export function PluginDevIcon({ className = "h-5 w-5" }: { className?: string })
 // Custom Web Apps Icon
 export function CustomWebAppsIcon({ className = "h-5 w-5" }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="#063F2E" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="2" y="3" width="20" height="14" rx="1" />
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="#00D9F5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="3" width="20" height="14" rx="2" />
       <path d="M8 21h8M12 17v4" />
-      <path d="M6 8l3 3-3 3M11 14h4" stroke="#063F2E" />
+      <path d="M6 8l3 3-3 3M11 14h4" stroke="#00F5A0" />
     </svg>
   );
 }
@@ -92,10 +92,10 @@ export function CustomWebAppsIcon({ className = "h-5 w-5" }: { className?: strin
 // Mobile Apps Icon
 export function MobileAppsIcon({ className = "h-5 w-5" }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="#063F2E" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="6" y="2" width="12" height="20" rx="2" />
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="#00F5A0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="6" y="2" width="12" height="20" rx="3" />
       <path d="M11 18h2" />
-      <path d="M9 6h6" strokeOpacity="0.5" />
+      <path d="M9 6h6" strokeOpacity="0.4" />
     </svg>
   );
 }
@@ -103,8 +103,8 @@ export function MobileAppsIcon({ className = "h-5 w-5" }: { className?: string }
 // Full-Stack Development Icon
 export function FullStackIcon({ className = "h-5 w-5" }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="#063F2E" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <polygon points="12 2 2 7 12 12 22 7 12 2" fill="#E6F4EC" />
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="#00D9F5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <polygon points="12 2 2 7 12 12 22 7 12 2" fill="rgba(0,217,245,0.12)" />
       <polyline points="2 12 12 17 22 12" />
       <polyline points="2 17 12 22 22 17" />
     </svg>
@@ -117,12 +117,12 @@ export function AISolutionsIcon({ className = "h-5 w-5" }: { className?: string 
     <svg className={className} viewBox="0 0 24 24" fill="none">
       <path
         d="M12 2L14.39 8.26L21 9.27L16 13.82L17.5 20.27L12 16.9L6.5 20.27L8 13.82L3 9.27L9.61 8.26L12 2Z"
-        fill="#C7F532"
-        stroke="#063F2E"
+        fill="rgba(0,245,160,0.2)"
+        stroke="#00F5A0"
         strokeWidth="1.5"
         strokeLinejoin="round"
       />
-      <circle cx="12" cy="11" r="1.5" fill="#063F2E" />
+      <circle cx="12" cy="11" r="1.5" fill="#00F5A0" />
     </svg>
   );
 }
@@ -130,7 +130,7 @@ export function AISolutionsIcon({ className = "h-5 w-5" }: { className?: string 
 // Team Support Icon
 export function TeamSupportIcon({ className = "h-5 w-5" }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="#063F2E" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="#00F5A0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
       <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
       <circle cx="9" cy="7" r="4" />
       <path d="M22 21v-2a4 4 0 0 0-3-3.87" />

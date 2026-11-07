@@ -1,24 +1,34 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Syne, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { siteConfig } from "@/data/siteConfig";
+import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
+import { NoiseOverlay } from "@/components/ui/NoiseOverlay";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const syne = Syne({
+  variable: "--font-syne",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["500", "600", "700", "800"],
+});
+
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-mono",
   subsets: ["latin"],
   display: "swap",
+  weight: ["400", "500", "600", "700"],
 });
 
 export const viewport: Viewport = {
-  themeColor: "#092D23",
+  themeColor: "#070709",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -39,11 +49,10 @@ export const metadata: Metadata = {
     "Pixvarse",
     "Web Developer",
     "WordPress Developer",
-    "Divi Developer",
-    "Elementor Expert",
+    "Creative Technologist",
     "Laravel Developer",
     "React Engineer",
-    "Independent Web Studio",
+    "Digital Studio",
     "Frontend Developer",
   ],
   openGraph: {
@@ -81,12 +90,15 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} scroll-smooth`}
+      className={`${syne.variable} ${inter.variable} ${jetbrainsMono.variable} dark`}
     >
-      <body className="min-h-screen flex flex-col bg-[#F8FAF6] text-[#092D23] antialiased selection:bg-[#C7F532] selection:text-[#092D23]">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+      <body className="min-h-screen flex flex-col bg-canvas text-ink-primary font-sans antialiased selection:bg-cyber-emerald/30 selection:text-white">
+        <SmoothScrollProvider>
+          <NoiseOverlay />
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </SmoothScrollProvider>
       </body>
     </html>
   );

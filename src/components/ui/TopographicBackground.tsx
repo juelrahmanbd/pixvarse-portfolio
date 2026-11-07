@@ -8,8 +8,8 @@ interface TopographicBackgroundProps {
 
 export function TopographicBackground({
   className = "",
-  strokeColor = "#C7F532",
-  opacity = 0.08,
+  strokeColor = "#00F5A0",
+  opacity = 0.04,
 }: TopographicBackgroundProps) {
   return (
     <div

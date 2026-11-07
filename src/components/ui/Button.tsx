@@ -1,13 +1,17 @@
 import Link from "next/link";
 import React from "react";
 import { Loader2 } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export type ButtonVariant =
   | "primary"
   | "secondary"
+  | "cyber-cyan"
+  | "amber"
   | "forest"
   | "outline"
   | "lime-outline"
+  | "glass"
   | "text"
   | "ghost";
 
@@ -25,6 +29,10 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   rel?: string;
 }
 
+/**
+ * Reusable Precision Button Primitive
+ * High-performance styling with Electric Cyber Emerald, Obsidian Glass, and micro-hover states
+ */
 export function Button({
   children,
   href,
@@ -39,81 +47,80 @@ export function Button({
   disabled,
   ...props
 }: ButtonProps) {
-  // Base structural styles honoring the Master Hero design reference
   const baseStyles =
-    "inline-flex items-center justify-center font-mono font-black uppercase tracking-wider rounded-sm select-none transition-all duration-150 focus-ring disabled:opacity-50 disabled:pointer-events-none disabled:shadow-none cursor-pointer group";
+    "relative inline-flex items-center justify-center font-sans font-semibold rounded-full select-none transition-all duration-200 focus-ring disabled:opacity-40 disabled:pointer-events-none cursor-pointer group overflow-hidden";
 
-  // Size scale
   const sizeStyles: Record<ButtonSize, string> = {
-    sm: "text-xs px-3.5 py-1.5 gap-1.5 border",
-    md: "text-xs sm:text-sm px-5 py-2.5 gap-2 border-2",
-    lg: "text-sm sm:text-base px-6 sm:px-8 py-3.5 sm:py-4 gap-2.5 border-2",
+    sm: "text-xs px-3.5 py-1.5 gap-1.5",
+    md: "text-xs sm:text-sm px-5 py-2.5 gap-2",
+    lg: "text-sm sm:text-base px-7 py-3.5 gap-2.5",
   };
 
-  // Neo-brutalist variants directly matching the approved Hero styling language
   const variantStyles: Record<ButtonVariant, string> = {
-    // Master Hero Primary CTA
+    // Primary Cyber Emerald CTA
     primary:
-      "bg-[#C7F532] text-[#092D23] hover:bg-[#B6E228] border-[#092D23] shadow-[4px_4px_0px_0px_#092D23] hover:shadow-[2px_2px_0px_0px_#092D23] hover:translate-x-[2px] hover:translate-y-[2px]",
+      "bg-cyber-emerald text-canvas font-bold shadow-glow-emerald hover:shadow-glow-emerald-lg hover:brightness-110 active:scale-[0.98] border border-cyber-emerald",
 
-    // Master Hero Secondary CTA
+    // Secondary Obsidian Glass
     secondary:
-      "bg-[#FFFFFF] text-[#092D23] hover:bg-[#E6F4EC] border-[#092D23] shadow-[4px_4px_0px_0px_#092D23] hover:shadow-[2px_2px_0px_0px_#092D23] hover:translate-x-[2px] hover:translate-y-[2px]",
+      "bg-white/[0.05] text-ink-headline border border-white/[0.12] hover:bg-white/[0.1] hover:border-white/[0.25] active:scale-[0.98]",
 
-    // Forest Green Dark Variant (for dark surfaces or high contrast CTA)
-    forest:
-      "bg-[#063F2E] text-[#C7F532] hover:bg-[#092D23] border-[#C7F532]/40 shadow-[4px_4px_0px_0px_#C7F532] hover:shadow-[2px_2px_0px_0px_#C7F532] hover:translate-x-[2px] hover:translate-y-[2px]",
+    // Cyber Cyan Accent
+    "cyber-cyan":
+      "bg-cyber-cyan text-canvas font-bold shadow-glow-cyan hover:shadow-glow-cyan hover:brightness-110 active:scale-[0.98] border border-cyber-cyan",
 
-    // Outline Variant
+    // Amber Glow Accent
+    amber:
+      "bg-cyber-amber text-canvas font-bold shadow-glow-amber hover:brightness-110 active:scale-[0.98] border border-cyber-amber",
+
+    // Glass Panel
+    glass:
+      "glass-panel text-ink-headline hover:text-cyber-emerald border-edge-glass hover:border-cyber-emerald/50 active:scale-[0.98]",
+
+    // Outline
     outline:
-      "bg-transparent text-[#092D23] hover:bg-[#E6F4EC] border-[#092D23]/30 hover:border-[#092D23] shadow-[2px_2px_0px_0px_#092D23] hover:shadow-[1px_1px_0px_0px_#092D23] hover:translate-x-[1px] hover:translate-y-[1px]",
+      "bg-transparent text-ink-primary border border-white/[0.15] hover:border-cyber-emerald hover:text-cyber-emerald active:scale-[0.98]",
 
-    // Lime Outline Variant (for dark backgrounds)
+    // Backwards-compatible aliases
+    forest:
+      "bg-white/[0.08] text-cyber-emerald border border-cyber-emerald/30 hover:border-cyber-emerald active:scale-[0.98]",
     "lime-outline":
-      "bg-transparent text-[#C7F532] hover:bg-[#C7F532] hover:text-[#092D23] border-[#C7F532] shadow-[3px_3px_0px_0px_#C7F532] hover:shadow-[1px_1px_0px_0px_#C7F532] hover:translate-x-[2px] hover:translate-y-[2px]",
+      "bg-transparent text-cyber-emerald border border-cyber-emerald/50 hover:bg-cyber-emerald/10 active:scale-[0.98]",
 
-    // Text Link Button (minimal inline action with underline/arrow hover)
-    text:
-      "bg-transparent text-[#092D23] hover:text-[#063F2E] underline decoration-[#C7F532] decoration-2 underline-offset-4 border-0 shadow-none px-0 py-0 hover:translate-x-0 hover:translate-y-0",
-
-    // Ghost / Subdued
-    ghost:
-      "bg-transparent text-[#092D23] hover:bg-[#E6F4EC] border-transparent hover:border-[#092D23]/10 shadow-none",
+    // Ghost & Text
+    ghost: "bg-transparent text-ink-secondary hover:text-ink-headline hover:bg-white/[0.04]",
+    text: "bg-transparent text-ink-secondary hover:text-cyber-emerald underline-offset-4 hover:underline p-0",
   };
-
-  const combinedClasses = `${baseStyles} ${sizeStyles[size]} ${variantStyles[variant]} ${className}`;
 
   const content = (
     <>
-      {isLoading ? (
-        <Loader2 className="h-4 w-4 animate-spin shrink-0" />
-      ) : (
-        icon && iconPosition === "left" && <span className="shrink-0">{icon}</span>
+      {isLoading && <Loader2 className="h-4 w-4 animate-spin text-current" strokeWidth={1.5} />}
+      {!isLoading && icon && iconPosition === "left" && (
+        <span className="shrink-0 transition-transform duration-200 group-hover:-translate-x-0.5">
+          {icon}
+        </span>
       )}
       <span>{children}</span>
       {!isLoading && icon && iconPosition === "right" && (
-        <span className="shrink-0 transition-transform group-hover:translate-x-0.5">{icon}</span>
+        <span className="shrink-0 transition-transform duration-200 group-hover:translate-x-0.5">
+          {icon}
+        </span>
       )}
     </>
   );
 
+  const mergedClasses = cn(baseStyles, sizeStyles[size], variantStyles[variant], className);
+
   if (href) {
-    const isExternal =
-      href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("tel:");
     return (
-      <Link
-        href={href}
-        className={combinedClasses}
-        target={target || (isExternal ? "_blank" : undefined)}
-        rel={rel || (isExternal ? "noopener noreferrer" : undefined)}
-      >
+      <Link href={href} className={mergedClasses} target={target} rel={rel}>
         {content}
       </Link>
     );
   }
 
   return (
-    <button className={combinedClasses} disabled={disabled || isLoading} {...props}>
+    <button className={mergedClasses} disabled={disabled || isLoading} {...props}>
       {content}
     </button>
   );

@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { techStackData } from "@/data/technologies";
 import { SectionHeading } from "../ui/SectionHeading";
+import { cn } from "@/lib/utils";
 
 export function TechStackSection() {
   const [activeCategory, setActiveCategory] = useState<string>("All");
@@ -15,14 +16,14 @@ export function TechStackSection() {
       : techStackData.filter((t) => t.category === activeCategory);
 
   return (
-    <section className="py-16 sm:py-24 bg-[#F8FAF6] relative overflow-hidden border-b border-[#092D23]/10">
+    <section className="py-20 sm:py-28 bg-canvas relative overflow-hidden border-b border-edge-subtle">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
           <SectionHeading
-            eyebrow="TOOLCHAIN // CORE EXPERTISE"
-            title="Modern Stacks."
-            highlight="Battle-Tested"
-            description="A focused, modern technology stack strictly backed by real-world development and production deployment experience."
+            eyebrow="TOOLCHAIN // CORE PROFICIENCY"
+            title="Battle-Tested"
+            highlight="Engineering Stacks."
+            description="A focused, modern technology stack strictly backed by commercial development and high-traffic production deployments."
           />
 
           {/* Filter Pills */}
@@ -31,11 +32,12 @@ export function TechStackSection() {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-3.5 py-1.5 text-xs font-mono font-bold uppercase tracking-wider rounded-sm transition-all duration-150 cursor-pointer select-none border-2 border-[#092D23] ${
+                className={cn(
+                  "px-3.5 py-1.5 text-xs font-mono font-medium uppercase tracking-wider rounded-full transition-all duration-200 cursor-pointer select-none",
                   activeCategory === cat
-                    ? "bg-[#063F2E] text-[#C7F532] shadow-[2px_2px_0px_0px_#C7F532]"
-                    : "bg-white text-[#092D23] hover:bg-[#E6F4EC] shadow-[2px_2px_0px_0px_#092D23] hover:shadow-[1px_1px_0px_0px_#092D23] hover:translate-x-[1px] hover:translate-y-[1px]"
-                }`}
+                    ? "bg-cyber-emerald text-canvas font-bold shadow-glow-emerald border border-cyber-emerald"
+                    : "bg-white/[0.03] text-ink-secondary border border-white/[0.08] hover:text-ink-headline hover:bg-white/[0.06]"
+                )}
               >
                 {cat}
               </button>
@@ -48,31 +50,32 @@ export function TechStackSection() {
           {filteredTech.map((tech) => (
             <div
               key={tech.name}
-              className="group rounded-sm bg-white border border-[#092D23]/15 p-5 sm:p-6 shadow-[3px_3px_0px_0px_#092D23] hover:shadow-[5px_5px_0px_0px_#C7F532] hover:border-[#092D23] transition-all duration-200 flex flex-col justify-between"
+              className="group rounded-2xl bg-white/[0.03] border border-white/[0.08] backdrop-blur-xl p-5 sm:p-6 flex flex-col justify-between hover:border-white/[0.2] hover:bg-white/[0.05] transition-all duration-300"
             >
               <div>
-                <div className="flex items-center justify-between pb-3 border-b border-[#092D23]/10 mb-3">
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#063F2E] font-bold">
+                <div className="flex items-center justify-between pb-3 border-b border-white/[0.08] mb-3">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-ink-muted">
                     {tech.category}
                   </span>
                   {tech.badge && (
-                    <span className="rounded-sm bg-[#C7F532] text-[#092D23] px-2 py-0.5 text-[9px] font-black font-mono uppercase tracking-wider border border-[#092D23]/30">
+                    <span className="rounded-full bg-cyber-emerald/15 text-cyber-emerald px-2 py-0.5 text-[9px] font-mono font-bold uppercase tracking-wider border border-cyber-emerald/30">
                       {tech.badge}
                     </span>
                   )}
                 </div>
 
-                <h3 className="text-base font-bold text-[#092D23] group-hover:text-[#063F2E] transition-colors">
+                <h3 className="text-base font-display font-bold text-ink-headline group-hover:text-cyber-emerald transition-colors">
                   {tech.name}
                 </h3>
-                <p className="mt-2 text-xs text-[#092D23]/75 leading-relaxed font-sans">
+
+                <p className="mt-2 text-xs text-ink-secondary leading-relaxed font-sans font-normal">
                   {tech.description}
                 </p>
               </div>
 
-              <div className="mt-4 pt-3 border-t border-[#092D23]/10 flex items-center justify-between text-[11px] font-mono">
-                <span className="text-[#092D23]/60">Proficiency:</span>
-                <span className="font-bold text-[#063F2E]">{tech.level}</span>
+              <div className="mt-4 pt-3 border-t border-white/[0.06] text-[11px] font-mono text-ink-muted flex items-center justify-between">
+                <span>{tech.category}</span>
+                <span className="text-cyber-emerald font-semibold">{tech.level}</span>
               </div>
             </div>
           ))}

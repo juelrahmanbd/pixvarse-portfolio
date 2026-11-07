@@ -10,12 +10,13 @@ import {
   AlertCircle,
   Copy,
 } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    projectType: "WordPress Development",
+    projectType: "WordPress Core Development",
     budget: "$1,000 – $3,000",
     timeline: "Within 1 Month",
     message: "",
@@ -26,8 +27,8 @@ export function ContactForm() {
   const [copied, setCopied] = useState(false);
 
   const projectTypes = [
-    "WordPress Development",
-    "Divi / Elementor Website",
+    "WordPress Core Development",
+    "Divi / Elementor System",
     "Custom Web Application",
     "Laravel / SaaS Backend",
     "React / Frontend Engineering",
@@ -38,8 +39,8 @@ export function ContactForm() {
 
   const budgetRanges = [
     "< $1,000 (Small Task / Audit)",
-    "$1,000 – $3,000 (Standard Website)",
-    "$3,000 – $5,000 (Custom Build / App)",
+    "$1,000 – $3,000 (Standard Platform)",
+    "$3,000 – $5,000 (Custom Architecture)",
     "$5,000+ (Enterprise / Retainer)",
   ];
 
@@ -47,13 +48,13 @@ export function ContactForm() {
     "Immediate (Urgent)",
     "Within 2–4 Weeks",
     "Within 1–2 Months",
-    "Flexible / Exploring",
+    "Flexible / Scoping",
   ];
 
   const validate = () => {
     const errs: Record<string, string> = {};
     if (!formData.name.trim()) {
-      errs.name = "Please provide your name or business name.";
+      errs.name = "Please provide your name or business identity.";
     }
     if (!formData.email.trim()) {
       errs.email = "Please provide your email address.";
@@ -61,7 +62,7 @@ export function ContactForm() {
       errs.email = "Please provide a valid email address.";
     }
     if (!formData.message.trim() || formData.message.trim().length < 15) {
-      errs.message = "Please describe your project in at least 15 characters.";
+      errs.message = "Please describe your project objectives in at least 15 characters.";
     }
     setErrors(errs);
     return Object.keys(errs).length === 0;
@@ -84,7 +85,6 @@ export function ContactForm() {
     e.preventDefault();
     if (!validate()) return;
 
-    // Launch mailto link automatically so client email opens with full details
     const mailtoUrl = generateMailtoUrl();
     window.location.href = mailtoUrl;
     setIsSubmitted(true);
@@ -97,43 +97,43 @@ export function ContactForm() {
   };
 
   return (
-    <div className="rounded-sm bg-white border border-[#092D23]/15 p-6 sm:p-10 shadow-[4px_4px_0px_0px_#092D23]">
+    <div className="rounded-2xl bg-white/[0.03] border border-white/[0.08] backdrop-blur-xl p-6 sm:p-10 shadow-2xl">
       {isSubmitted ? (
         <div className="space-y-6 text-center py-8">
-          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-sm bg-[#E6F4EC] border border-[#063F2E]/20 text-[#063F2E] shadow-[2px_2px_0px_0px_#063F2E]">
-            <CheckCircle2 className="h-8 w-8 text-[#063F2E]" />
+          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-cyber-emerald/10 border border-cyber-emerald/30 text-cyber-emerald shadow-glow-emerald">
+            <CheckCircle2 className="h-8 w-8 text-cyber-emerald" strokeWidth={1.5} />
           </div>
 
-          <h3 className="text-2xl font-black text-[#092D23]">
+          <h3 className="text-2xl font-display font-bold text-ink-headline">
             Inquiry Prepared &amp; Email Triggered!
           </h3>
 
-          <p className="text-sm sm:text-base text-[#092D23]/80 max-w-lg mx-auto leading-relaxed font-sans">
+          <p className="text-sm sm:text-base text-ink-secondary max-w-lg mx-auto leading-relaxed font-sans">
             Your default email client should have opened with your project inquiry pre-filled. If it didn&apos;t open automatically, use the buttons below:
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
             <a
               href={generateMailtoUrl()}
-              className="inline-flex items-center gap-2 rounded-sm bg-[#C7F532] px-5 py-2.5 text-xs sm:text-sm font-mono font-black uppercase tracking-wider text-[#092D23] border-2 border-[#092D23] shadow-[3px_3px_0px_0px_#092D23] hover:bg-[#b6e228] transition-all hover:translate-x-[1px] hover:translate-y-[1px]"
+              className="inline-flex items-center gap-2 rounded-full bg-cyber-emerald px-6 py-3 text-xs sm:text-sm font-sans font-bold uppercase tracking-wider text-canvas shadow-glow-emerald hover:brightness-110 transition-all"
             >
-              <Mail className="h-4 w-4" />
+              <Mail className="h-4 w-4" strokeWidth={1.5} />
               <span>Open in Email Client</span>
             </a>
 
             <button
               onClick={copyEmailToClipboard}
-              className="inline-flex items-center gap-2 rounded-sm bg-[#F8FAF6] px-5 py-2.5 text-xs sm:text-sm font-mono font-bold uppercase tracking-wider text-[#092D23] border-2 border-[#092D23]/30 hover:border-[#092D23] hover:bg-[#E6F4EC] transition-all cursor-pointer"
+              className="inline-flex items-center gap-2 rounded-full bg-white/[0.04] px-6 py-3 text-xs sm:text-sm font-sans font-medium uppercase tracking-wider text-ink-headline border border-white/[0.12] hover:bg-white/[0.08] transition-all cursor-pointer"
             >
-              <Copy className="h-4 w-4" />
+              <Copy className="h-4 w-4" strokeWidth={1.5} />
               <span>{copied ? "Copied!" : "Copy Email Address"}</span>
             </button>
           </div>
 
-          <div className="pt-6 border-t border-[#092D23]/10">
+          <div className="pt-6 border-t border-white/[0.06]">
             <button
               onClick={() => setIsSubmitted(false)}
-              className="text-xs font-mono font-bold text-[#063F2E] hover:underline cursor-pointer"
+              className="text-xs font-mono font-medium text-cyber-emerald hover:underline cursor-pointer"
             >
               ← Edit details or send another inquiry
             </button>
@@ -146,9 +146,9 @@ export function ContactForm() {
             <div>
               <label
                 htmlFor="name"
-                className="block text-xs font-mono font-bold uppercase tracking-wider text-[#063F2E] mb-2"
+                className="block text-xs font-mono uppercase tracking-wider text-ink-secondary mb-2"
               >
-                Your Name / Business *
+                Your Name / Business Identity *
               </label>
               <input
                 type="text"
@@ -156,13 +156,14 @@ export function ContactForm() {
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 placeholder="e.g. Sarah Jenkins or Apex Agency"
-                className={`w-full rounded-sm border-2 bg-[#F8FAF6] px-4 py-3 text-sm text-[#092D23] placeholder:text-[#092D23]/40 focus:bg-white focus:outline-none focus:border-[#092D23] focus:ring-2 focus:ring-[#C7F532] transition-colors ${
-                  errors.name ? "border-rose-500 bg-rose-50/30" : "border-[#092D23]/20"
-                }`}
+                className={cn(
+                  "w-full rounded-xl border bg-white/[0.03] px-4 py-3 text-sm text-ink-headline placeholder:text-ink-muted/50 focus:bg-white/[0.05] focus:outline-none focus:border-cyber-emerald focus:ring-2 focus:ring-cyber-emerald/20 transition-all",
+                  errors.name ? "border-rose-500 bg-rose-500/10" : "border-white/[0.1]"
+                )}
               />
               {errors.name && (
-                <p className="mt-1.5 text-xs text-rose-600 font-sans flex items-center gap-1">
-                  <AlertCircle className="h-3.5 w-3.5" />
+                <p className="mt-1.5 text-xs text-rose-400 font-sans flex items-center gap-1">
+                  <AlertCircle className="h-3.5 w-3.5" strokeWidth={1.5} />
                   <span>{errors.name}</span>
                 </p>
               )}
@@ -171,7 +172,7 @@ export function ContactForm() {
             <div>
               <label
                 htmlFor="email"
-                className="block text-xs font-mono font-bold uppercase tracking-wider text-[#063F2E] mb-2"
+                className="block text-xs font-mono uppercase tracking-wider text-ink-secondary mb-2"
               >
                 Email Address *
               </label>
@@ -181,13 +182,14 @@ export function ContactForm() {
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 placeholder="sarah@company.com"
-                className={`w-full rounded-sm border-2 bg-[#F8FAF6] px-4 py-3 text-sm text-[#092D23] placeholder:text-[#092D23]/40 focus:bg-white focus:outline-none focus:border-[#092D23] focus:ring-2 focus:ring-[#C7F532] transition-colors ${
-                  errors.email ? "border-rose-500 bg-rose-50/30" : "border-[#092D23]/20"
-                }`}
+                className={cn(
+                  "w-full rounded-xl border bg-white/[0.03] px-4 py-3 text-sm text-ink-headline placeholder:text-ink-muted/50 focus:bg-white/[0.05] focus:outline-none focus:border-cyber-emerald focus:ring-2 focus:ring-cyber-emerald/20 transition-all",
+                  errors.email ? "border-rose-500 bg-rose-500/10" : "border-white/[0.1]"
+                )}
               />
               {errors.email && (
-                <p className="mt-1.5 text-xs text-rose-600 font-sans flex items-center gap-1">
-                  <AlertCircle className="h-3.5 w-3.5" />
+                <p className="mt-1.5 text-xs text-rose-400 font-sans flex items-center gap-1">
+                  <AlertCircle className="h-3.5 w-3.5" strokeWidth={1.5} />
                   <span>{errors.email}</span>
                 </p>
               )}
@@ -199,18 +201,18 @@ export function ContactForm() {
             <div>
               <label
                 htmlFor="projectType"
-                className="block text-xs font-mono font-bold uppercase tracking-wider text-[#063F2E] mb-2"
+                className="block text-xs font-mono uppercase tracking-wider text-ink-secondary mb-2"
               >
-                Project Type
+                Project Focus
               </label>
               <select
                 id="projectType"
                 value={formData.projectType}
                 onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
-                className="w-full rounded-sm border-2 border-[#092D23]/20 bg-[#F8FAF6] px-4 py-3 text-sm text-[#092D23] focus:bg-white focus:outline-none focus:border-[#092D23] focus:ring-2 focus:ring-[#C7F532] transition-colors"
+                className="w-full rounded-xl border border-white/[0.1] bg-canvas-secondary px-4 py-3 text-sm text-ink-headline focus:outline-none focus:border-cyber-emerald focus:ring-2 focus:ring-cyber-emerald/20 transition-all"
               >
                 {projectTypes.map((type) => (
-                  <option key={type} value={type}>
+                  <option key={type} value={type} className="bg-canvas text-ink-headline">
                     {type}
                   </option>
                 ))}
@@ -220,18 +222,18 @@ export function ContactForm() {
             <div>
               <label
                 htmlFor="budget"
-                className="block text-xs font-mono font-bold uppercase tracking-wider text-[#063F2E] mb-2"
+                className="block text-xs font-mono uppercase tracking-wider text-ink-secondary mb-2"
               >
-                Estimated Budget
+                Estimated Budget Range
               </label>
               <select
                 id="budget"
                 value={formData.budget}
                 onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                className="w-full rounded-sm border-2 border-[#092D23]/20 bg-[#F8FAF6] px-4 py-3 text-sm text-[#092D23] focus:bg-white focus:outline-none focus:border-[#092D23] focus:ring-2 focus:ring-[#C7F532] transition-colors"
+                className="w-full rounded-xl border border-white/[0.1] bg-canvas-secondary px-4 py-3 text-sm text-ink-headline focus:outline-none focus:border-cyber-emerald focus:ring-2 focus:ring-cyber-emerald/20 transition-all"
               >
                 {budgetRanges.map((range) => (
-                  <option key={range} value={range}>
+                  <option key={range} value={range} className="bg-canvas text-ink-headline">
                     {range}
                   </option>
                 ))}
@@ -243,9 +245,9 @@ export function ContactForm() {
           <div>
             <label
               htmlFor="timeline"
-              className="block text-xs font-mono font-bold uppercase tracking-wider text-[#063F2E] mb-2"
+              className="block text-xs font-mono uppercase tracking-wider text-ink-secondary mb-2"
             >
-              Desired Timeline
+              Target Launch Timeline
             </label>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
               {timelines.map((time) => (
@@ -253,11 +255,12 @@ export function ContactForm() {
                   type="button"
                   key={time}
                   onClick={() => setFormData({ ...formData, timeline: time })}
-                  className={`px-3 py-2 text-xs font-mono font-bold rounded-sm border-2 text-center transition-all cursor-pointer ${
+                  className={cn(
+                    "px-3 py-2.5 text-xs font-mono font-medium rounded-xl border text-center transition-all cursor-pointer",
                     formData.timeline === time
-                      ? "bg-[#063F2E] text-[#C7F532] border-[#092D23] shadow-[2px_2px_0px_0px_#C7F532]"
-                      : "bg-[#F8FAF6] text-[#092D23]/70 border-[#092D23]/20 hover:bg-[#E6F4EC] hover:text-[#092D23]"
-                  }`}
+                      ? "bg-cyber-emerald text-canvas font-bold border-cyber-emerald shadow-glow-emerald"
+                      : "bg-white/[0.03] text-ink-secondary border-white/[0.08] hover:bg-white/[0.07] hover:text-ink-headline"
+                  )}
                 >
                   {time}
                 </button>
@@ -269,23 +272,24 @@ export function ContactForm() {
           <div>
             <label
               htmlFor="message"
-              className="block text-xs font-mono font-bold uppercase tracking-wider text-[#063F2E] mb-2"
+              className="block text-xs font-mono uppercase tracking-wider text-ink-secondary mb-2"
             >
-              Project Details &amp; Objectives *
+              Project Specifications &amp; Objectives *
             </label>
             <textarea
               id="message"
               rows={5}
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              placeholder="Tell me about your project, website goals, target audience, technical preferences, or existing website URL..."
-              className={`w-full rounded-sm border-2 bg-[#F8FAF6] px-4 py-3 text-sm text-[#092D23] placeholder:text-[#092D23]/40 focus:bg-white focus:outline-none focus:border-[#092D23] focus:ring-2 focus:ring-[#C7F532] transition-colors ${
-                errors.message ? "border-rose-500 bg-rose-50/30" : "border-[#092D23]/20"
-              }`}
+              placeholder="Tell me about your architectural requirements, key goals, target timeline, or link to Figma/existing site..."
+              className={cn(
+                "w-full rounded-xl border bg-white/[0.03] px-4 py-3 text-sm text-ink-headline placeholder:text-ink-muted/50 focus:bg-white/[0.05] focus:outline-none focus:border-cyber-emerald focus:ring-2 focus:ring-cyber-emerald/20 transition-all",
+                errors.message ? "border-rose-500 bg-rose-500/10" : "border-white/[0.1]"
+              )}
             />
             {errors.message && (
-              <p className="mt-1.5 text-xs text-rose-600 font-sans flex items-center gap-1">
-                <AlertCircle className="h-3.5 w-3.5" />
+              <p className="mt-1.5 text-xs text-rose-400 font-sans flex items-center gap-1">
+                <AlertCircle className="h-3.5 w-3.5" strokeWidth={1.5} />
                 <span>{errors.message}</span>
               </p>
             )}
@@ -298,12 +302,12 @@ export function ContactForm() {
               variant="primary"
               size="lg"
               className="w-full sm:w-auto"
-              icon={<Send className="h-4 w-4" />}
+              icon={<Send className="h-4 w-4" strokeWidth={1.5} />}
             >
-              Send Project Inquiry
+              Transmit Project Inquiry
             </Button>
-            <p className="mt-3 text-xs text-[#092D23]/60 font-mono">
-              Generates a verified message to {siteConfig.email}. Guaranteed reply within 24 hours.
+            <p className="mt-3 text-xs text-ink-muted font-mono">
+              Direct founder review by Juel Rahman. Guaranteed reply within 24 business hours.
             </p>
           </div>
         </form>

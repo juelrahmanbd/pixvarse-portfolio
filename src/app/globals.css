@@ -3,165 +3,162 @@
 @tailwind utilities;
 
 /* ==========================================================================
-   PIXVARSE GLOBAL DESIGN SYSTEM TOKENS
-   Master Reference: Approved Homepage Header & Hero Section
+   PIXVARSE AWWWARDS-GRADE LUXURY OBSIDIAN DESIGN SYSTEM
+   Dark Surface Architecture | Cyber Emerald Accents | Precision Typography
    ========================================================================== */
 
 :root {
-  /* Brand Palette */
-  --brand-primary: #063F2E;      /* Primary dark green */
-  --brand-deep: #092D23;         /* Deep forest green / dark text */
-  --brand-lime: #C7F532;         /* Electric lime accent */
-  --brand-lime-hover: #B6E228;   /* Slightly deeper electric lime for hovers */
-  --brand-mint: #E6F4EC;         /* Soft mint / subtle highlight surface */
-  --brand-gray: #E7EAE5;         /* Neutral light border/divider gray */
+  /* Luxury Dark Canvas */
+  --canvas-base: #070709;
+  --canvas-secondary: #0B0C10;
+  --canvas-elevated: #12141A;
 
-  /* Semantic Background Tokens */
-  --bg-primary: #FFFFFF;         /* Main white background */
-  --bg-secondary: #F8FAF6;       /* Soft warm off-white secondary background */
-  --bg-accent: #E6F4EC;          /* Pale mint accent background */
-  --bg-dark: #092D23;            /* Deep forest green for dark sections */
-  --bg-dark-surface: #063F2E;    /* Dark surface cards & badges */
+  /* Glassmorphic Surfaces */
+  --surface-obsidian: rgba(255, 255, 255, 0.03);
+  --surface-card: rgba(255, 255, 255, 0.04);
+  --surface-elevated: rgba(255, 255, 255, 0.07);
 
-  /* Semantic Text Tokens */
-  --text-primary: #092D23;       /* Main dark text */
-  --text-secondary: rgba(9, 45, 35, 0.78); /* High contrast supporting text */
-  --text-muted: rgba(9, 45, 35, 0.55);     /* Subdued caption / helper text */
-  --text-inverse: #FFFFFF;       /* White text on dark surfaces */
-  --text-inverse-muted: rgba(255, 255, 255, 0.75);
-  --text-lime: #C7F532;          /* Accent lime text */
+  /* High-Voltage Cyber Accents */
+  --cyber-emerald: #00F5A0;
+  --cyber-cyan: #00D9F5;
+  --cyber-amber: #FF6B4A;
 
-  /* Semantic Border Tokens */
-  --border-default: rgba(9, 45, 35, 0.15); /* Standard crisp card/section border */
-  --border-subtle: rgba(9, 45, 35, 0.08);  /* Hairline divider */
-  --border-strong: #092D23;                /* Heavy neo-brutalist border */
-  --border-dark: rgba(255, 255, 255, 0.12);/* Dark section border */
-  --border-lime: rgba(199, 245, 50, 0.35); /* Lime accent border */
+  /* High-Contrast Text Tokens */
+  --ink-headline: #F3F4F6;
+  --ink-primary: #E5E7EB;
+  --ink-secondary: #9CA3AF;
+  --ink-muted: #6B7280;
 
-  /* Neo-Brutalist Shadow Tokens */
-  --shadow-neo-sm: 2px 2px 0px 0px #092D23;
-  --shadow-neo: 4px 4px 0px 0px #092D23;
-  --shadow-neo-lg: 6px 6px 0px 0px #092D23;
-  --shadow-neo-lime: 4px 4px 0px 0px #C7F532;
-  --shadow-neo-lime-sm: 2px 2px 0px 0px #C7F532;
-  --shadow-neo-forest: 3px 3px 0px 0px #063F2E;
+  /* Obsidian & Glass Borders */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-glass: rgba(255, 255, 255, 0.12);
+  --border-emerald: rgba(0, 245, 160, 0.35);
 
   /* Typography Scale Fallbacks */
-  --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-display: var(--font-syne), var(--font-plus-jakarta), -apple-system, sans-serif;
+  --font-sans: var(--font-inter), var(--font-geist-sans), -apple-system, sans-serif;
+  --font-mono: var(--font-mono), monospace;
 }
 
 /* Base Document Styles */
 html {
-  scroll-behavior: smooth;
+  background-color: var(--canvas-base);
+  color: var(--ink-primary);
+  color-scheme: dark;
+  scroll-behavior: auto; /* Managed by Lenis */
 }
 
 body {
-  background-color: var(--bg-secondary);
-  color: var(--text-primary);
+  background-color: var(--canvas-base);
+  color: var(--ink-primary);
   font-family: var(--font-sans);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* ==========================================================================
+   LENIS SMOOTH SCROLL REQUIRED STYLES
+   ========================================================================== */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
 }
 
 /* Reduced Motion Preference */
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
-/* Custom Scrollbar */
+/* ==========================================================================
+   TACTILE NOISE TEXTURE OVERLAY (2.5% OPACITY)
+   ========================================================================== */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  content: "";
+  opacity: 0.028;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Custom Obsidian Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #092D23;
+  background: #070709;
 }
 ::-webkit-scrollbar-thumb {
-  background: #063F2E;
-  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #C7F532;
+  background: #00F5A0;
+}
+
+/* Selection */
+::selection {
+  background-color: rgba(0, 245, 160, 0.3);
+  color: #FFFFFF;
 }
 
 /* ==========================================================================
-   GLOBAL TYPOGRAPHY UTILITIES
+   GLASSMORPHIC SURFACES & GRADIENT CARDS
    ========================================================================== */
-
-.type-display {
-  font-family: var(--font-sans);
-  font-weight: 900;
-  letter-spacing: -0.03em;
-  line-height: 1.06;
+.glass-panel {
+  background: rgba(11, 12, 16, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.type-h1 {
-  font-family: var(--font-sans);
-  font-weight: 900;
-  letter-spacing: -0.025em;
-  line-height: 1.1;
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.type-h2 {
-  font-family: var(--font-sans);
-  font-weight: 900;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
+.glass-card:hover {
+  border-color: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.05);
 }
 
-.type-h3 {
-  font-family: var(--font-sans);
-  font-weight: 800;
-  letter-spacing: -0.015em;
-  line-height: 1.25;
-}
-
-.type-eyebrow {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
-
-.type-button {
-  font-family: var(--font-mono);
-  font-weight: 900;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-/* ==========================================================================
-   GLOBAL MARQUEE ANIMATION
-   ========================================================================== */
-
-@keyframes marquee {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-marquee {
-  display: flex;
-  width: max-content;
-  animation: marquee 35s linear infinite;
-}
-
-.animate-marquee:hover {
-  animation-play-state: paused;
+.glass-card-glow:hover {
+  border-color: rgba(0, 245, 160, 0.4);
+  box-shadow: 0 0 30px -5px rgba(0, 245, 160, 0.15);
 }
 
 /* Focus Ring Accessibility */
@@ -170,6 +167,6 @@ body {
   outline-offset: 2px;
 }
 .focus-ring:focus-visible {
-  outline: 2px solid #C7F532;
+  outline: 2px solid #00F5A0;
   outline-offset: 2px;
 }

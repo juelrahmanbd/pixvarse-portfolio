@@ -1,66 +1,93 @@
 import React from "react";
+import { cn } from "@/lib/utils";
 
-export type BadgeVariant = "forest" | "lime" | "mint" | "surface" | "outline" | "dark";
+export type BadgeVariant = "emerald" | "cyan" | "amber" | "surface" | "outline" | "dark" | "forest" | "lime" | "mint";
 export type BadgeSize = "sm" | "md";
 
 export interface BadgeProps {
   children: React.ReactNode;
   variant?: BadgeVariant;
   dot?: boolean;
-  dotColor?: "lime" | "forest" | "emerald";
+  dotColor?: "emerald" | "cyan" | "amber" | "lime" | "forest";
   className?: string;
   size?: BadgeSize;
   icon?: React.ReactNode;
 }
 
+/**
+ * High-Tech Terminal Badge Primitive
+ * Formatted with JetBrains Mono, micro-borders, and pulsing status beacons
+ */
 export function Badge({
   children,
   variant = "surface",
   dot = false,
-  dotColor = "forest",
+  dotColor = "emerald",
   className = "",
   size = "md",
   icon,
 }: BadgeProps) {
   const sizeClasses: Record<BadgeSize, string> = {
-    sm: "text-[10px] sm:text-[11px] px-2.5 py-1",
-    md: "text-[11px] sm:text-xs px-3.5 py-1.5",
+    sm: "text-[10px] px-2.5 py-0.5 gap-1.5",
+    md: "text-[11px] px-3 py-1 gap-2",
   };
 
   const variantClasses: Record<BadgeVariant, string> = {
-    // Master Eyebrow style: soft background with dark border and forest shadow
+    // Primary Cyber Emerald Eyebrow Pill
+    emerald:
+      "bg-cyber-emerald/10 text-cyber-emerald border border-cyber-emerald/30 shadow-[0_0_12px_rgba(0,245,160,0.15)]",
+    // Cyber Cyan Variant
+    cyan:
+      "bg-cyber-cyan/10 text-cyber-cyan border border-cyber-cyan/30 shadow-[0_0_12px_rgba(0,217,245,0.15)]",
+    // Amber Accent Variant
+    amber:
+      "bg-cyber-amber/10 text-cyber-amber border border-cyber-amber/30",
+    // Obsidian Surface Glass
     surface:
-      "bg-[#F8FAF6] text-[#092D23] border border-[#092D23]/20 shadow-[2px_2px_0px_0px_#063F2E]",
-    lime:
-      "bg-[#C7F532] text-[#092D23] font-black border border-[#092D23] shadow-[2px_2px_0px_0px_#092D23]",
-    forest:
-      "bg-[#063F2E] text-[#C7F532] border border-[#C7F532]/30 shadow-[2px_2px_0px_0px_#C7F532]",
-    mint:
-      "bg-[#E6F4EC] text-[#092D23] border border-[#092D23]/15 shadow-[1px_1px_0px_0px_#063F2E]",
+      "bg-white/[0.04] text-ink-headline border border-white/[0.1] backdrop-blur-md",
     dark:
-      "bg-[#092D23] text-white border border-white/10 shadow-[2px_2px_0px_0px_#C7F532]",
+      "bg-black/60 text-ink-primary border border-white/[0.08]",
     outline:
-      "bg-transparent text-[#092D23] border border-[#092D23]/30 shadow-[1px_1px_0px_0px_#092D23]",
+      "bg-transparent text-ink-secondary border border-white/[0.12]",
+    // Compatibility aliases
+    forest:
+      "bg-cyber-emerald/10 text-cyber-emerald border border-cyber-emerald/30",
+    lime:
+      "bg-cyber-emerald/15 text-cyber-emerald border border-cyber-emerald/40",
+    mint:
+      "bg-white/[0.04] text-cyber-cyan border border-cyber-cyan/20",
   };
 
   const dotClasses = {
-    forest: { ping: "bg-[#C7F532]", dot: "bg-[#063F2E]" },
-    lime: { ping: "bg-[#C7F532]", dot: "bg-[#092D23]" },
-    emerald: { ping: "bg-[#10B981]", dot: "bg-[#059669]" },
+    emerald: { ping: "bg-cyber-emerald", dot: "bg-cyber-emerald" },
+    cyan: { ping: "bg-cyber-cyan", dot: "bg-cyber-cyan" },
+    amber: { ping: "bg-cyber-amber", dot: "bg-cyber-amber" },
+    lime: { ping: "bg-cyber-emerald", dot: "bg-cyber-emerald" },
+    forest: { ping: "bg-cyber-emerald", dot: "bg-cyber-emerald" },
   };
 
-  const activeDot = dotClasses[dotColor] || dotClasses.forest;
+  const activeDot = dotClasses[dotColor] || dotClasses.emerald;
 
   return (
     <span
-      className={`inline-flex items-center gap-2 rounded-sm font-mono font-bold tracking-[0.16em] uppercase select-none transition-transform hover:scale-[1.01] ${sizeClasses[size]} ${variantClasses[variant]} ${className}`}
+      className={cn(
+        "inline-flex items-center rounded-full font-mono font-medium tracking-wider uppercase select-none transition-all duration-200",
+        sizeClasses[size],
+        variantClasses[variant],
+        className
+      )}
     >
       {dot && (
         <span className="relative flex h-2 w-2 shrink-0">
           <span
-            className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-80 ${activeDot.ping}`}
+            className={cn(
+              "animate-ping absolute inline-flex h-full w-full rounded-full opacity-75",
+              activeDot.ping
+            )}
           />
-          <span className={`relative inline-flex rounded-full h-2 w-2 ${activeDot.dot}`} />
+          <span
+            className={cn("relative inline-flex rounded-full h-2 w-2", activeDot.dot)}
+          />
         </span>
       )}
       {icon && <span className="shrink-0">{icon}</span>}

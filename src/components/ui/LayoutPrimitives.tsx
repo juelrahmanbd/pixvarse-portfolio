@@ -1,6 +1,7 @@
 import React from "react";
-import { TopographicBackground } from "./TopographicBackground";
 import { Badge } from "./Badge";
+import { BackgroundBeams } from "./BackgroundBeams";
+import { cn } from "@/lib/utils";
 
 export interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
   size?: "default" | "narrow" | "wide" | "full";
@@ -21,14 +22,14 @@ export function Container({
   };
 
   return (
-    <div className={`${sizeClasses[size]} ${className}`} {...props}>
+    <div className={cn(sizeClasses[size], className)} {...props}>
       {children}
     </div>
   );
 }
 
 export interface SectionProps extends React.HTMLAttributes<HTMLElement> {
-  variant?: "white" | "soft" | "mint" | "dark";
+  variant?: "canvas" | "secondary" | "elevated" | "white" | "soft" | "mint" | "dark";
   padding?: "default" | "compact" | "spacious" | "none";
   borderBottom?: boolean;
   borderTop?: boolean;
@@ -37,7 +38,7 @@ export interface SectionProps extends React.HTMLAttributes<HTMLElement> {
 
 export function Section({
   children,
-  variant = "white",
+  variant = "canvas",
   padding = "default",
   borderBottom = true,
   borderTop = false,
@@ -45,26 +46,32 @@ export function Section({
   ...props
 }: SectionProps) {
   const variantClasses = {
-    white: "bg-[#FFFFFF] text-[#092D23]",
-    soft: "bg-[#F8FAF6] text-[#092D23]",
-    mint: "bg-[#E6F4EC] text-[#092D23]",
-    dark: "bg-[#092D23] text-white",
+    canvas: "bg-canvas text-ink-primary",
+    secondary: "bg-canvas-secondary text-ink-primary",
+    elevated: "bg-canvas-elevated text-ink-primary",
+    white: "bg-canvas text-ink-primary",
+    soft: "bg-canvas-secondary text-ink-primary",
+    mint: "bg-canvas text-ink-primary",
+    dark: "bg-canvas text-ink-primary",
   };
 
   const paddingClasses = {
     none: "",
     compact: "py-12 sm:py-16",
     default: "py-16 sm:py-24",
-    spacious: "py-20 sm:py-32",
+    spacious: "py-24 sm:py-32",
   };
-
-  const borders = `${borderTop ? "border-t border-[#092D23]/10" : ""} ${
-    borderBottom ? "border-b border-[#092D23]/10" : ""
-  }`;
 
   return (
     <section
-      className={`relative overflow-hidden ${variantClasses[variant]} ${paddingClasses[padding]} ${borders} ${className}`}
+      className={cn(
+        "relative",
+        variantClasses[variant],
+        paddingClasses[padding],
+        borderBottom && "border-b border-edge-subtle",
+        borderTop && "border-t border-edge-subtle",
+        className
+      )}
       {...props}
     >
       {children}
@@ -77,7 +84,6 @@ export interface PageHeaderProps {
   title: string;
   highlight?: string;
   description?: string;
-  children?: React.ReactNode;
   className?: string;
 }
 
@@ -86,71 +92,43 @@ export function PageHeader({
   title,
   highlight,
   description,
-  children,
   className = "",
 }: PageHeaderProps) {
-  // Split title if highlight word is provided
-  let titleParts = { before: title, match: highlight, after: "" };
-  if (highlight && title.includes(highlight)) {
-    const split = title.split(highlight);
-    titleParts = {
-      before: split[0],
-      match: highlight,
-      after: split.slice(1).join(highlight),
-    };
-  }
-
   return (
-    <section
-      className={`relative pt-32 sm:pt-36 pb-16 sm:pb-20 bg-[#092D23] text-white overflow-hidden border-b border-[#C7F532]/20 ${className}`}
+    <header
+      className={cn(
+        "relative pt-32 sm:pt-40 pb-16 sm:pb-24 bg-canvas text-ink-headline overflow-hidden border-b border-edge-subtle",
+        className
+      )}
     >
-      {/* Topographic line overlay */}
-      <TopographicBackground opacity={0.07} strokeColor="#C7F532" />
-
-      {/* Subtle radial glow */}
-      <div
-        className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#063F2E] rounded-full blur-[140px] pointer-events-none"
-        aria-hidden="true"
-      />
+      <BackgroundBeams />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl space-y-5">
+        <div className="max-w-4xl space-y-6">
           {eyebrow && (
             <div>
-              <Badge variant="forest" dot={true} dotColor="lime" size="sm">
+              <Badge variant="emerald" dot={true} dotColor="emerald" size="sm">
                 {eyebrow}
               </Badge>
             </div>
           )}
 
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-[-0.025em] leading-[1.1]">
-            {highlight ? (
-              <>
-                {titleParts.before}
-                <span className="relative inline-block my-1">
-                  <span
-                    className="relative inline-block text-[#C7F532] bg-[#063F2E] px-3 py-1 rounded-sm -rotate-1 border border-[#C7F532]/30 shadow-[3px_3px_0px_0px_#C7F532] mx-1"
-                    aria-hidden="true"
-                  >
-                    {titleParts.match}
-                  </span>
-                </span>
-                {titleParts.after}
-              </>
-            ) : (
-              title
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-extrabold tracking-[-0.03em] leading-[1.08] text-ink-headline">
+            {title}{" "}
+            {highlight && (
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyber-emerald to-cyber-cyan">
+                {highlight}
+              </span>
             )}
           </h1>
 
           {description && (
-            <p className="text-base sm:text-lg md:text-xl text-white/80 leading-relaxed max-w-3xl font-normal">
+            <p className="text-base sm:text-lg md:text-xl text-ink-secondary leading-relaxed max-w-2xl font-sans font-normal">
               {description}
             </p>
           )}
-
-          {children && <div className="pt-2">{children}</div>}
         </div>
       </div>
-    </section>
+    </header>
   );
 }

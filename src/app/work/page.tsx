@@ -11,7 +11,7 @@ export const metadata = {
 
 export default function WorkPage() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col min-h-screen bg-canvas">
       {/* Master Page Header */}
       <PageHeader
         eyebrow="SELECTED WORKS // ARCHIVED CASE STUDIES"
@@ -21,7 +21,7 @@ export default function WorkPage() {
       />
 
       {/* Main Filterable Projects Section */}
-      <section className="py-16 sm:py-24 bg-[#F8FAF6] border-b border-[#092D23]/10">
+      <section className="py-16 sm:py-24 bg-canvas border-b border-edge-subtle">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <WorkClientView initialProjects={projectsData} />
         </div>

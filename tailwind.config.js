@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: "class",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -10,69 +11,113 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Master Design Reference Brand Tokens
-        brand: {
-          primary: "#063F2E",
-          deep: "#092D23",
-          lime: "#C7F532",
-          "lime-hover": "#B6E228",
-          mint: "#E6F4EC",
-          gray: "#E7EAE5",
+        // Luxury Obsidian Canvas Tokens
+        canvas: {
+          DEFAULT: "#070709", // Deep luxury dark base
+          secondary: "#0B0C10", // Elevated secondary dark surface
+          elevated: "#12141A", // Subtle raised layer
         },
-        // Semantic Surface Tokens
+        // Elevated Surfaces & Obsidian Glass
         surface: {
-          primary: "#FFFFFF",
-          secondary: "#F8FAF6",
-          accent: "#E6F4EC",
-          dark: "#092D23",
-          "dark-subtle": "#063F2E",
+          obsidian: "rgba(255, 255, 255, 0.03)",
+          card: "rgba(255, 255, 255, 0.04)",
+          elevated: "rgba(255, 255, 255, 0.07)",
+          glass: "rgba(11, 12, 16, 0.75)",
+          active: "rgba(255, 255, 255, 0.10)",
         },
-        // Semantic Text Tokens
+        // High-Contrast High-Tech Text Tokens
         ink: {
-          primary: "#092D23",
-          secondary: "rgba(9, 45, 35, 0.78)",
-          muted: "rgba(9, 45, 35, 0.55)",
-          light: "#FFFFFF",
-          "light-muted": "rgba(255, 255, 255, 0.75)",
+          headline: "#F3F4F6", // Pure High-White
+          primary: "#E5E7EB", // Crisp Primary Body
+          secondary: "#9CA3AF", // Muted Fog Gray
+          muted: "#6B7280", // Subtle Caption Gray
+          faint: "#4B5563", // Hairline Metadata Gray
         },
-        // Semantic Line/Border Tokens
+        // High-Voltage Accent Color System
+        cyber: {
+          emerald: "#00F5A0", // Electric Cyber Emerald
+          cyan: "#00D9F5", // Cyber Cyan
+          amber: "#FF6B4A", // Warm Amber Glow
+          emeraldGlow: "rgba(0, 245, 160, 0.25)",
+          cyanGlow: "rgba(0, 217, 245, 0.25)",
+        },
+        // Border & Glass Edge Tokens
         edge: {
-          default: "rgba(9, 45, 35, 0.15)",
-          subtle: "rgba(9, 45, 35, 0.08)",
-          strong: "#092D23",
-          dark: "rgba(255, 255, 255, 0.12)",
-          lime: "rgba(199, 245, 50, 0.35)",
+          subtle: "rgba(255, 255, 255, 0.08)", // 1px subtle obsidian border
+          glass: "rgba(255, 255, 255, 0.12)", // Highlight border
+          strong: "rgba(255, 255, 255, 0.20)", // Active card border
+          emerald: "rgba(0, 245, 160, 0.40)", // Emerald accent glow border
+          cyan: "rgba(0, 217, 245, 0.40)", // Cyan accent glow border
         },
-        // Legacy compatibility mappings
-        forest: {
-          DEFAULT: "#063F2E",
-          dark: "#092D23",
-          deep: "#032118",
-          light: "#0d4d3a",
-        },
-        lime: {
-          DEFAULT: "#C7F532",
-          hover: "#b6e228",
-        },
-        offwhite: "#F8FAF6",
-        mint: "#E6F4EC",
-        charcoal: {
-          DEFAULT: "#171A18",
-          light: "#242926",
-        },
-        lightgray: "#E7EAE5",
       },
       fontFamily: {
-        sans: ["var(--font-geist-sans)", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
-        mono: ["var(--font-geist-mono)", "ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "monospace"],
+        display: [
+          "var(--font-syne)",
+          "var(--font-plus-jakarta)",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "sans-serif",
+        ],
+        sans: [
+          "var(--font-inter)",
+          "var(--font-geist-sans)",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "sans-serif",
+        ],
+        mono: [
+          "var(--font-mono)",
+          "ui-monospace",
+          "SFMono-Regular",
+          "Menlo",
+          "Monaco",
+          "Consolas",
+          "monospace",
+        ],
       },
       boxShadow: {
-        "neo-sm": "2px 2px 0px 0px #092D23",
-        neo: "4px 4px 0px 0px #092D23",
-        "neo-lg": "6px 6px 0px 0px #092D23",
-        "neo-lime": "4px 4px 0px 0px #C7F532",
-        "neo-lime-sm": "2px 2px 0px 0px #C7F532",
-        "neo-forest": "3px 3px 0px 0px #063F2E",
+        "glow-emerald": "0 0 30px -5px rgba(0, 245, 160, 0.35)",
+        "glow-emerald-lg": "0 0 50px -10px rgba(0, 245, 160, 0.45)",
+        "glow-cyan": "0 0 30px -5px rgba(0, 217, 245, 0.35)",
+        "glow-amber": "0 0 30px -5px rgba(255, 107, 74, 0.35)",
+        "glass-card": "0 8px 32px 0 rgba(0, 0, 0, 0.37)",
+        "glass-inner": "inset 0 1px 1px 0 rgba(255, 255, 255, 0.1)",
+      },
+      animation: {
+        spotlight: "spotlight 2s ease .75s 1 forwards",
+        "border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
+        "pulse-glow": "pulse-glow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        marquee: "marquee 35s linear infinite",
+        "shine-pulse": "shine 4s ease-in-out infinite",
+      },
+      keyframes: {
+        spotlight: {
+          "0%": {
+            opacity: "0",
+            transform: "translate(-72%, -62%) scale(0.5)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translate(-50%,-40%) scale(1)",
+          },
+        },
+        "border-beam": {
+          "100%": {
+            "offset-distance": "100%",
+          },
+        },
+        "pulse-glow": {
+          "0%, 100%": { opacity: "0.4", transform: "scale(1)" },
+          "50%": { opacity: "0.8", transform: "scale(1.05)" },
+        },
+        marquee: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        shine: {
+          "0%, 100%": { opacity: "0.3" },
+          "50%": { opacity: "0.8" },
+        },
       },
     },
   },

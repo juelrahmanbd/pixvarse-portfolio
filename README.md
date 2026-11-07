@@ -1,9 +1,11 @@
 # Pixvarse — Personal Portfolio & Digital Agency
 
-[![Next.js](https://img.shields.io/badge/Next.js-16-092D23?style=for-the-badge&logo=next.js&logoColor=C7F532)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-063F2E?style=for-the-badge&logo=typescript&logoColor=C7F532)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-092D23?style=for-the-badge&logo=tailwindcss&logoColor=C7F532)](https://tailwindcss.com/)
-[![Deployment](https://img.shields.io/badge/Hostinger-Node.js_Ready-C7F532?style=for-the-badge&logo=node.js&logoColor=092D23)](https://www.hostinger.com/)
+[![Next.js](https://img.shields.io/badge/Next.js-14%2B-070709?style=for-the-badge&logo=next.js&logoColor=00F5A0)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-0B0C10?style=for-the-badge&logo=typescript&logoColor=00F5A0)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v3.4-070709?style=for-the-badge&logo=tailwindcss&logoColor=00F5A0)](https://tailwindcss.com/)
+[![GSAP](https://img.shields.io/badge/GSAP-ScrollTrigger-0B0C10?style=for-the-badge&logo=greensock&logoColor=00F5A0)](https://greensock.com/)
+[![Lenis](https://img.shields.io/badge/Lenis-Smooth_Scroll-070709?style=for-the-badge&logoColor=00F5A0)](https://lenis.darkroom.engineering/)
+[![Deployment](https://img.shields.io/badge/Hostinger-Node.js_Ready-00F5A0?style=for-the-badge&logo=node.js&logoColor=070709)](https://www.hostinger.com/)
 
 A modern, production-grade personal portfolio and web development agency website for **Juel Rahman**, under the digital studio brand **Pixvarse**.
 
@@ -13,15 +15,15 @@ Combining two identities:
 
 ---
 
-## 🎨 Creative Art Direction & Design System
+## 🎨 Creative Art Direction & Luxury Design System
 
-The visual identity combines architectural precision and editorial sophistication:
-- **Deep Forest Green** (`#063F2E`) & **Dark Green** (`#092D23`): Premium structural depth.
-- **Electric Lime** (`#C7F532`): High-voltage editorial highlights & interactive accents.
-- **Off-White** (`#F8FAF6`) & **Pale Mint** (`#E6F4EC`): Clean editorial canvas.
-- **Charcoal** (`#171A18`) & **Light Gray** (`#E7EAE5`): Crisp typographic contrast.
-- **Topographic Contour Lines**: Organic SVG elevation curves evoking digital topography.
-- **Card Offset Shadows**: High-contrast, tactile geometric elevation (`4px 4px 0px #063F2E`).
+The visual identity is crafted to Awwwards / FWA creative excellence standards:
+- **Obsidian Dark Canvas** (`#070709` & `#0B0C10`): Deep, immersive luxury surface with subtle 2.5% procedural grain texture overlay.
+- **Electric Cyber Emerald** (`#00F5A0`) & **Cyan** (`#00D9F5`): High-voltage editorial highlights & interactive focus states.
+- **Warm Amber Glow** (`#FF6B4A`): Accent warmth for high-impact visual anchors.
+- **Glassmorphic Obsidian Surfaces**: Micro-borders (`rgba(255, 255, 255, 0.08)`) and translucid fills (`rgba(255, 255, 255, 0.04)`) with backdrop blur.
+- **Typography Matrix**: `Syne` for sculptural display headlines, `Inter` for crisp body prose, and `JetBrains Mono` for metadata and technical indicators.
+- **Motion Architecture**: Global `Lenis` smooth scroll integrated seamlessly with `gsap` ticker and `ScrollTrigger`, interactive cursor magnetic physics, and Aceternity UI Bento Grid with dynamic border beams.
 
 ---
 

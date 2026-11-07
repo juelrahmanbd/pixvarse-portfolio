@@ -1,5 +1,6 @@
 import React from "react";
 import { Badge } from "./Badge";
+import { cn } from "@/lib/utils";
 
 export interface SectionHeadingProps {
   eyebrow?: string;
@@ -11,16 +12,18 @@ export interface SectionHeadingProps {
   className?: string;
 }
 
+/**
+ * Editorial Section Heading Primitive
+ * Combines Syne Display typography with Cyber Emerald highlights and JetBrains Mono badges
+ */
 export function SectionHeading({
   eyebrow,
   title,
   highlight,
   description,
   align = "left",
-  theme = "light",
   className = "",
 }: SectionHeadingProps) {
-  const isDark = theme === "dark";
   const isCenter = align === "center";
 
   // Split title if highlight word is provided
@@ -36,40 +39,28 @@ export function SectionHeading({
 
   return (
     <div
-      className={`flex flex-col ${
-        isCenter ? "items-center text-center max-w-3xl mx-auto" : "items-start text-left max-w-2xl"
-      } ${className}`}
+      className={cn(
+        "flex flex-col",
+        isCenter ? "items-center text-center max-w-3xl mx-auto" : "items-start text-left max-w-2xl",
+        className
+      )}
     >
       {eyebrow && (
         <div className="mb-4 sm:mb-5">
-          <Badge
-            variant={isDark ? "forest" : "surface"}
-            dot={true}
-            dotColor={isDark ? "lime" : "forest"}
-            size="sm"
-          >
+          <Badge variant="emerald" dot={true} dotColor="emerald" size="sm">
             {eyebrow}
           </Badge>
         </div>
       )}
 
-      <h2
-        className={`text-3xl sm:text-4xl md:text-5xl font-black tracking-[-0.025em] leading-[1.12] ${
-          isDark ? "text-white" : "text-[#092D23]"
-        }`}
-      >
-        {highlight ? (
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold tracking-[-0.03em] leading-[1.12] text-ink-headline">
+        {highlight && titleParts.match ? (
           <>
-            {titleParts.before}
-            <span className="relative inline-block my-1">
-              <span
-                className="relative inline-block text-[#C7F532] bg-[#063F2E] px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-sm -rotate-1 shadow-[3px_3px_0px_0px_#C7F532] mx-1"
-                aria-hidden="true"
-              >
-                {titleParts.match}
-              </span>
+            <span>{titleParts.before}</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyber-emerald via-[#00F5A0] to-cyber-cyan">
+              {titleParts.match}
             </span>
-            {titleParts.after}
+            <span>{titleParts.after}</span>
           </>
         ) : (
           title
@@ -77,11 +68,7 @@ export function SectionHeading({
       </h2>
 
       {description && (
-        <p
-          className={`mt-4 sm:mt-5 text-base sm:text-lg leading-relaxed ${
-            isDark ? "text-white/80" : "text-[#092D23]/80"
-          }`}
-        >
+        <p className="mt-4 sm:mt-5 text-sm sm:text-base text-ink-secondary leading-relaxed font-sans max-w-xl">
           {description}
         </p>
       )}

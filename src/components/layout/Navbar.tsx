@@ -8,6 +8,7 @@ import { Logo } from "../ui/Logo";
 import { Button } from "../ui/Button";
 import { MobileMenu } from "./MobileMenu";
 import { Menu, ArrowUpRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -16,7 +17,7 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 15);
+      setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -25,30 +26,32 @@ export function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+        className={cn(
+          "fixed top-0 left-0 right-0 z-40 transition-all duration-300",
           isScrolled
-            ? "bg-white/95 backdrop-blur-md border-b border-[#092D23]/10 py-3 shadow-[0_2px_12px_rgba(9,45,35,0.06)]"
-            : "bg-white/80 backdrop-blur-sm border-b border-[#092D23]/5 py-4"
-        }`}
+            ? "bg-canvas/80 backdrop-blur-xl border-b border-white/[0.08] py-3.5 shadow-2xl shadow-black/80"
+            : "bg-transparent py-5"
+        )}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Logo variant="dark" showTagline={false} />
+            <Logo variant="light" showTagline={false} />
 
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-1 rounded-sm p-1 border border-[#092D23]/15 bg-[#F8FAF6] shadow-[1px_1px_0px_0px_#092D23]">
+            {/* Desktop Navigation Floating Pill */}
+            <nav className="hidden md:flex items-center gap-1 rounded-full p-1.5 border border-white/[0.08] bg-white/[0.03] backdrop-blur-xl shadow-glass-card">
               {siteConfig.navigation.map((item) => {
                 const isActive = pathname === item.href;
                 return (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`relative px-4 py-1.5 text-xs font-bold uppercase tracking-wider font-mono transition-all duration-150 rounded-sm select-none ${
+                    className={cn(
+                      "relative px-4 py-1.5 text-xs font-mono font-medium tracking-wider uppercase transition-all duration-200 rounded-full select-none",
                       isActive
-                        ? "bg-[#092D23] text-[#C7F532] shadow-sm"
-                        : "text-[#092D23]/80 hover:text-[#063F2E] hover:bg-[#E6F4EC]"
-                    }`}
+                        ? "bg-white/[0.1] text-cyber-emerald shadow-sm"
+                        : "text-ink-secondary hover:text-ink-headline hover:bg-white/[0.04]"
+                    )}
                   >
                     {item.name}
                   </Link>
@@ -58,55 +61,54 @@ export function Navbar() {
 
             {/* Right Side: Available Indicator & Let's Talk CTA */}
             <div className="hidden lg:flex items-center gap-4">
-              {/* Availability Indicator */}
-              <div className="flex items-center gap-2 px-3 py-1 bg-[#F8FAF6] border border-[#092D23]/15 rounded-sm shadow-[1px_1px_0px_0px_#063F2E]">
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] text-xs font-mono">
                 <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#063F2E] opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#063F2E]" />
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyber-emerald opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-cyber-emerald" />
                 </span>
-                <span className="text-[#092D23] text-[11px] font-mono font-bold uppercase tracking-wider">
-                  {siteConfig.status.badgeText}
-                </span>
+                <span className="text-ink-secondary font-medium">{siteConfig.status.badgeText}</span>
               </div>
 
-              {/* Let's Talk Button */}
               <Button
                 href="/contact"
                 variant="primary"
                 size="sm"
-                icon={<ArrowUpRight className="h-3.5 w-3.5 stroke-[2.5]" />}
+                icon={<ArrowUpRight className="h-3.5 w-3.5" strokeWidth={1.5} />}
               >
                 Let&apos;s Talk
               </Button>
             </div>
 
-            {/* Mobile Actions */}
-            <div className="flex items-center gap-2 md:hidden">
+            {/* Mobile Hamburger Trigger */}
+            <div className="flex md:hidden items-center gap-3">
               <Button
                 href="/contact"
                 variant="primary"
                 size="sm"
-                className="px-3 py-1 text-[11px]"
+                className="text-xs px-3 py-1"
               >
                 Let&apos;s Talk
               </Button>
+
               <button
+                type="button"
                 onClick={() => setMobileMenuOpen(true)}
-                className="flex h-9 w-9 items-center justify-center rounded-sm border border-[#092D23]/20 bg-[#F8FAF6] text-[#092D23] hover:bg-[#E6F4EC] transition-colors cursor-pointer"
-                aria-label="Open navigation menu"
+                className="p-2 rounded-xl bg-white/[0.04] border border-white/[0.08] text-ink-headline hover:text-cyber-emerald focus:outline-none transition-colors"
+                aria-label="Open mobile navigation menu"
               >
-                <Menu className="h-5 w-5" />
+                <Menu className="h-5 w-5" strokeWidth={1.5} />
               </button>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Responsive Mobile Drawer Menu */}
+      {/* Mobile Drawer Menu */}
       <MobileMenu
         isOpen={mobileMenuOpen}
         onClose={() => setMobileMenuOpen(false)}
-        activePath={pathname}
+        navigation={siteConfig.navigation}
+        currentPath={pathname}
       />
     </>
   );

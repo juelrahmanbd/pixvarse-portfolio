@@ -1,47 +1,88 @@
-import React from "react";
+"use client";
 
-export type CardVariant = "white" | "soft" | "mint" | "dark" | "outline";
+import React, { useState, useRef } from "react";
+import { cn } from "@/lib/utils";
+
+export type CardVariant = "glass" | "obsidian" | "elevated" | "white" | "soft" | "mint" | "dark" | "outline";
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: CardVariant;
   hoverEffect?: boolean;
-  sharp?: boolean;
+  spotlight?: boolean;
   className?: string;
 }
 
+/**
+ * Obsidian Glassmorphic Card Primitive
+ * Meets Awwwards specifications with cursor-reactive spotlights and hairline borders
+ */
 export function Card({
   children,
-  variant = "white",
+  variant = "glass",
   hoverEffect = true,
-  sharp = true,
+  spotlight = true,
   className = "",
   ...props
 }: CardProps) {
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current || !spotlight) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    setMousePos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
+
   const variantStyles: Record<CardVariant, string> = {
-    white:
-      "bg-[#FFFFFF] text-[#092D23] border border-[#092D23]/15 shadow-[4px_4px_0px_0px_#092D23]",
-    soft:
-      "bg-[#F8FAF6] text-[#092D23] border border-[#092D23]/15 shadow-[4px_4px_0px_0px_#092D23]",
-    mint:
-      "bg-[#E6F4EC] text-[#092D23] border border-[#092D23]/20 shadow-[4px_4px_0px_0px_#063F2E]",
-    dark:
-      "bg-[#092D23] text-white border border-[#C7F532]/25 shadow-[4px_4px_0px_0px_#C7F532]",
+    glass:
+      "bg-white/[0.03] text-ink-primary border border-white/[0.08] backdrop-blur-xl shadow-glass-card",
+    obsidian:
+      "bg-canvas-secondary/90 text-ink-primary border border-white/[0.06] backdrop-blur-md shadow-2xl",
+    elevated:
+      "bg-white/[0.06] text-ink-headline border border-white/[0.12] backdrop-blur-2xl shadow-glass-card",
     outline:
-      "bg-transparent text-[#092D23] border-2 border-[#092D23] shadow-[3px_3px_0px_0px_#092D23]",
+      "bg-transparent text-ink-primary border border-white/[0.12]",
+    // Compatibility aliases
+    white:
+      "bg-white/[0.03] text-ink-primary border border-white/[0.08] backdrop-blur-xl",
+    soft:
+      "bg-white/[0.04] text-ink-primary border border-white/[0.08] backdrop-blur-xl",
+    mint:
+      "bg-cyber-emerald/[0.03] text-ink-primary border border-cyber-emerald/20",
+    dark:
+      "bg-canvas-secondary text-ink-primary border border-white/[0.08]",
   };
 
   const hoverClasses = hoverEffect
-    ? "transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_#092D23]"
+    ? "transition-all duration-300 hover:border-white/[0.2] hover:bg-white/[0.05] hover:shadow-2xl hover:shadow-black/70 hover:translate-y-[-2px]"
     : "";
-
-  const roundedClasses = sharp ? "rounded-sm" : "rounded-md";
 
   return (
     <div
-      className={`relative p-6 sm:p-8 ${roundedClasses} ${variantStyles[variant]} ${hoverClasses} ${className}`}
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      className={cn(
+        "group relative rounded-2xl p-6 sm:p-8 overflow-hidden",
+        variantStyles[variant],
+        hoverClasses,
+        className
+      )}
       {...props}
     >
-      {children}
+      {/* Dynamic Cursor Spotlight Overlay */}
+      {spotlight && (
+        <div
+          className="pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-300 group-hover:opacity-100 rounded-2xl"
+          style={{
+            background: `radial-gradient(400px circle at ${mousePos.x}px ${mousePos.y}px, rgba(0, 245, 160, 0.08), transparent 80%)`,
+          }}
+        />
+      )}
+
+      <div className="relative z-10">{children}</div>
     </div>
   );
 }
@@ -52,7 +93,7 @@ export function CardHeader({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
-    <div className={`mb-4 space-y-1.5 ${className}`} {...props}>
+    <div className={cn("mb-4 space-y-1.5", className)} {...props}>
       {children}
     </div>
   );
@@ -64,22 +105,7 @@ export function CardContent({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
-    <div className={`text-[#092D23]/80 leading-relaxed ${className}`} {...props}>
-      {children}
-    </div>
-  );
-}
-
-export function CardFooter({
-  children,
-  className = "",
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
-  return (
-    <div
-      className={`mt-6 pt-4 border-t border-[#092D23]/10 flex items-center justify-between ${className}`}
-      {...props}
-    >
+    <div className={cn("space-y-4", className)} {...props}>
       {children}
     </div>
   );
