@@ -1,6 +1,5 @@
 import React from "react";
 import { Badge } from "./Badge";
-import { BackgroundBeams } from "./BackgroundBeams";
 import { cn } from "@/lib/utils";
 
 export interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -17,7 +16,7 @@ export function Container({
   const sizeClasses = {
     narrow: "max-w-4xl mx-auto px-4 sm:px-6 lg:px-8",
     default: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
-    wide: "max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8",
+    wide: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
     full: "w-full px-4 sm:px-6 lg:px-8",
   };
 
@@ -46,30 +45,29 @@ export function Section({
   ...props
 }: SectionProps) {
   const variantClasses = {
-    canvas: "bg-canvas text-ink-primary",
-    secondary: "bg-canvas-secondary text-ink-primary",
-    elevated: "bg-canvas-elevated text-ink-primary",
-    white: "bg-canvas text-ink-primary",
-    soft: "bg-canvas-secondary text-ink-primary",
-    mint: "bg-canvas text-ink-primary",
-    dark: "bg-canvas text-ink-primary",
+    canvas: "bg-white text-slate-900",
+    secondary: "bg-slate-50 text-slate-900",
+    elevated: "bg-white text-slate-900",
+    white: "bg-white text-slate-900",
+    soft: "bg-slate-50/70 text-slate-900",
+    mint: "bg-emerald-50/30 text-slate-900",
+    dark: "bg-slate-900 text-white",
   };
 
   const paddingClasses = {
     none: "",
     compact: "py-12 sm:py-16",
-    default: "py-16 sm:py-24",
-    spacious: "py-24 sm:py-32",
+    default: "py-20 sm:py-28",
+    spacious: "py-28 sm:py-36",
   };
 
   return (
     <section
       className={cn(
-        "relative",
         variantClasses[variant],
         paddingClasses[padding],
-        borderBottom && "border-b border-edge-subtle",
-        borderTop && "border-t border-edge-subtle",
+        borderBottom && "border-b border-slate-200/80",
+        borderTop && "border-t border-slate-200/80",
         className
       )}
       {...props}
@@ -97,33 +95,31 @@ export function PageHeader({
   return (
     <header
       className={cn(
-        "relative pt-32 sm:pt-40 pb-16 sm:pb-24 bg-canvas text-ink-headline overflow-hidden border-b border-edge-subtle",
+        "relative pt-28 sm:pt-36 pb-16 sm:pb-24 bg-white text-slate-900 overflow-hidden border-b border-slate-200/80 bg-dot-grid",
         className
       )}
     >
-      <BackgroundBeams />
-
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl space-y-6">
+        <div className="max-w-3xl space-y-5">
           {eyebrow && (
             <div>
-              <Badge variant="emerald" dot={true} dotColor="emerald" size="sm">
+              <Badge variant="cyan" dot={true} dotColor="cyan" size="sm">
                 {eyebrow}
               </Badge>
             </div>
           )}
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-extrabold tracking-[-0.03em] leading-[1.08] text-ink-headline">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-bold tracking-tight leading-[1.1] text-slate-900">
             {title}{" "}
             {highlight && (
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyber-emerald to-cyber-cyan">
+              <span className="text-blue-600">
                 {highlight}
               </span>
             )}
           </h1>
 
           {description && (
-            <p className="text-base sm:text-lg md:text-xl text-ink-secondary leading-relaxed max-w-2xl font-sans font-normal">
+            <p className="text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed font-sans font-normal">
               {description}
             </p>
           )}

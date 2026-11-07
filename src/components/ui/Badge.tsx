@@ -1,22 +1,32 @@
 import React from "react";
 import { cn } from "@/lib/utils";
 
-export type BadgeVariant = "emerald" | "cyan" | "amber" | "surface" | "outline" | "dark" | "forest" | "lime" | "mint";
+export type BadgeVariant =
+  | "emerald"
+  | "cyan"
+  | "cobalt"
+  | "amber"
+  | "surface"
+  | "outline"
+  | "dark"
+  | "forest"
+  | "lime"
+  | "mint";
 export type BadgeSize = "sm" | "md";
 
 export interface BadgeProps {
   children: React.ReactNode;
   variant?: BadgeVariant;
   dot?: boolean;
-  dotColor?: "emerald" | "cyan" | "amber" | "lime" | "forest";
+  dotColor?: "emerald" | "cyan" | "cobalt" | "amber" | "lime" | "forest";
   className?: string;
   size?: BadgeSize;
   icon?: React.ReactNode;
 }
 
 /**
- * High-Tech Terminal Badge Primitive
- * Formatted with JetBrains Mono, micro-borders, and pulsing status beacons
+ * Clean Executive Badge Primitive
+ * Formatted with JetBrains Mono, crisp borders, and subtle status beacons
  */
 export function Badge({
   children,
@@ -29,49 +39,42 @@ export function Badge({
 }: BadgeProps) {
   const sizeClasses: Record<BadgeSize, string> = {
     sm: "text-[10px] px-2.5 py-0.5 gap-1.5",
-    md: "text-[11px] px-3 py-1 gap-2",
+    md: "text-xs px-3 py-1 gap-2",
   };
 
   const variantClasses: Record<BadgeVariant, string> = {
-    // Primary Cyber Emerald Eyebrow Pill
-    emerald:
-      "bg-cyber-emerald/10 text-cyber-emerald border border-cyber-emerald/30 shadow-[0_0_12px_rgba(0,245,160,0.15)]",
-    // Cyber Cyan Variant
-    cyan:
-      "bg-cyber-cyan/10 text-cyber-cyan border border-cyber-cyan/30 shadow-[0_0_12px_rgba(0,217,245,0.15)]",
-    // Amber Accent Variant
-    amber:
-      "bg-cyber-amber/10 text-cyber-amber border border-cyber-amber/30",
-    // Obsidian Surface Glass
-    surface:
-      "bg-white/[0.04] text-ink-headline border border-white/[0.1] backdrop-blur-md",
-    dark:
-      "bg-black/60 text-ink-primary border border-white/[0.08]",
-    outline:
-      "bg-transparent text-ink-secondary border border-white/[0.12]",
-    // Compatibility aliases
-    forest:
-      "bg-cyber-emerald/10 text-cyber-emerald border border-cyber-emerald/30",
-    lime:
-      "bg-cyber-emerald/15 text-cyber-emerald border border-cyber-emerald/40",
-    mint:
-      "bg-white/[0.04] text-cyber-cyan border border-cyber-cyan/20",
+    // Subtle Emerald Status Pill
+    emerald: "bg-emerald-50 text-emerald-700 border border-emerald-200/80",
+    forest: "bg-emerald-50 text-emerald-700 border border-emerald-200/80",
+    lime: "bg-emerald-50 text-emerald-700 border border-emerald-200/80",
+
+    // Tech Cobalt Pill
+    cobalt: "bg-blue-50 text-blue-700 border border-blue-200/80",
+    cyan: "bg-blue-50 text-blue-700 border border-blue-200/80",
+    mint: "bg-blue-50 text-blue-700 border border-blue-200/80",
+
+    // Amber
+    amber: "bg-amber-50 text-amber-700 border border-amber-200/80",
+
+    // Neutral Clean Surface
+    surface: "bg-slate-50 text-slate-700 border border-slate-200/80",
+    dark: "bg-slate-900 text-white border border-slate-900",
+    outline: "bg-white text-slate-600 border border-slate-200",
   };
 
-  const dotClasses = {
-    emerald: { ping: "bg-cyber-emerald", dot: "bg-cyber-emerald" },
-    cyan: { ping: "bg-cyber-cyan", dot: "bg-cyber-cyan" },
-    amber: { ping: "bg-cyber-amber", dot: "bg-cyber-amber" },
-    lime: { ping: "bg-cyber-emerald", dot: "bg-cyber-emerald" },
-    forest: { ping: "bg-cyber-emerald", dot: "bg-cyber-emerald" },
+  const dotClasses: Record<string, string> = {
+    emerald: "bg-emerald-500",
+    forest: "bg-emerald-500",
+    lime: "bg-emerald-500",
+    cyan: "bg-blue-500",
+    cobalt: "bg-blue-500",
+    amber: "bg-amber-500",
   };
-
-  const activeDot = dotClasses[dotColor] || dotClasses.emerald;
 
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-full font-mono font-medium tracking-wider uppercase select-none transition-all duration-200",
+        "inline-flex items-center font-mono font-medium rounded-full select-none transition-colors",
         sizeClasses[size],
         variantClasses[variant],
         className
@@ -81,12 +84,15 @@ export function Badge({
         <span className="relative flex h-2 w-2 shrink-0">
           <span
             className={cn(
-              "animate-ping absolute inline-flex h-full w-full rounded-full opacity-75",
-              activeDot.ping
+              "animate-ping absolute inline-flex h-full w-full rounded-full opacity-60",
+              dotClasses[dotColor] || "bg-emerald-500"
             )}
           />
           <span
-            className={cn("relative inline-flex rounded-full h-2 w-2", activeDot.dot)}
+            className={cn(
+              "relative inline-flex rounded-full h-2 w-2",
+              dotClasses[dotColor] || "bg-emerald-500"
+            )}
           />
         </span>
       )}

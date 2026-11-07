@@ -10,16 +10,16 @@ export function TestimonialsSection() {
   const hasTestimonials = testimonialsData.length > 0;
 
   return (
-    <section className="py-20 sm:py-28 bg-canvas-secondary relative overflow-hidden border-b border-edge-subtle">
+    <section className="py-24 sm:py-32 bg-white text-slate-900 overflow-hidden border-b border-slate-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mb-12 sm:mb-16">
           <SectionHeading
-            eyebrow="STANDARDS // TRUST & INTEGRITY"
+            eyebrow="STANDARDS // TRUST &amp; INTEGRITY"
             title={hasTestimonials ? "Client Endorsements." : "Client Partnership"}
             highlight={hasTestimonials ? "Direct Feedback." : "Philosophy."}
             description={
               hasTestimonials
-                ? "Direct feedback from clients and digital agency partners who rely on Pixvarse for technical execution."
+                ? "Direct feedback from clients and agency partners who rely on Pixvarse for technical execution."
                 : "A steadfast commitment to transparency, technical excellence, and zero-compromise delivery on every client engagement."
             }
           />
@@ -30,18 +30,18 @@ export function TestimonialsSection() {
             {testimonialsData.map((item) => (
               <div
                 key={item.id}
-                className="rounded-2xl bg-white/[0.03] border border-white/[0.08] backdrop-blur-xl p-6 sm:p-7 flex flex-col justify-between hover:border-white/[0.2] transition-all"
+                className="rounded-2xl bg-white border border-slate-200/90 shadow-card hover:shadow-cardHover hover:-translate-y-1 transition-all duration-300 p-6 sm:p-7 flex flex-col justify-between"
               >
                 <div>
-                  <Quote className="h-7 w-7 text-cyber-emerald/40 mb-4" strokeWidth={1.5} />
-                  <p className="text-sm text-ink-primary leading-relaxed font-sans font-normal">
+                  <Quote className="h-6 w-6 text-blue-600/40 mb-4" strokeWidth={1.5} />
+                  <p className="text-sm text-slate-700 leading-relaxed font-sans">
                     &ldquo;{item.quote}&rdquo;
                   </p>
                 </div>
-                <div className="mt-6 pt-4 border-t border-white/[0.06] flex items-center justify-between">
+                <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
                   <div>
-                    <h4 className="font-display font-bold text-sm text-ink-headline">{item.clientName}</h4>
-                    <p className="text-xs text-ink-muted font-mono">
+                    <h4 className="font-display font-bold text-sm text-slate-900">{item.clientName}</h4>
+                    <p className="text-xs text-slate-500 font-mono">
                       {item.role}, {item.company}
                     </p>
                   </div>
@@ -60,21 +60,21 @@ export function TestimonialsSection() {
             {clientPartnershipPillars.map((pillar, idx) => (
               <div
                 key={idx}
-                className="rounded-2xl bg-white/[0.03] border border-white/[0.08] backdrop-blur-xl p-6 sm:p-7 flex flex-col justify-between hover:border-white/[0.2] hover:bg-white/[0.05] transition-all duration-300"
+                className="rounded-2xl bg-white border border-slate-200/90 shadow-card hover:shadow-cardHover hover:-translate-y-1 transition-all duration-300 p-6 flex flex-col justify-between"
               >
-                <div className="space-y-4">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/[0.04] text-cyber-emerald border border-white/[0.08]">
+                <div className="space-y-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 border border-blue-100 text-blue-600">
                     <ShieldCheck className="h-5 w-5" strokeWidth={1.5} />
                   </div>
-                  <h3 className="text-base font-display font-bold text-ink-headline tracking-tight">
+                  <h3 className="font-display font-bold text-base text-slate-900 tracking-tight">
                     {pillar.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-ink-secondary leading-relaxed font-sans font-normal">
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans">
                     {pillar.description}
                   </p>
                 </div>
-                <div className="mt-6 pt-3 border-t border-white/[0.06]">
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-cyber-emerald font-semibold">
+                <div className="mt-6 pt-3 border-t border-slate-100">
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-blue-600 font-semibold">
                     {`0${idx + 1} // COMMITMENT`}
                   </span>
                 </div>

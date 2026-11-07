@@ -1,67 +1,64 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
 import { siteConfig } from "@/data/siteConfig";
-import { MagneticButton } from "../ui/MagneticButton";
-import { ArrowUpRight } from "lucide-react";
+import { Button } from "../ui/Button";
+import { Badge } from "../ui/Badge";
+import { ArrowUpRight, Mail } from "lucide-react";
 
-/**
- * CTASection — Huge Inc Benchmark
- * Full-width edge-to-edge monumental call-to-action banner,
- * massive typography, zero rounded boxes, pure brutalist energy.
- */
 export function CTASection() {
   return (
-    <section className="relative py-24 sm:py-36 bg-canvas text-ink-primary overflow-hidden border-b border-white/10">
-      <div className="max-w-[1560px] mx-auto px-4 sm:px-8">
-        <div className="space-y-6">
-          <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-cyber-magenta font-semibold">
-            <span className="h-1.5 w-1.5 rounded-full bg-cyber-magenta" />
-            <span>{"[ 05 // INITIALIZE COLLABORATION ]"}</span>
+    <section className="relative py-24 sm:py-32 bg-slate-50/60 text-slate-900 overflow-hidden border-b border-slate-200/80">
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="rounded-3xl bg-white border border-slate-200/90 shadow-card p-8 sm:p-14 lg:p-16 text-center space-y-6">
+          {/* Eyebrow */}
+          <div className="flex justify-center">
+            <Badge variant="cyan" dot={true} dotColor="cyan" size="md">
+              DIRECT ENGAGEMENT
+            </Badge>
           </div>
 
-          {/* Monumental Headline */}
-          <h2 className="text-[10vw] sm:text-[11vw] lg:text-[12vw] font-display font-black tracking-[-0.05em] uppercase text-white leading-[0.8] select-none">
-            READY TO <span className="text-stroke-white opacity-40">DOMINATE?</span>
+          {/* Main Title */}
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-display font-bold tracking-tight text-slate-900 leading-[1.12] max-w-3xl mx-auto">
+            Ready to Build a High-Performance{" "}
+            <span className="text-blue-600">
+              Digital Platform?
+            </span>
           </h2>
 
-          <div className="pt-6 max-w-2xl">
-            <p className="text-base sm:text-xl font-sans text-ink-secondary leading-relaxed">
-              Whether you need a bespoke WordPress architecture, a tailored Next.js web application, or a dedicated white-label engineering partner for your digital agency, we build platforms that leave an unmistakable mark.
-            </p>
-          </div>
+          {/* Subtitle */}
+          <p className="text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto font-sans">
+            Whether you need bespoke WordPress blocks, a custom Next.js web application, or a reliable white-label partner for your digital agency, we build platforms that perform.
+          </p>
 
-          {/* Action Row */}
-          <div className="pt-8 flex flex-wrap items-center gap-6">
-            <MagneticButton
+          {/* Dual CTAs */}
+          <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
+            <Button
               href="/contact"
               variant="primary"
-              className="text-xs sm:text-sm px-10 py-5 uppercase font-mono tracking-wider font-bold bg-white text-black hover:bg-cyber-magenta hover:text-white border-none shadow-[0_0_40px_rgba(255,255,255,0.2)]"
+              size="lg"
+              icon={<ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />}
             >
-              <span>Start A Project Brief</span>
-              <ArrowUpRight className="h-4 w-4 stroke-[2]" strokeWidth={1.5} />
-            </MagneticButton>
+              Start Your Project
+            </Button>
 
-            <Link
+            <Button
               href={`mailto:${siteConfig.email}`}
-              className="px-8 py-5 border border-white/20 text-white font-mono text-xs uppercase tracking-wider font-bold hover:border-white transition-colors"
+              variant="secondary"
+              size="lg"
+              icon={<Mail className="h-4 w-4" strokeWidth={1.5} />}
             >
-              Direct Email ({siteConfig.email})
-            </Link>
+              Direct Email
+            </Button>
           </div>
 
-          {/* Telemetry Status Strip */}
-          <div className="pt-12 mt-12 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 font-mono text-xs text-ink-muted">
-            <div className="flex items-center gap-3">
-              <span className="h-2 w-2 rounded-full bg-cyber-emerald animate-ping" />
-              <span className="text-white font-semibold">
-                CURRENT CAPACITY: 2 NEW COMMISSIONS FOR Q4 / Q1
-              </span>
-            </div>
-            <span className="uppercase text-ink-muted">
-              EST. TURNAROUND: 2 TO 4 WEEKS PER PRODUCTION PLATFORM
+          {/* Availability Status */}
+          <div className="pt-8 mt-6 border-t border-slate-100 flex items-center justify-center gap-3 text-xs font-mono text-slate-500">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
             </span>
+            <span>Available for New Client Commissions (2-4 Week Turnaround)</span>
           </div>
         </div>
       </div>

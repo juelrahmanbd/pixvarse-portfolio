@@ -16,14 +16,14 @@ export function TechStackSection() {
       : techStackData.filter((t) => t.category === activeCategory);
 
   return (
-    <section className="py-20 sm:py-28 bg-canvas relative overflow-hidden border-b border-edge-subtle">
+    <section className="py-24 sm:py-32 bg-slate-50/50 text-slate-900 overflow-hidden border-b border-slate-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
           <SectionHeading
-            eyebrow="TOOLCHAIN // CORE PROFICIENCY"
+            eyebrow="TOOLCHAIN &amp; STACK"
             title="Battle-Tested"
             highlight="Engineering Stacks."
-            description="A focused, modern technology stack strictly backed by commercial development and high-traffic production deployments."
+            description="A focused, modern technology toolchain strictly backed by production deployments and enterprise standards."
           />
 
           {/* Filter Pills */}
@@ -33,10 +33,10 @@ export function TechStackSection() {
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
                 className={cn(
-                  "px-3.5 py-1.5 text-xs font-mono font-medium uppercase tracking-wider rounded-full transition-all duration-200 cursor-pointer select-none",
+                  "px-3.5 py-1.5 text-xs font-mono font-medium rounded-full transition-all duration-200 cursor-pointer select-none",
                   activeCategory === cat
-                    ? "bg-cyber-emerald text-canvas font-bold shadow-glow-emerald border border-cyber-emerald"
-                    : "bg-white/[0.03] text-ink-secondary border border-white/[0.08] hover:text-ink-headline hover:bg-white/[0.06]"
+                    ? "bg-slate-900 text-white font-semibold shadow-sm"
+                    : "bg-white text-slate-600 border border-slate-200 hover:text-slate-900 hover:bg-slate-50"
                 )}
               >
                 {cat}
@@ -50,32 +50,32 @@ export function TechStackSection() {
           {filteredTech.map((tech) => (
             <div
               key={tech.name}
-              className="group rounded-2xl bg-white/[0.03] border border-white/[0.08] backdrop-blur-xl p-5 sm:p-6 flex flex-col justify-between hover:border-white/[0.2] hover:bg-white/[0.05] transition-all duration-300"
+              className="group rounded-2xl bg-white border border-slate-200/90 shadow-card hover:shadow-cardHover hover:-translate-y-1 transition-all duration-200 p-5 sm:p-6 flex flex-col justify-between"
             >
               <div>
-                <div className="flex items-center justify-between pb-3 border-b border-white/[0.08] mb-3">
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-ink-muted">
+                <div className="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400">
                     {tech.category}
                   </span>
                   {tech.badge && (
-                    <span className="rounded-full bg-cyber-emerald/15 text-cyber-emerald px-2 py-0.5 text-[9px] font-mono font-bold uppercase tracking-wider border border-cyber-emerald/30">
+                    <span className="rounded-full bg-blue-50 text-blue-700 px-2 py-0.5 text-[10px] font-mono font-medium border border-blue-200/80">
                       {tech.badge}
                     </span>
                   )}
                 </div>
 
-                <h3 className="text-base font-display font-bold text-ink-headline group-hover:text-cyber-emerald transition-colors">
+                <h3 className="text-base font-display font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                   {tech.name}
                 </h3>
 
-                <p className="mt-2 text-xs text-ink-secondary leading-relaxed font-sans font-normal">
+                <p className="mt-2 text-xs text-slate-600 leading-relaxed font-sans">
                   {tech.description}
                 </p>
               </div>
 
-              <div className="mt-4 pt-3 border-t border-white/[0.06] text-[11px] font-mono text-ink-muted flex items-center justify-between">
-                <span>{tech.category}</span>
-                <span className="text-cyber-emerald font-semibold">{tech.level}</span>
+              <div className="mt-4 pt-3 border-t border-slate-100 text-[11px] font-mono text-slate-500 flex items-center justify-between">
+                <span>Proficiency</span>
+                <span className="text-blue-600 font-semibold">{tech.level}</span>
               </div>
             </div>
           ))}

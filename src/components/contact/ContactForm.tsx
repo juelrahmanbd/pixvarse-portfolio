@@ -97,25 +97,25 @@ export function ContactForm() {
   };
 
   return (
-    <div className="rounded-2xl bg-white/[0.03] border border-white/[0.08] backdrop-blur-xl p-6 sm:p-10 shadow-2xl">
+    <div className="rounded-2xl bg-white border border-slate-200/90 shadow-card p-6 sm:p-10">
       {isSubmitted ? (
         <div className="space-y-6 text-center py-8">
-          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-cyber-emerald/10 border border-cyber-emerald/30 text-cyber-emerald shadow-glow-emerald">
-            <CheckCircle2 className="h-8 w-8 text-cyber-emerald" strokeWidth={1.5} />
+          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600 border border-emerald-200">
+            <CheckCircle2 className="h-8 w-8 text-emerald-600" strokeWidth={1.5} />
           </div>
 
-          <h3 className="text-2xl font-display font-bold text-ink-headline">
+          <h3 className="text-2xl font-display font-bold text-slate-900">
             Inquiry Prepared &amp; Email Triggered!
           </h3>
 
-          <p className="text-sm sm:text-base text-ink-secondary max-w-lg mx-auto leading-relaxed font-sans">
+          <p className="text-sm sm:text-base text-slate-600 max-w-lg mx-auto leading-relaxed font-sans">
             Your default email client should have opened with your project inquiry pre-filled. If it didn&apos;t open automatically, use the buttons below:
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
             <a
               href={generateMailtoUrl()}
-              className="inline-flex items-center gap-2 rounded-full bg-cyber-emerald px-6 py-3 text-xs sm:text-sm font-sans font-bold uppercase tracking-wider text-canvas shadow-glow-emerald hover:brightness-110 transition-all"
+              className="inline-flex items-center gap-2 rounded-xl bg-slate-900 px-6 py-3 text-xs sm:text-sm font-sans font-medium text-white hover:bg-slate-800 transition-all shadow-sm"
             >
               <Mail className="h-4 w-4" strokeWidth={1.5} />
               <span>Open in Email Client</span>
@@ -123,17 +123,17 @@ export function ContactForm() {
 
             <button
               onClick={copyEmailToClipboard}
-              className="inline-flex items-center gap-2 rounded-full bg-white/[0.04] px-6 py-3 text-xs sm:text-sm font-sans font-medium uppercase tracking-wider text-ink-headline border border-white/[0.12] hover:bg-white/[0.08] transition-all cursor-pointer"
+              className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 text-xs sm:text-sm font-sans font-medium text-slate-700 border border-slate-200 hover:bg-slate-50 transition-all cursor-pointer shadow-sm"
             >
               <Copy className="h-4 w-4" strokeWidth={1.5} />
               <span>{copied ? "Copied!" : "Copy Email Address"}</span>
             </button>
           </div>
 
-          <div className="pt-6 border-t border-white/[0.06]">
+          <div className="pt-6 border-t border-slate-100">
             <button
               onClick={() => setIsSubmitted(false)}
-              className="text-xs font-mono font-medium text-cyber-emerald hover:underline cursor-pointer"
+              className="text-xs font-mono font-medium text-blue-600 hover:underline cursor-pointer"
             >
               ← Edit details or send another inquiry
             </button>
@@ -146,7 +146,7 @@ export function ContactForm() {
             <div>
               <label
                 htmlFor="name"
-                className="block text-xs font-mono uppercase tracking-wider text-ink-secondary mb-2"
+                className="block text-xs font-mono uppercase tracking-wider text-slate-600 mb-2 font-medium"
               >
                 Your Name / Business Identity *
               </label>
@@ -157,12 +157,12 @@ export function ContactForm() {
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 placeholder="e.g. Sarah Jenkins or Apex Agency"
                 className={cn(
-                  "w-full rounded-xl border bg-white/[0.03] px-4 py-3 text-sm text-ink-headline placeholder:text-ink-muted/50 focus:bg-white/[0.05] focus:outline-none focus:border-cyber-emerald focus:ring-2 focus:ring-cyber-emerald/20 transition-all",
-                  errors.name ? "border-rose-500 bg-rose-500/10" : "border-white/[0.1]"
+                  "w-full rounded-xl border bg-slate-50/50 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all",
+                  errors.name ? "border-rose-500 bg-rose-50/50" : "border-slate-200"
                 )}
               />
               {errors.name && (
-                <p className="mt-1.5 text-xs text-rose-400 font-sans flex items-center gap-1">
+                <p className="mt-1.5 text-xs text-rose-500 font-sans flex items-center gap-1">
                   <AlertCircle className="h-3.5 w-3.5" strokeWidth={1.5} />
                   <span>{errors.name}</span>
                 </p>
@@ -172,7 +172,7 @@ export function ContactForm() {
             <div>
               <label
                 htmlFor="email"
-                className="block text-xs font-mono uppercase tracking-wider text-ink-secondary mb-2"
+                className="block text-xs font-mono uppercase tracking-wider text-slate-600 mb-2 font-medium"
               >
                 Email Address *
               </label>
@@ -183,12 +183,12 @@ export function ContactForm() {
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 placeholder="sarah@company.com"
                 className={cn(
-                  "w-full rounded-xl border bg-white/[0.03] px-4 py-3 text-sm text-ink-headline placeholder:text-ink-muted/50 focus:bg-white/[0.05] focus:outline-none focus:border-cyber-emerald focus:ring-2 focus:ring-cyber-emerald/20 transition-all",
-                  errors.email ? "border-rose-500 bg-rose-500/10" : "border-white/[0.1]"
+                  "w-full rounded-xl border bg-slate-50/50 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all",
+                  errors.email ? "border-rose-500 bg-rose-50/50" : "border-slate-200"
                 )}
               />
               {errors.email && (
-                <p className="mt-1.5 text-xs text-rose-400 font-sans flex items-center gap-1">
+                <p className="mt-1.5 text-xs text-rose-500 font-sans flex items-center gap-1">
                   <AlertCircle className="h-3.5 w-3.5" strokeWidth={1.5} />
                   <span>{errors.email}</span>
                 </p>
@@ -201,7 +201,7 @@ export function ContactForm() {
             <div>
               <label
                 htmlFor="projectType"
-                className="block text-xs font-mono uppercase tracking-wider text-ink-secondary mb-2"
+                className="block text-xs font-mono uppercase tracking-wider text-slate-600 mb-2 font-medium"
               >
                 Project Focus
               </label>
@@ -209,10 +209,10 @@ export function ContactForm() {
                 id="projectType"
                 value={formData.projectType}
                 onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
-                className="w-full rounded-xl border border-white/[0.1] bg-canvas-secondary px-4 py-3 text-sm text-ink-headline focus:outline-none focus:border-cyber-emerald focus:ring-2 focus:ring-cyber-emerald/20 transition-all"
+                className="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-3 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all cursor-pointer"
               >
                 {projectTypes.map((type) => (
-                  <option key={type} value={type} className="bg-canvas text-ink-headline">
+                  <option key={type} value={type} className="text-slate-900">
                     {type}
                   </option>
                 ))}
@@ -222,7 +222,7 @@ export function ContactForm() {
             <div>
               <label
                 htmlFor="budget"
-                className="block text-xs font-mono uppercase tracking-wider text-ink-secondary mb-2"
+                className="block text-xs font-mono uppercase tracking-wider text-slate-600 mb-2 font-medium"
               >
                 Estimated Budget Range
               </label>
@@ -230,10 +230,10 @@ export function ContactForm() {
                 id="budget"
                 value={formData.budget}
                 onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                className="w-full rounded-xl border border-white/[0.1] bg-canvas-secondary px-4 py-3 text-sm text-ink-headline focus:outline-none focus:border-cyber-emerald focus:ring-2 focus:ring-cyber-emerald/20 transition-all"
+                className="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-3 text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all cursor-pointer"
               >
                 {budgetRanges.map((range) => (
-                  <option key={range} value={range} className="bg-canvas text-ink-headline">
+                  <option key={range} value={range} className="text-slate-900">
                     {range}
                   </option>
                 ))}
@@ -245,7 +245,7 @@ export function ContactForm() {
           <div>
             <label
               htmlFor="timeline"
-              className="block text-xs font-mono uppercase tracking-wider text-ink-secondary mb-2"
+              className="block text-xs font-mono uppercase tracking-wider text-slate-600 mb-2 font-medium"
             >
               Target Launch Timeline
             </label>
@@ -258,8 +258,8 @@ export function ContactForm() {
                   className={cn(
                     "px-3 py-2.5 text-xs font-mono font-medium rounded-xl border text-center transition-all cursor-pointer",
                     formData.timeline === time
-                      ? "bg-cyber-emerald text-canvas font-bold border-cyber-emerald shadow-glow-emerald"
-                      : "bg-white/[0.03] text-ink-secondary border-white/[0.08] hover:bg-white/[0.07] hover:text-ink-headline"
+                      ? "bg-slate-900 text-white font-semibold border-slate-900 shadow-sm"
+                      : "bg-slate-50 text-slate-600 border-slate-200 hover:bg-slate-100 hover:text-slate-900"
                   )}
                 >
                   {time}
@@ -272,7 +272,7 @@ export function ContactForm() {
           <div>
             <label
               htmlFor="message"
-              className="block text-xs font-mono uppercase tracking-wider text-ink-secondary mb-2"
+              className="block text-xs font-mono uppercase tracking-wider text-slate-600 mb-2 font-medium"
             >
               Project Specifications &amp; Objectives *
             </label>
@@ -283,12 +283,12 @@ export function ContactForm() {
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               placeholder="Tell me about your architectural requirements, key goals, target timeline, or link to Figma/existing site..."
               className={cn(
-                "w-full rounded-xl border bg-white/[0.03] px-4 py-3 text-sm text-ink-headline placeholder:text-ink-muted/50 focus:bg-white/[0.05] focus:outline-none focus:border-cyber-emerald focus:ring-2 focus:ring-cyber-emerald/20 transition-all",
-                errors.message ? "border-rose-500 bg-rose-500/10" : "border-white/[0.1]"
+                "w-full rounded-xl border bg-slate-50/50 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all",
+                errors.message ? "border-rose-500 bg-rose-50/50" : "border-slate-200"
               )}
             />
             {errors.message && (
-              <p className="mt-1.5 text-xs text-rose-400 font-sans flex items-center gap-1">
+              <p className="mt-1.5 text-xs text-rose-500 font-sans flex items-center gap-1">
                 <AlertCircle className="h-3.5 w-3.5" strokeWidth={1.5} />
                 <span>{errors.message}</span>
               </p>
@@ -306,7 +306,7 @@ export function ContactForm() {
             >
               Transmit Project Inquiry
             </Button>
-            <p className="mt-3 text-xs text-ink-muted font-mono">
+            <p className="mt-3 text-xs text-slate-500 font-mono">
               Direct founder review by Juel Rahman. Guaranteed reply within 24 business hours.
             </p>
           </div>

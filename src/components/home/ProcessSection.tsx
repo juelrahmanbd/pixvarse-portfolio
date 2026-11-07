@@ -2,71 +2,67 @@
 
 import React from "react";
 import { processSteps } from "@/data/process";
+import { SectionHeading } from "../ui/SectionHeading";
+import { Compass, FileSpreadsheet, Code2, ShieldCheck, Rocket } from "lucide-react";
 
-/**
- * ProcessSection — Huge Inc Benchmark
- * Razor-sharp architectural columns, massive JetBrains Mono counters,
- * no rounded containers, pure high-contrast typography.
- */
+const stepIcons = [
+  <Compass key="1" className="h-4 w-4 text-blue-600" strokeWidth={1.5} />,
+  <FileSpreadsheet key="2" className="h-4 w-4 text-blue-600" strokeWidth={1.5} />,
+  <Code2 key="3" className="h-4 w-4 text-blue-600" strokeWidth={1.5} />,
+  <ShieldCheck key="4" className="h-4 w-4 text-blue-600" strokeWidth={1.5} />,
+  <Rocket key="5" className="h-4 w-4 text-blue-600" strokeWidth={1.5} />,
+];
+
 export function ProcessSection() {
   return (
-    <section className="relative bg-canvas text-ink-primary overflow-hidden border-b border-white/10">
-      {/* Section Header */}
-      <div className="pt-20 sm:pt-28 pb-10 px-4 sm:px-8 max-w-[1560px] mx-auto border-b border-white/10">
-        <div className="flex items-center gap-2 mb-3 font-mono text-xs uppercase tracking-widest text-cyber-magenta font-semibold">
-          <span className="h-1.5 w-1.5 rounded-full bg-cyber-magenta" />
-          <span>{"[ 04 // ENGINEERING LIFECYCLE ]"}</span>
+    <section className="py-24 sm:py-32 bg-white text-slate-900 overflow-hidden border-b border-slate-200/80">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mb-12 sm:mb-16">
+          <SectionHeading
+            eyebrow="METHODOLOGY // PRECISION DELIVERY"
+            title="Disciplined Engineering."
+            highlight="Predictable Timelines."
+            description="A transparent, five-phase delivery lifecycle designed to eliminate guesswork, respect sprint timelines, and guarantee architectural excellence."
+          />
         </div>
 
-        <h2 className="text-4xl sm:text-6xl md:text-8xl font-display font-black tracking-[-0.05em] uppercase text-white leading-[0.85]">
-          PRECISION <span className="text-stroke-white opacity-40">DELIVERY</span>
-        </h2>
-      </div>
+        {/* 5-Step Process Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          {processSteps.map((step, idx) => (
+            <div
+              key={step.step}
+              className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-card hover:shadow-cardHover hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+            >
+              <div className="space-y-4">
+                <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+                  <span className="font-mono text-xs font-bold text-blue-600">
+                    Phase {step.step}
+                  </span>
+                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 border border-blue-100">
+                    {stepIcons[idx]}
+                  </div>
+                </div>
 
-      {/* 5 Column Brutalist Process Grid */}
-      <div className="max-w-[1560px] mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 divide-y md:divide-y-0 md:divide-x divide-white/10 border-b border-white/10">
-        {processSteps.map((step) => (
-          <div
-            key={step.step}
-            className="group p-6 sm:p-8 flex flex-col justify-between hover:bg-white/[0.02] transition-colors"
-          >
-            <div className="space-y-6">
-              {/* Massive Counter in JetBrains Mono */}
-              <div className="flex items-center justify-between pb-4 border-b border-white/10">
-                <span className="font-mono text-5xl font-black text-white/20 group-hover:text-cyber-magenta transition-colors duration-300 leading-none select-none">
-                  {step.step}
-                </span>
-                <span className="text-[10px] font-mono uppercase tracking-widest text-cyber-emerald font-semibold">
-                  PHASE
-                </span>
-              </div>
-
-              {/* Title & Tagline */}
-              <div className="space-y-1">
-                <h3 className="text-xl font-display font-black uppercase text-white tracking-tight group-hover:text-cyber-emerald transition-colors">
+                <h3 className="text-lg font-display font-bold text-slate-900 tracking-tight">
                   {step.title}
                 </h3>
-                <p className="text-xs font-mono text-ink-muted">
-                  {step.tagline}
+
+                <p className="text-xs text-slate-600 leading-relaxed font-sans">
+                  {step.description}
                 </p>
               </div>
 
-              <p className="text-xs text-ink-secondary leading-relaxed font-sans font-normal">
-                {step.description}
-              </p>
+              <div className="mt-6 pt-4 border-t border-slate-100 text-[11px] font-mono">
+                <span className="text-slate-400 block uppercase text-[10px] tracking-wider mb-0.5">
+                  Deliverable
+                </span>
+                <span className="text-slate-800 font-medium">
+                  {step.output}
+                </span>
+              </div>
             </div>
-
-            {/* Deliverable Tag */}
-            <div className="mt-8 pt-4 border-t border-white/10 text-[11px] font-mono">
-              <span className="text-ink-muted uppercase block text-[10px] tracking-wider mb-1">
-                Deliverable
-              </span>
-              <span className="text-white font-medium">
-                {step.output}
-              </span>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );

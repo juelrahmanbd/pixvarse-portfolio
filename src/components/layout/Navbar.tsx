@@ -17,7 +17,7 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 15);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -27,19 +27,19 @@ export function Navbar() {
     <>
       <header
         className={cn(
-          "fixed top-0 left-0 right-0 z-40 transition-all duration-300",
+          "fixed top-0 left-0 right-0 z-40 transition-all duration-200",
           isScrolled
-            ? "bg-canvas/80 backdrop-blur-xl border-b border-white/[0.08] py-3.5 shadow-2xl shadow-black/80"
-            : "bg-transparent py-5"
+            ? "bg-white/90 backdrop-blur-md border-b border-black/[0.06] py-3 shadow-sm"
+            : "bg-white/60 backdrop-blur-sm py-4 border-b border-transparent"
         )}
       >
-        <div className="max-w-[1560px] mx-auto px-4 sm:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Logo variant="light" showTagline={false} />
+            <Logo showTagline={false} />
 
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-2 border border-white/10 bg-black/60 backdrop-blur-xl px-2 py-1">
+            {/* Desktop Navigation Links */}
+            <nav className="hidden md:flex items-center gap-1 bg-slate-50 border border-slate-200/80 p-1 rounded-full">
               {siteConfig.navigation.map((item) => {
                 const isActive = pathname === item.href;
                 return (
@@ -47,10 +47,10 @@ export function Navbar() {
                     key={item.href}
                     href={item.href}
                     className={cn(
-                      "relative px-4 py-1.5 text-xs font-mono font-medium tracking-wider uppercase transition-all duration-200 select-none",
+                      "px-4 py-1.5 text-xs font-sans font-medium rounded-full transition-colors select-none",
                       isActive
-                        ? "bg-white text-black font-bold"
-                        : "text-ink-secondary hover:text-white hover:bg-white/[0.05]"
+                        ? "bg-white text-slate-900 font-semibold shadow-sm"
+                        : "text-slate-600 hover:text-slate-900 hover:bg-white/60"
                     )}
                   >
                     {item.name}
@@ -59,14 +59,14 @@ export function Navbar() {
               })}
             </nav>
 
-            {/* Right Side: Available Indicator & Let's Talk CTA */}
+            {/* Right Side: Available Status & Primary CTA */}
             <div className="hidden lg:flex items-center gap-4">
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] text-xs font-mono">
+              <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200/80 text-xs font-mono">
                 <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyber-emerald opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-cyber-emerald" />
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
                 </span>
-                <span className="text-ink-secondary font-medium">{siteConfig.status.badgeText}</span>
+                <span className="text-emerald-700 font-medium">{siteConfig.status.badgeText}</span>
               </div>
 
               <Button
@@ -79,22 +79,12 @@ export function Navbar() {
               </Button>
             </div>
 
-            {/* Mobile Hamburger Trigger */}
-            <div className="flex md:hidden items-center gap-3">
-              <Button
-                href="/contact"
-                variant="primary"
-                size="sm"
-                className="text-xs px-3 py-1"
-              >
-                Let&apos;s Talk
-              </Button>
-
+            {/* Mobile Hamburger Button */}
+            <div className="flex items-center md:hidden gap-2">
               <button
-                type="button"
                 onClick={() => setMobileMenuOpen(true)}
-                className="p-2 rounded-xl bg-white/[0.04] border border-white/[0.08] text-ink-headline hover:text-cyber-emerald focus:outline-none transition-colors"
-                aria-label="Open mobile navigation menu"
+                className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-50 transition-colors cursor-pointer"
+                aria-label="Open mobile menu"
               >
                 <Menu className="h-5 w-5" strokeWidth={1.5} />
               </button>
@@ -103,12 +93,11 @@ export function Navbar() {
         </div>
       </header>
 
-      {/* Mobile Drawer Menu */}
+      {/* Full-Screen Mobile Drawer */}
       <MobileMenu
         isOpen={mobileMenuOpen}
         onClose={() => setMobileMenuOpen(false)}
         navigation={siteConfig.navigation}
-        currentPath={pathname}
       />
     </>
   );

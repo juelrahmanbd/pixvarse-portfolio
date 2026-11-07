@@ -39,7 +39,7 @@ export default function ContactPage() {
   ];
 
   return (
-    <div className="flex flex-col bg-canvas text-ink-body">
+    <div className="flex flex-col bg-white text-slate-600">
       {/* Master Page Header */}
       <PageHeader
         eyebrow="PROJECT BRIEF // DIRECT CONNECTION"
@@ -49,7 +49,7 @@ export default function ContactPage() {
       />
 
       {/* Main Form & Contact Info Section */}
-      <section className="py-16 sm:py-24 bg-canvas border-b border-white/[0.08] relative">
+      <section className="py-16 sm:py-24 bg-white border-b border-black/[0.06] relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* Left Column: Interactive Form */}
@@ -67,17 +67,17 @@ export default function ContactPage() {
             {/* Right Column: Direct Channels & Guarantee */}
             <div className="lg:col-span-5 space-y-8">
               {/* Direct Info Card */}
-              <div className="rounded-2xl bg-surface-elevated/70 border border-white/[0.08] backdrop-blur-xl p-6 sm:p-8 space-y-6 relative overflow-hidden group shadow-2xl">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-cyber-emerald/10 rounded-full blur-3xl pointer-events-none group-hover:bg-cyber-emerald/20 transition-all duration-700" />
+              <div className="rounded-2xl card-executive bg-slate-50/80 border border-slate-200/80 p-6 sm:p-8 space-y-6 relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-3xl pointer-events-none group-hover:bg-blue-500/10 transition-all duration-700" />
 
                 <div>
                   <div className="flex items-center gap-2 mb-2">
-                    <Sparkles className="h-3.5 w-3.5 text-cyber-emerald" strokeWidth={1.5} />
-                    <span className="text-[11px] font-mono uppercase tracking-widest text-cyber-emerald font-semibold">
+                    <Sparkles className="h-3.5 w-3.5 text-blue-600" strokeWidth={1.5} />
+                    <span className="text-[11px] font-mono uppercase tracking-widest text-blue-600 font-semibold">
                       DIRECT COMMUNICATION
                     </span>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-display font-bold text-ink-headline">
+                  <h3 className="text-xl sm:text-2xl font-display font-bold text-slate-900">
                     Get in Touch Directly
                   </h3>
                 </div>
@@ -86,16 +86,16 @@ export default function ContactPage() {
                   {/* Email */}
                   <a
                     href={`mailto:${siteConfig.email}`}
-                    className="group/item flex items-start gap-4 p-4 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-cyber-emerald/40 hover:bg-white/[0.06] transition-all"
+                    className="group/item flex items-start gap-4 p-4 rounded-xl bg-white border border-slate-200/80 hover:border-blue-500/50 hover:shadow-sm transition-all"
                   >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-cyber-emerald/10 text-cyber-emerald border border-cyber-emerald/20 shrink-0 group-hover/item:scale-105 transition-transform">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 text-blue-600 border border-blue-100 shrink-0 group-hover/item:scale-105 transition-transform">
                       <Mail className="h-5 w-5" strokeWidth={1.5} />
                     </div>
                     <div>
-                      <span className="text-[10px] font-mono uppercase tracking-wider text-ink-muted block">
+                      <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 block">
                         Email Address
                       </span>
-                      <span className="text-sm font-semibold text-ink-headline group-hover/item:text-cyber-emerald transition-colors font-mono">
+                      <span className="text-sm font-semibold text-slate-900 group-hover/item:text-blue-600 transition-colors font-mono">
                         {siteConfig.email}
                       </span>
                     </div>
@@ -106,16 +106,16 @@ export default function ContactPage() {
                     href={siteConfig.whatsapp}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group/item flex items-start gap-4 p-4 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-cyber-emerald/40 hover:bg-white/[0.06] transition-all"
+                    className="group/item flex items-start gap-4 p-4 rounded-xl bg-white border border-slate-200/80 hover:border-blue-500/50 hover:shadow-sm transition-all"
                   >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-cyber-emerald/10 text-cyber-emerald border border-cyber-emerald/20 shrink-0 group-hover/item:scale-105 transition-transform">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 text-blue-600 border border-blue-100 shrink-0 group-hover/item:scale-105 transition-transform">
                       <MessageSquare className="h-5 w-5" strokeWidth={1.5} />
                     </div>
                     <div>
-                      <span className="text-[10px] font-mono uppercase tracking-wider text-ink-muted block">
+                      <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 block">
                         WhatsApp Chat
                       </span>
-                      <span className="text-sm font-semibold text-ink-headline group-hover/item:text-cyber-emerald transition-colors">
+                      <span className="text-sm font-semibold text-slate-900 group-hover/item:text-blue-600 transition-colors">
                         Direct Message on WhatsApp
                       </span>
                     </div>
@@ -126,16 +126,16 @@ export default function ContactPage() {
                     href={siteConfig.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group/item flex items-start gap-4 p-4 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-cyber-emerald/40 hover:bg-white/[0.06] transition-all"
+                    className="group/item flex items-start gap-4 p-4 rounded-xl bg-white border border-slate-200/80 hover:border-blue-500/50 hover:shadow-sm transition-all"
                   >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-cyber-emerald/10 text-cyber-emerald border border-cyber-emerald/20 shrink-0 group-hover/item:scale-105 transition-transform">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 text-blue-600 border border-blue-100 shrink-0 group-hover/item:scale-105 transition-transform">
                       <GithubIcon className="h-5 w-5" />
                     </div>
                     <div>
-                      <span className="text-[10px] font-mono uppercase tracking-wider text-ink-muted block">
+                      <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 block">
                         GitHub Profile &amp; Repos
                       </span>
-                      <span className="text-sm font-semibold text-ink-headline group-hover/item:text-cyber-emerald transition-colors font-mono">
+                      <span className="text-sm font-semibold text-slate-900 group-hover/item:text-blue-600 transition-colors font-mono">
                         github.com/juelrahmanbd
                       </span>
                     </div>
@@ -146,16 +146,16 @@ export default function ContactPage() {
                     href={siteConfig.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group/item flex items-start gap-4 p-4 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-cyber-emerald/40 hover:bg-white/[0.06] transition-all"
+                    className="group/item flex items-start gap-4 p-4 rounded-xl bg-white border border-slate-200/80 hover:border-blue-500/50 hover:shadow-sm transition-all"
                   >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-cyber-emerald/10 text-cyber-emerald border border-cyber-emerald/20 shrink-0 group-hover/item:scale-105 transition-transform">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 text-blue-600 border border-blue-100 shrink-0 group-hover/item:scale-105 transition-transform">
                       <LinkedinIcon className="h-5 w-5" />
                     </div>
                     <div>
-                      <span className="text-[10px] font-mono uppercase tracking-wider text-ink-muted block">
+                      <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 block">
                         LinkedIn Network
                       </span>
-                      <span className="text-sm font-semibold text-ink-headline group-hover/item:text-cyber-emerald transition-colors">
+                      <span className="text-sm font-semibold text-slate-900 group-hover/item:text-blue-600 transition-colors">
                         Juel Rahman
                       </span>
                     </div>
@@ -163,29 +163,29 @@ export default function ContactPage() {
                 </div>
 
                 {/* Status Indicator */}
-                <div className="pt-5 border-t border-white/[0.08] flex items-center justify-between text-xs font-mono">
+                <div className="pt-5 border-t border-slate-200 flex items-center justify-between text-xs font-mono">
                   <div className="flex items-center gap-2">
                     <span className="relative flex h-2 w-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyber-emerald opacity-75" />
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-cyber-emerald" />
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75" />
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
                     </span>
-                    <span className="font-semibold text-cyber-emerald">{siteConfig.status.badgeText}</span>
+                    <span className="font-semibold text-emerald-600">{siteConfig.status.badgeText}</span>
                   </div>
-                  <span className="text-ink-muted text-[11px]">Remote Worldwide</span>
+                  <span className="text-slate-500 text-[11px]">Remote Worldwide</span>
                 </div>
               </div>
 
               {/* Service SLA Commitment */}
-              <div className="rounded-2xl bg-surface-elevated/40 border border-white/[0.08] p-6 sm:p-8 space-y-3 backdrop-blur-md">
-                <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-cyber-emerald font-semibold">
+              <div className="rounded-2xl card-executive bg-slate-50/50 border border-slate-200/80 p-6 sm:p-8 space-y-3">
+                <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-emerald-700 font-semibold">
                   <Clock className="h-4 w-4" strokeWidth={1.5} />
                   <span>24-Hour Response Guarantee</span>
                 </div>
-                <p className="text-xs sm:text-sm text-ink-muted leading-relaxed font-sans">
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans">
                   Every inquiry receives a personal, technical evaluation from Juel Rahman within 24 business hours. No automated robot answers — just real assessment and actionable next steps.
                 </p>
-                <div className="pt-2 flex items-center gap-2 text-[11px] font-mono text-ink-muted">
-                  <ShieldCheck className="h-3.5 w-3.5 text-cyber-cyan" strokeWidth={1.5} />
+                <div className="pt-2 flex items-center gap-2 text-[11px] font-mono text-slate-500">
+                  <ShieldCheck className="h-3.5 w-3.5 text-blue-600" strokeWidth={1.5} />
                   <span>Confidentiality &amp; NDA standard respected</span>
                 </div>
               </div>
@@ -195,7 +195,7 @@ export default function ContactPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 sm:py-24 bg-canvas-subtle/30 border-b border-white/[0.08]">
+      <section className="py-16 sm:py-24 bg-slate-50/60 border-b border-black/[0.06]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <SectionHeading
             eyebrow="FAQ // FREQUENTLY ASKED QUESTIONS"
@@ -209,15 +209,15 @@ export default function ContactPage() {
             {faqs.map((faq, idx) => (
               <div
                 key={idx}
-                className="rounded-2xl bg-surface-elevated/60 border border-white/[0.08] p-6 hover:border-white/[0.14] transition-all space-y-2 backdrop-blur-sm"
+                className="rounded-2xl card-executive bg-white border border-slate-200/80 p-6 hover:border-slate-300 transition-all space-y-2"
               >
-                <h3 className="text-base sm:text-lg font-display font-semibold text-ink-headline flex items-start gap-3">
-                  <span className="font-mono text-xs text-cyber-emerald bg-cyber-emerald/10 px-2 py-0.5 rounded border border-cyber-emerald/20 mt-0.5 font-semibold shrink-0">
+                <h3 className="text-base sm:text-lg font-display font-semibold text-slate-900 flex items-start gap-3">
+                  <span className="font-mono text-xs text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded border border-blue-200/60 font-semibold shrink-0">
                     Q{idx + 1}
                   </span>
                   <span>{faq.q}</span>
                 </h3>
-                <p className="text-sm text-ink-muted leading-relaxed font-sans pl-10">
+                <p className="text-sm text-slate-600 leading-relaxed font-sans pl-10">
                   {faq.a}
                 </p>
               </div>

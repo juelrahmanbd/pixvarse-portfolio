@@ -17,14 +17,14 @@ const expertiseList = [
 
 export function ExpertiseStrip() {
   return (
-    <div className="relative border-y border-white/[0.08] bg-canvas-secondary/80 backdrop-blur-md py-4 overflow-hidden select-none">
+    <div className="relative border-y border-slate-200/80 bg-slate-50 py-3.5 overflow-hidden select-none">
       <div className="flex items-center space-x-8 whitespace-nowrap animate-marquee">
         {[...expertiseList, ...expertiseList].map((tech, idx) => (
           <div key={idx} className="inline-flex items-center space-x-6">
-            <span className="text-xs sm:text-sm font-mono font-medium tracking-widest text-ink-secondary uppercase hover:text-cyber-emerald transition-colors">
+            <span className="text-xs font-mono font-medium tracking-wider text-slate-600 uppercase hover:text-blue-600 transition-colors">
               {tech}
             </span>
-            <span className="h-1.5 w-1.5 rounded-full bg-cyber-emerald shadow-glow-emerald" />
+            <span className="h-1.5 w-1.5 rounded-full bg-blue-600" />
           </div>
         ))}
       </div>

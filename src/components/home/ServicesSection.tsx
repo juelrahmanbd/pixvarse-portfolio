@@ -3,91 +3,107 @@
 import React from "react";
 import Link from "next/link";
 import { servicesData } from "@/data/services";
-import { ArrowUpRight, ArrowRight } from "lucide-react";
+import { SectionHeading } from "../ui/SectionHeading";
+import { Button } from "../ui/Button";
+import {
+  Globe,
+  Layout,
+  Code2,
+  Server,
+  Layers,
+  Gauge,
+  ArrowRight,
+} from "lucide-react";
 
-/**
- * ServicesSection — Huge Inc Benchmark
- * Architectural list with massive JetBrains Mono counters,
- * razor-thin borders, zero rounded boxes, pure typography.
- */
+const iconMap: Record<string, React.ReactNode> = {
+  Globe: <Globe className="h-5 w-5 text-blue-600" strokeWidth={1.5} />,
+  Layout: <Layout className="h-5 w-5 text-blue-600" strokeWidth={1.5} />,
+  Code2: <Code2 className="h-5 w-5 text-blue-600" strokeWidth={1.5} />,
+  Server: <Server className="h-5 w-5 text-blue-600" strokeWidth={1.5} />,
+  Layers: <Layers className="h-5 w-5 text-blue-600" strokeWidth={1.5} />,
+  Gauge: <Gauge className="h-5 w-5 text-blue-600" strokeWidth={1.5} />,
+};
+
 export function ServicesSection() {
   const coreServices = servicesData.slice(0, 6);
 
   return (
-    <section className="relative bg-canvas text-ink-primary overflow-hidden border-b border-white/10">
-      {/* Section Header */}
-      <div className="pt-20 sm:pt-28 pb-10 px-4 sm:px-8 max-w-[1560px] mx-auto border-b border-white/10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div>
-            <div className="flex items-center gap-2 mb-3 font-mono text-xs uppercase tracking-widest text-cyber-magenta font-semibold">
-              <span className="h-1.5 w-1.5 rounded-full bg-cyber-magenta" />
-              <span>{"[ 03 // CORE CAPABILITIES ]"}</span>
-            </div>
+    <section className="py-24 sm:py-32 bg-slate-50/50 text-slate-900 overflow-hidden border-b border-slate-200/80">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Heading */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
+          <SectionHeading
+            eyebrow="CORE CAPABILITIES"
+            title="Engineered for Reliability."
+            highlight="Tailored for Growth."
+            description="Comprehensive full-stack engineering capabilities designed to give your digital platform a decisive speed and architectural advantage."
+          />
 
-            <h2 className="text-4xl sm:text-6xl md:text-8xl font-display font-black tracking-[-0.05em] uppercase text-white leading-[0.85]">
-              TECHNICAL <span className="text-stroke-white opacity-40">MASTERY</span>
-            </h2>
-          </div>
-
-          <div className="flex items-center gap-6 font-mono text-xs">
-            <Link
-              href="/services"
-              className="inline-flex items-center gap-2 text-white hover:text-cyber-emerald uppercase tracking-wider font-bold transition-colors"
-            >
-              <span>Full Service Matrix</span>
-              <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
-            </Link>
-          </div>
-        </div>
-      </div>
-
-      {/* Brutalist Architectural Capabilities Rows */}
-      <div className="divide-y divide-white/10">
-        {coreServices.map((service, idx) => (
-          <Link
-            key={service.id}
-            href={`/services#${service.id}`}
-            className="group block w-full hover:bg-white/[0.02] transition-colors"
+          <Button
+            href="/services"
+            variant="secondary"
+            size="md"
+            icon={<ArrowRight className="h-4 w-4" strokeWidth={1.5} />}
           >
-            <div className="max-w-[1560px] mx-auto px-4 sm:px-8 py-8 sm:py-12 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-              {/* Massive JetBrains Mono Counter */}
-              <div className="md:col-span-2">
-                <span className="font-mono text-5xl sm:text-6xl md:text-7xl font-black text-white/20 group-hover:text-cyber-magenta transition-colors duration-300 leading-none select-none">
-                  0{idx + 1}
-                </span>
-              </div>
+            All Services &amp; Deliverables
+          </Button>
+        </div>
 
-              {/* Service Title & Scope */}
-              <div className="md:col-span-6 space-y-2">
-                <h3 className="text-2xl sm:text-3xl md:text-4xl font-display font-black uppercase text-white tracking-tight group-hover:text-cyber-emerald transition-colors duration-300">
-                  {service.title}
-                </h3>
-                <p className="text-sm font-sans text-ink-secondary leading-relaxed max-w-xl">
-                  {service.shortDescription}
-                </p>
-              </div>
+        {/* 3-Column Structured Executive Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {coreServices.map((service, idx) => {
+            const icon = iconMap[service.iconName] || <Code2 className="h-5 w-5 text-blue-600" strokeWidth={1.5} />;
 
-              {/* Tech Stack Chips */}
-              <div className="md:col-span-3 flex flex-wrap gap-2">
-                {service.technologies.slice(0, 4).map((tech, i) => (
-                  <span
-                    key={i}
-                    className="px-2.5 py-1 border border-white/10 text-[11px] font-mono uppercase tracking-wider text-ink-muted group-hover:border-white/20 transition-colors"
+            return (
+              <div
+                key={service.id}
+                className="group p-6 sm:p-7 rounded-2xl bg-white border border-slate-200/90 shadow-card hover:shadow-cardHover hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+              >
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 border border-blue-100">
+                      {icon}
+                    </div>
+                    <span className="font-mono text-xs font-semibold text-slate-400">
+                      0{idx + 1}
+                    </span>
+                  </div>
+
+                  <h3 className="text-xl font-display font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                    <Link href={`/services#${service.id}`}>
+                      {service.title}
+                    </Link>
+                  </h3>
+
+                  <p className="text-sm text-slate-600 leading-relaxed font-sans">
+                    {service.shortDescription}
+                  </p>
+                </div>
+
+                <div className="pt-6 mt-6 border-t border-slate-100 space-y-3">
+                  <div className="flex flex-wrap gap-1.5">
+                    {service.technologies.slice(0, 3).map((tech, i) => (
+                      <span
+                        key={i}
+                        className="px-2 py-0.5 rounded bg-slate-50 border border-slate-200 text-slate-600 text-[11px] font-mono"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  <Link
+                    href={`/services#${service.id}`}
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-800 transition-colors pt-1"
                   >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              {/* Arrow */}
-              <div className="md:col-span-1 flex justify-end">
-                <div className="flex h-11 w-11 items-center justify-center border border-white/15 text-white group-hover:border-cyber-magenta group-hover:bg-cyber-magenta group-hover:text-black transition-all">
-                  <ArrowUpRight className="h-5 w-5" strokeWidth={1.5} />
+                    <span>View Specifications</span>
+                    <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.5} />
+                  </Link>
                 </div>
               </div>
-            </div>
-          </Link>
-        ))}
+            );
+          })}
+        </div>
       </div>
     </section>
   );

@@ -38,16 +38,16 @@ export function MobileMenu({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col bg-canvas/95 backdrop-blur-2xl text-ink-headline transition-all duration-300">
+    <div className="fixed inset-0 z-50 flex flex-col bg-white/98 backdrop-blur-2xl text-slate-900 transition-all duration-300">
       {/* Top Bar inside Menu */}
-      <div className="flex items-center justify-between px-6 py-5 border-b border-white/[0.08]">
+      <div className="flex items-center justify-between px-6 py-5 border-b border-slate-200">
         <div className="flex items-center gap-2">
-          <span className="font-display font-extrabold text-lg text-ink-headline">PIXVARSE</span>
-          <span className="h-1.5 w-1.5 rounded-full bg-cyber-emerald animate-pulse" />
+          <span className="font-display font-bold text-lg text-slate-900">Pixvarse</span>
+          <span className="h-1.5 w-1.5 rounded-full bg-blue-600" />
         </div>
         <button
           onClick={onClose}
-          className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.05] border border-white/[0.1] text-ink-headline hover:text-cyber-emerald transition-colors"
+          className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-50 transition-colors cursor-pointer"
           aria-label="Close navigation menu"
         >
           <X className="h-5 w-5" strokeWidth={1.5} />
@@ -64,65 +64,63 @@ export function MobileMenu({
                 key={item.href}
                 href={item.href}
                 onClick={onClose}
-                className={`group flex items-center justify-between py-3.5 border-b border-white/[0.06] text-2xl font-display font-bold tracking-tight transition-colors ${
-                  isActive ? "text-cyber-emerald" : "text-ink-headline hover:text-cyber-emerald"
-                }`}
+                className="group flex items-center justify-between py-2 border-b border-slate-100"
               >
                 <div className="flex items-center gap-3">
-                  <span className="font-mono text-xs text-ink-muted">0{idx + 1}</span>
-                  <span>{item.name}</span>
+                  <span className="font-mono text-xs text-slate-400">0{idx + 1}</span>
+                  <span
+                    className={`text-xl font-display font-semibold transition-colors ${
+                      isActive ? "text-blue-600 font-bold" : "text-slate-800 group-hover:text-blue-600"
+                    }`}
+                  >
+                    {item.name}
+                  </span>
                 </div>
-                <ArrowRight
-                  className={`h-5 w-5 transition-transform group-hover:translate-x-1 ${
-                    isActive ? "text-cyber-emerald" : "text-ink-muted"
-                  }`}
-                  strokeWidth={1.5}
-                />
+                <ArrowRight className="h-4 w-4 text-slate-400 group-hover:translate-x-1 transition-transform" />
               </Link>
             );
           })}
         </nav>
 
-        {/* Bottom Drawer Actions */}
-        <div className="pt-8 space-y-6">
-          <div className="rounded-xl bg-white/[0.03] border border-white/[0.08] p-5 space-y-2">
-            <span className="text-[10px] font-mono uppercase tracking-widest text-cyber-emerald block font-semibold">
-              DIRECT CONNECTION
-            </span>
+        {/* Footer Area inside Mobile Menu */}
+        <div className="pt-8 border-t border-slate-200 space-y-6">
+          <div className="flex items-center justify-between">
+            <span className="font-mono text-xs text-slate-500 uppercase">Availability</span>
+            <div className="flex items-center gap-2 text-xs font-mono text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+              <span>Available for Projects</span>
+            </div>
+          </div>
+
+          <div className="flex gap-3">
+            <Button
+              href="/contact"
+              variant="primary"
+              size="md"
+              className="flex-1 justify-center"
+              onClick={onClose}
+            >
+              Start Project
+            </Button>
             <a
               href={`mailto:${siteConfig.email}`}
-              className="text-sm font-sans font-medium text-ink-secondary hover:text-cyber-emerald transition-colors flex items-center gap-2"
+              className="flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-50 transition-colors"
+              aria-label="Direct Email"
             >
-              <Mail className="h-4 w-4" strokeWidth={1.5} />
-              <span>{siteConfig.email}</span>
+              <Mail className="h-4 w-4" />
             </a>
           </div>
 
-          <div className="flex items-center justify-between pt-2">
-            <div className="flex items-center gap-2">
-              <a
-                href={siteConfig.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.04] border border-white/[0.08] text-ink-secondary hover:text-cyber-emerald transition-colors"
-                aria-label="GitHub Profile"
-              >
+          <div className="flex items-center justify-between text-xs font-mono text-slate-400">
+            <span>&copy; {new Date().getFullYear()} {siteConfig.brandName}</span>
+            <div className="flex items-center gap-4">
+              <a href={siteConfig.github} target="_blank" rel="noopener noreferrer" className="hover:text-slate-900">
                 <GithubIcon className="h-4 w-4" />
               </a>
-              <a
-                href={siteConfig.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.04] border border-white/[0.08] text-ink-secondary hover:text-cyber-emerald transition-colors"
-                aria-label="LinkedIn Profile"
-              >
+              <a href={siteConfig.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-slate-900">
                 <LinkedinIcon className="h-4 w-4" />
               </a>
             </div>
-
-            <Button href="/contact" variant="primary" size="md" onClick={onClose}>
-              Start a Project
-            </Button>
           </div>
         </div>
       </div>

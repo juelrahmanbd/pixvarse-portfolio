@@ -11,57 +11,68 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Luxury Obsidian Canvas Tokens (Huge Inc #050505 standard)
+        // Ultra-Clean Light Canvas Architecture (Swiss/Apple standard)
         canvas: {
-          DEFAULT: "#050505", // Stark unapologetic obsidian black
-          secondary: "#0A0A0A", // Elevated secondary stark dark
-          elevated: "#111111", // Subtle raised layer
+          DEFAULT: "#FFFFFF", // Pure white background
+          secondary: "#F8F9FA", // Secondary subtle canvas
+          elevated: "#FFFFFF",
+          subtle: "#F4F5F7",
         },
-        // Elevated Surfaces & Obsidian Glass
+        // Card & Elevated Surfaces
         surface: {
-          obsidian: "rgba(255, 255, 255, 0.02)",
-          card: "rgba(255, 255, 255, 0.03)",
-          elevated: "rgba(255, 255, 255, 0.05)",
-          glass: "rgba(5, 5, 5, 0.85)",
-          active: "rgba(255, 255, 255, 0.08)",
+          DEFAULT: "#FFFFFF",
+          card: "#FFFFFF",
+          elevated: "#FFFFFF",
+          glass: "rgba(255, 255, 255, 0.85)",
+          active: "#F8F9FA",
+          subtle: "#F1F5F9",
         },
-        // High-Contrast High-Tech Text Tokens
+        // Deep Charcoal & Refined Slate Contrast
         ink: {
-          headline: "#FFFFFF", // Pure White
-          primary: "#F3F4F6", // Crisp Primary Body
-          secondary: "#A1A1AA", // Muted Fog Gray
-          muted: "#71717A", // Subtle Caption Gray
-          faint: "#3F3F46", // Hairline Metadata Gray
+          headline: "#0F172A", // Deep Charcoal/Slate Black
+          primary: "#1E293B", // Crisp Body Slate
+          secondary: "#475569", // Refined Slate (line-height relaxed)
+          muted: "#64748B", // Subtle Metadata Slate
+          faint: "#94A3B8", // Hairline Slate
         },
-        // High-Voltage Accent Color System
+        // Premium Executive Accents
+        accent: {
+          cobalt: "#2563EB", // Tech Cobalt Blue
+          cobaltDark: "#1D4ED8",
+          cobaltLight: "#EFF6FF",
+          emerald: "#059669", // Subtle Emerald
+          emeraldLight: "#ECFDF5",
+        },
+        // Compatibility Aliases for Cyber/Legacy Tokens
         cyber: {
-          emerald: "#00F5A0", // Electric Cyber Emerald
-          magenta: "#FF0055", // Huge Inc Electric Magenta
-          cyan: "#00D9F5", // Cyber Cyan
-          amber: "#FF6B4A", // Warm Amber Glow
-          emeraldGlow: "rgba(0, 245, 160, 0.25)",
-          magentaGlow: "rgba(255, 0, 85, 0.35)",
+          emerald: "#059669",
+          cyan: "#2563EB",
+          magenta: "#2563EB",
+          amber: "#D97706",
+          emeraldGlow: "rgba(5, 150, 105, 0.15)",
+          magentaGlow: "rgba(37, 99, 235, 0.15)",
         },
-        // Border & Glass Edge Tokens
+        // Razor-Thin Borders & Dividers
         edge: {
-          subtle: "rgba(255, 255, 255, 0.08)", // 1px subtle obsidian border
-          glass: "rgba(255, 255, 255, 0.12)", // Highlight border
-          strong: "rgba(255, 255, 255, 0.20)", // Active card border
-          emerald: "rgba(0, 245, 160, 0.40)", // Emerald accent glow border
-          cyan: "rgba(0, 217, 245, 0.40)", // Cyan accent glow border
+          DEFAULT: "#E5E7EB",
+          subtle: "#E5E7EB", // Razor-thin crisp border
+          hairline: "rgba(0, 0, 0, 0.06)",
+          glass: "rgba(0, 0, 0, 0.08)",
+          strong: "#CBD5E1",
+          emerald: "#059669",
+          cyan: "#2563EB",
         },
       },
       fontFamily: {
         display: [
-          "var(--font-syne)",
-          "var(--font-plus-jakarta)",
+          "var(--font-jakarta)",
+          "var(--font-inter)",
           "-apple-system",
           "BlinkMacSystemFont",
           "sans-serif",
         ],
         sans: [
           "var(--font-inter)",
-          "var(--font-geist-sans)",
           "-apple-system",
           "BlinkMacSystemFont",
           "sans-serif",
@@ -77,48 +88,11 @@ module.exports = {
         ],
       },
       boxShadow: {
-        "glow-emerald": "0 0 30px -5px rgba(0, 245, 160, 0.35)",
-        "glow-emerald-lg": "0 0 50px -10px rgba(0, 245, 160, 0.45)",
-        "glow-cyan": "0 0 30px -5px rgba(0, 217, 245, 0.35)",
-        "glow-amber": "0 0 30px -5px rgba(255, 107, 74, 0.35)",
-        "glass-card": "0 8px 32px 0 rgba(0, 0, 0, 0.37)",
-        "glass-inner": "inset 0 1px 1px 0 rgba(255, 255, 255, 0.1)",
-      },
-      animation: {
-        spotlight: "spotlight 2s ease .75s 1 forwards",
-        "border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
-        "pulse-glow": "pulse-glow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-        marquee: "marquee 35s linear infinite",
-        "shine-pulse": "shine 4s ease-in-out infinite",
-      },
-      keyframes: {
-        spotlight: {
-          "0%": {
-            opacity: "0",
-            transform: "translate(-72%, -62%) scale(0.5)",
-          },
-          "100%": {
-            opacity: "1",
-            transform: "translate(-50%,-40%) scale(1)",
-          },
-        },
-        "border-beam": {
-          "100%": {
-            "offset-distance": "100%",
-          },
-        },
-        "pulse-glow": {
-          "0%, 100%": { opacity: "0.4", transform: "scale(1)" },
-          "50%": { opacity: "0.8", transform: "scale(1.05)" },
-        },
-        marquee: {
-          "0%": { transform: "translateX(0%)" },
-          "100%": { transform: "translateX(-50%)" },
-        },
-        shine: {
-          "0%, 100%": { opacity: "0.3" },
-          "50%": { opacity: "0.8" },
-        },
+        card: "0 1px 3px rgba(0, 0, 0, 0.04), 0 10px 30px -10px rgba(0, 0, 0, 0.05)",
+        cardHover: "0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04)",
+        subtle: "0 1px 2px rgba(0, 0, 0, 0.04)",
+        elevated: "0 20px 40px -15px rgba(0, 0, 0, 0.07)",
+        float: "0 25px 50px -12px rgba(0, 0, 0, 0.08)",
       },
     },
   },

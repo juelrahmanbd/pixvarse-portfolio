@@ -1,11 +1,11 @@
 import Link from "next/link";
 import React from "react";
 import { Loader2 } from "lucide-react";
-import { cn } from "@/lib/utils";
 
 export type ButtonVariant =
   | "primary"
   | "secondary"
+  | "cobalt"
   | "cyber-cyan"
   | "amber"
   | "forest"
@@ -30,8 +30,8 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 }
 
 /**
- * Reusable Precision Button Primitive
- * High-performance styling with Electric Cyber Emerald, Obsidian Glass, and micro-hover states
+ * Reusable Executive Button Primitive
+ * High-legibility Swiss/Apple styling with Solid Slate, Crisp White, and Tech Cobalt accents
  */
 export function Button({
   children,
@@ -48,48 +48,46 @@ export function Button({
   ...props
 }: ButtonProps) {
   const baseStyles =
-    "relative inline-flex items-center justify-center font-sans font-semibold rounded-full select-none transition-all duration-200 focus-ring disabled:opacity-40 disabled:pointer-events-none cursor-pointer group overflow-hidden";
+    "relative inline-flex items-center justify-center font-sans font-medium rounded-xl select-none transition-all duration-200 focus-ring disabled:opacity-40 disabled:pointer-events-none cursor-pointer group";
 
   const sizeStyles: Record<ButtonSize, string> = {
     sm: "text-xs px-3.5 py-1.5 gap-1.5",
     md: "text-xs sm:text-sm px-5 py-2.5 gap-2",
-    lg: "text-sm sm:text-base px-7 py-3.5 gap-2.5",
+    lg: "text-sm sm:text-base px-6 py-3.5 gap-2.5",
   };
 
   const variantStyles: Record<ButtonVariant, string> = {
-    // Primary Cyber Emerald CTA
+    // Primary Solid Slate Black (Executive Standard)
     primary:
-      "bg-cyber-emerald text-canvas font-bold shadow-glow-emerald hover:shadow-glow-emerald-lg hover:brightness-110 active:scale-[0.98] border border-cyber-emerald",
+      "bg-slate-900 text-white hover:bg-slate-800 shadow-sm hover:shadow active:scale-[0.98] border border-slate-900",
 
-    // Secondary Obsidian Glass
+    // Secondary Crisp White Card
     secondary:
-      "bg-white/[0.05] text-ink-headline border border-white/[0.12] hover:bg-white/[0.1] hover:border-white/[0.25] active:scale-[0.98]",
+      "bg-white text-slate-800 border border-slate-200 hover:bg-slate-50 hover:border-slate-300 shadow-sm active:scale-[0.98]",
 
-    // Cyber Cyan Accent
+    // Tech Cobalt Accent
+    cobalt:
+      "bg-blue-600 text-white font-medium hover:bg-blue-700 shadow-sm active:scale-[0.98] border border-blue-600",
     "cyber-cyan":
-      "bg-cyber-cyan text-canvas font-bold shadow-glow-cyan hover:shadow-glow-cyan hover:brightness-110 active:scale-[0.98] border border-cyber-cyan",
+      "bg-blue-600 text-white font-medium hover:bg-blue-700 shadow-sm active:scale-[0.98] border border-blue-600",
 
-    // Amber Glow Accent
     amber:
-      "bg-cyber-amber text-canvas font-bold shadow-glow-amber hover:brightness-110 active:scale-[0.98] border border-cyber-amber",
+      "bg-amber-600 text-white font-medium hover:bg-amber-700 shadow-sm active:scale-[0.98] border border-amber-600",
 
-    // Glass Panel
     glass:
-      "glass-panel text-ink-headline hover:text-cyber-emerald border-edge-glass hover:border-cyber-emerald/50 active:scale-[0.98]",
+      "bg-white/80 backdrop-blur-md text-slate-800 border border-slate-200 hover:bg-white hover:border-slate-300 shadow-sm active:scale-[0.98]",
 
-    // Outline
     outline:
-      "bg-transparent text-ink-primary border border-white/[0.15] hover:border-cyber-emerald hover:text-cyber-emerald active:scale-[0.98]",
+      "bg-transparent text-slate-700 border border-slate-300 hover:bg-slate-50 hover:text-slate-900 active:scale-[0.98]",
 
     // Backwards-compatible aliases
     forest:
-      "bg-white/[0.08] text-cyber-emerald border border-cyber-emerald/30 hover:border-cyber-emerald active:scale-[0.98]",
+      "bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100 active:scale-[0.98]",
     "lime-outline":
-      "bg-transparent text-cyber-emerald border border-cyber-emerald/50 hover:bg-cyber-emerald/10 active:scale-[0.98]",
+      "bg-transparent text-blue-600 border border-blue-200 hover:bg-blue-50 active:scale-[0.98]",
 
-    // Ghost & Text
-    ghost: "bg-transparent text-ink-secondary hover:text-ink-headline hover:bg-white/[0.04]",
-    text: "bg-transparent text-ink-secondary hover:text-cyber-emerald underline-offset-4 hover:underline p-0",
+    ghost: "bg-transparent text-slate-600 hover:text-slate-900 hover:bg-slate-100/70",
+    text: "bg-transparent text-slate-600 hover:text-blue-600 underline-offset-4 hover:underline p-0",
   };
 
   const content = (
@@ -109,18 +107,18 @@ export function Button({
     </>
   );
 
-  const mergedClasses = cn(baseStyles, sizeStyles[size], variantStyles[variant], className);
+  const combinedClass = `${baseStyles} ${sizeStyles[size]} ${variantStyles[variant]} ${className}`;
 
   if (href) {
     return (
-      <Link href={href} className={mergedClasses} target={target} rel={rel}>
+      <Link href={href} className={combinedClass} target={target} rel={rel}>
         {content}
       </Link>
     );
   }
 
   return (
-    <button className={mergedClasses} disabled={disabled || isLoading} {...props}>
+    <button className={combinedClass} disabled={disabled || isLoading} {...props}>
       {content}
     </button>
   );

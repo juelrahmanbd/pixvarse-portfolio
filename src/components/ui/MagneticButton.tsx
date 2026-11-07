@@ -52,13 +52,13 @@ export function MagneticButton({
 
   const variantStyles = {
     primary:
-      "bg-cyber-emerald text-canvas font-bold shadow-glow-emerald hover:shadow-glow-emerald-lg border border-cyber-emerald",
+      "bg-slate-900 text-white font-semibold hover:bg-blue-600 shadow-sm border border-slate-900",
     secondary:
-      "bg-white/[0.05] text-ink-headline border border-white/[0.12] hover:bg-white/[0.1] hover:border-white/[0.25]",
+      "bg-white text-slate-800 border border-slate-200 hover:border-slate-300 hover:bg-slate-50 shadow-sm",
     glass:
-      "glass-panel text-ink-headline hover:text-cyber-emerald border-edge-glass hover:border-cyber-emerald/50",
+      "bg-white/80 backdrop-blur-md text-slate-900 hover:text-blue-600 border border-black/[0.08] hover:border-blue-500/40",
     outline:
-      "bg-transparent text-ink-primary border border-white/[0.15] hover:border-cyber-emerald hover:text-cyber-emerald",
+      "bg-transparent text-slate-700 border border-slate-300 hover:border-blue-600 hover:text-blue-600",
   };
 
   const content = (

@@ -29,15 +29,15 @@ export function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
     // Register GSAP plugins
     gsap.registerPlugin(ScrollTrigger);
 
-    // Initialize modern Lenis smooth scroll
+    // Initialize modern Lenis smooth scroll (lightweight & natural Apple/Swiss feel)
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 0.9,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 1.8,
+      wheelMultiplier: 1.1,
+      touchMultiplier: 1.5,
     });
 
     lenisRef.current = lenis;

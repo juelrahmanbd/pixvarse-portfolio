@@ -1,17 +1,15 @@
 import type { Metadata, Viewport } from "next";
-import { Syne, Inter, JetBrains_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { siteConfig } from "@/data/siteConfig";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
-import { NoiseOverlay } from "@/components/ui/NoiseOverlay";
 
-const syne = Syne({
-  variable: "--font-syne",
+const jakarta = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
   subsets: ["latin"],
   display: "swap",
-  weight: ["500", "600", "700", "800"],
 });
 
 const inter = Inter({
@@ -24,11 +22,10 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600", "700"],
 });
 
 export const viewport: Viewport = {
-  themeColor: "#070709",
+  themeColor: "#FFFFFF",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -59,26 +56,18 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: siteConfig.siteUrl,
-    siteName: siteConfig.brandName,
     title: siteConfig.title,
     description: siteConfig.shortDescription,
+    siteName: siteConfig.brandName,
   },
   twitter: {
     card: "summary_large_image",
     title: siteConfig.title,
     description: siteConfig.shortDescription,
-    creator: "@pixvarse",
   },
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
   },
 };
 
@@ -90,13 +79,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${syne.variable} ${inter.variable} ${jetbrainsMono.variable} dark`}
+      className={`${jakarta.variable} ${inter.variable} ${jetbrainsMono.variable} scroll-smooth`}
     >
-      <body className="min-h-screen flex flex-col bg-canvas text-ink-primary font-sans antialiased selection:bg-cyber-emerald/30 selection:text-white">
+      <body className="bg-canvas text-ink-primary font-sans antialiased selection:bg-blue-100 selection:text-blue-900 min-h-screen relative flex flex-col">
         <SmoothScrollProvider>
-          <NoiseOverlay />
           <Navbar />
-          <main className="flex-1">{children}</main>
+          <main className="flex-1 w-full">{children}</main>
           <Footer />
         </SmoothScrollProvider>
       </body>

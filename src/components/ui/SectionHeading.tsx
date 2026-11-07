@@ -14,7 +14,7 @@ export interface SectionHeadingProps {
 
 /**
  * Editorial Section Heading Primitive
- * Combines Syne Display typography with Cyber Emerald highlights and JetBrains Mono badges
+ * Swiss/Apple-grade typography hierarchy with Deep Slate contrast and Tech Cobalt highlights
  */
 export function SectionHeading({
   eyebrow,
@@ -46,29 +46,29 @@ export function SectionHeading({
       )}
     >
       {eyebrow && (
-        <div className="mb-4 sm:mb-5">
-          <Badge variant="emerald" dot={true} dotColor="emerald" size="sm">
+        <div className="mb-3.5 sm:mb-4">
+          <Badge variant="cyan" dot={true} dotColor="cyan" size="sm">
             {eyebrow}
           </Badge>
         </div>
       )}
 
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold tracking-[-0.03em] leading-[1.12] text-ink-headline">
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold tracking-tight leading-[1.15] text-slate-900">
         {highlight && titleParts.match ? (
           <>
             <span>{titleParts.before}</span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyber-emerald via-[#00F5A0] to-cyber-cyan">
+            <span className="text-blue-600">
               {titleParts.match}
             </span>
             <span>{titleParts.after}</span>
           </>
         ) : (
-          title
+          <span>{title}</span>
         )}
       </h2>
 
       {description && (
-        <p className="mt-4 sm:mt-5 text-sm sm:text-base text-ink-secondary leading-relaxed font-sans max-w-xl">
+        <p className="mt-3.5 sm:mt-4 text-base sm:text-lg text-slate-600 leading-relaxed font-sans font-normal">
           {description}
         </p>
       )}

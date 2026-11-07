@@ -3,40 +3,33 @@
 @tailwind utilities;
 
 /* ==========================================================================
-   PIXVARSE AWWWARDS-GRADE LUXURY OBSIDIAN DESIGN SYSTEM
-   Dark Surface Architecture | Cyber Emerald Accents | Precision Typography
+   PIXVARSE ULTRA-CLEAN EXECUTIVE LIGHT THEME
+   Swiss/Apple-grade minimalism | Deep Slate Contrast | Tech Cobalt Accents
    ========================================================================== */
 
 :root {
-  /* Huge Inc Brutalist Luxury Canvas */
-  --canvas-base: #050505;
-  --canvas-secondary: #0A0A0A;
-  --canvas-elevated: #111111;
+  /* Ultra-Clean Light Canvas */
+  --canvas-base: #FFFFFF;
+  --canvas-secondary: #F8F9FA;
+  --canvas-elevated: #FFFFFF;
 
-  /* Stark Surfaces */
-  --surface-obsidian: rgba(255, 255, 255, 0.02);
-  --surface-card: rgba(255, 255, 255, 0.03);
-  --surface-elevated: rgba(255, 255, 255, 0.05);
+  /* Crisp Typography */
+  --ink-headline: #0F172A;
+  --ink-primary: #1E293B;
+  --ink-secondary: #475569;
+  --ink-muted: #64748B;
 
-  /* High-Voltage Accents */
-  --cyber-emerald: #00F5A0;
-  --cyber-magenta: #FF0055;
-  --cyber-cyan: #00D9F5;
-
-  /* High-Contrast Text Tokens */
-  --ink-headline: #FFFFFF;
-  --ink-primary: #F3F4F6;
-  --ink-secondary: #A1A1AA;
-  --ink-muted: #71717A;
+  /* Tech Cobalt & Subtle Emerald Accents */
+  --accent-cobalt: #2563EB;
+  --accent-emerald: #059669;
 
   /* Razor-thin structural borders */
-  --border-subtle: rgba(255, 255, 255, 0.1);
-  --border-glass: rgba(255, 255, 255, 0.16);
-  --border-emerald: rgba(0, 245, 160, 0.5);
+  --border-subtle: #E5E7EB;
+  --border-hairline: rgba(0, 0, 0, 0.06);
 
-  /* Typography Scale Fallbacks */
-  --font-display: var(--font-syne), var(--font-plus-jakarta), -apple-system, sans-serif;
-  --font-sans: var(--font-inter), var(--font-geist-sans), -apple-system, sans-serif;
+  /* Typography Scale */
+  --font-display: var(--font-jakarta), var(--font-inter), -apple-system, sans-serif;
+  --font-sans: var(--font-inter), -apple-system, sans-serif;
   --font-mono: var(--font-mono), monospace;
 }
 
@@ -44,7 +37,7 @@
 html {
   background-color: var(--canvas-base);
   color: var(--ink-primary);
-  color-scheme: dark;
+  color-scheme: light;
   scroll-behavior: auto; /* Managed by Lenis */
 }
 
@@ -60,7 +53,7 @@ body {
 }
 
 /* ==========================================================================
-   LENIS SMOOTH SCROLL REQUIRED STYLES
+   LENIS SMOOTH SCROLL (LIGHTWEIGHT & NATURAL)
    ========================================================================== */
 html.lenis,
 html.lenis body {
@@ -79,86 +72,48 @@ html.lenis body {
   overflow: hidden;
 }
 
-.lenis.lenis-smooth iframe {
-  pointer-events: none;
-}
-
-/* Reduced Motion Preference */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-/* ==========================================================================
-   TACTILE NOISE TEXTURE OVERLAY (2.5% OPACITY)
-   ========================================================================== */
-.noise-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  content: "";
-  opacity: 0.028;
-  pointer-events: none;
-  z-index: 9999;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-}
-
-/* Custom Obsidian Scrollbar */
+/* Crisp Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #070709;
+  background: #F8F9FA;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.12);
+  background: #CBD5E1;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #00F5A0;
+  background: #94A3B8;
 }
 
 /* Selection */
 ::selection {
-  background-color: rgba(0, 245, 160, 0.3);
-  color: #FFFFFF;
+  background-color: #DBEAFE;
+  color: #1E40AF;
 }
 
 /* ==========================================================================
-   GLASSMORPHIC SURFACES & GRADIENT CARDS
+   EXECUTIVE CARDS & ELEVATED SURFACES
    ========================================================================== */
-.glass-panel {
-  background: rgba(11, 12, 16, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+.card-executive {
+  background-color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+  border-radius: 1rem;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.glass-card {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.4);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+.card-executive:hover {
+  transform: translateY(-2px);
+  border-color: rgba(37, 99, 235, 0.25);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
 }
 
-.glass-card:hover {
-  border-color: rgba(255, 255, 255, 0.16);
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.glass-card-glow:hover {
-  border-color: rgba(0, 245, 160, 0.4);
-  box-shadow: 0 0 30px -5px rgba(0, 245, 160, 0.15);
+/* Light Dot Grid Background */
+.bg-dot-grid {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
 /* Focus Ring Accessibility */
@@ -167,37 +122,6 @@ html.lenis body {
   outline-offset: 2px;
 }
 .focus-ring:focus-visible {
-  outline: 2px solid #00F5A0;
+  outline: 2px solid #2563EB;
   outline-offset: 2px;
-}
-
-/* ==========================================================================
-   BRUTALIST KINETIC TYPOGRAPHY & TEXT STROKE UTILITIES
-   ========================================================================== */
-.text-stroke-white {
-  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.28);
-  color: transparent;
-}
-
-.text-stroke-white-thick {
-  -webkit-text-stroke: 2.5px rgba(255, 255, 255, 0.35);
-  color: transparent;
-}
-
-.text-stroke-emerald {
-  -webkit-text-stroke: 1.5px rgba(0, 245, 160, 0.45);
-  color: transparent;
-}
-
-.text-stroke-thin {
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.18);
-  color: transparent;
-}
-
-.perspective-1000 {
-  perspective: 1000px;
-}
-
-.preserve-3d {
-  transform-style: preserve-3d;
 }

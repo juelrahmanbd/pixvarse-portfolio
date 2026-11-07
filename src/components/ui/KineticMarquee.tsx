@@ -91,7 +91,7 @@ export function KineticMarquee({
               )}
             >
               {word}
-              <span className="inline-block mx-4 sm:mx-8 text-[4vw] text-cyber-emerald/40 font-mono">
+              <span className="inline-block mx-4 sm:mx-8 text-[4vw] text-blue-500/40 font-mono">
                 {"//"}
               </span>
             </span>

@@ -13,8 +13,8 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 /**
- * Obsidian Glassmorphic Card Primitive
- * Meets Awwwards specifications with cursor-reactive spotlights and hairline borders
+ * Executive Light Card Primitive
+ * Clean Swiss/Apple elevation, soft shadows, rounded-2xl, and micro-hover lift
  */
 export function Card({
   children,
@@ -25,6 +25,7 @@ export function Card({
   ...props
 }: CardProps) {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -38,75 +39,52 @@ export function Card({
 
   const variantStyles: Record<CardVariant, string> = {
     glass:
-      "bg-white/[0.03] text-ink-primary border border-white/[0.08] backdrop-blur-xl shadow-glass-card",
+      "bg-white text-ink-primary border border-slate-200/80 shadow-card",
     obsidian:
-      "bg-canvas-secondary/90 text-ink-primary border border-white/[0.06] backdrop-blur-md shadow-2xl",
+      "bg-white text-ink-primary border border-slate-200/80 shadow-card",
     elevated:
-      "bg-white/[0.06] text-ink-headline border border-white/[0.12] backdrop-blur-2xl shadow-glass-card",
+      "bg-white text-ink-headline border border-slate-200 shadow-card",
     outline:
-      "bg-transparent text-ink-primary border border-white/[0.12]",
-    // Compatibility aliases
+      "bg-transparent text-ink-primary border border-slate-200",
     white:
-      "bg-white/[0.03] text-ink-primary border border-white/[0.08] backdrop-blur-xl",
+      "bg-white text-ink-primary border border-slate-200/80 shadow-card",
     soft:
-      "bg-white/[0.04] text-ink-primary border border-white/[0.08] backdrop-blur-xl",
+      "bg-slate-50/70 text-ink-primary border border-slate-200/60 shadow-subtle",
     mint:
-      "bg-cyber-emerald/[0.03] text-ink-primary border border-cyber-emerald/20",
+      "bg-emerald-50/50 text-ink-primary border border-emerald-100 shadow-subtle",
     dark:
-      "bg-canvas-secondary text-ink-primary border border-white/[0.08]",
+      "bg-slate-900 text-white border border-slate-900 shadow-md",
   };
 
   const hoverClasses = hoverEffect
-    ? "transition-all duration-300 hover:border-white/[0.2] hover:bg-white/[0.05] hover:shadow-2xl hover:shadow-black/70 hover:translate-y-[-2px]"
+    ? "transition-all duration-300 hover:border-slate-300 hover:shadow-cardHover hover:-translate-y-1"
     : "";
 
   return (
     <div
       ref={cardRef}
       onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       className={cn(
-        "group relative rounded-2xl p-6 sm:p-8 overflow-hidden",
+        "relative rounded-2xl overflow-hidden",
         variantStyles[variant],
         hoverClasses,
         className
       )}
       {...props}
     >
-      {/* Dynamic Cursor Spotlight Overlay */}
-      {spotlight && (
+      {/* Subtle cursor spotlight glow */}
+      {spotlight && isHovered && (
         <div
-          className="pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-300 group-hover:opacity-100 rounded-2xl"
+          className="pointer-events-none absolute -inset-px opacity-100 transition-opacity duration-300 rounded-2xl"
           style={{
-            background: `radial-gradient(400px circle at ${mousePos.x}px ${mousePos.y}px, rgba(0, 245, 160, 0.08), transparent 80%)`,
+            background: `radial-gradient(400px circle at ${mousePos.x}px ${mousePos.y}px, rgba(37, 99, 235, 0.035), transparent 80%)`,
           }}
         />
       )}
 
       <div className="relative z-10">{children}</div>
-    </div>
-  );
-}
-
-export function CardHeader({
-  children,
-  className = "",
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
-  return (
-    <div className={cn("mb-4 space-y-1.5", className)} {...props}>
-      {children}
-    </div>
-  );
-}
-
-export function CardContent({
-  children,
-  className = "",
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
-  return (
-    <div className={cn("space-y-4", className)} {...props}>
-      {children}
     </div>
   );
 }

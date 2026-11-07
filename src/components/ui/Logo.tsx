@@ -9,7 +9,7 @@ interface LogoProps {
 }
 
 /**
- * Pixvarse High-Tech Monogram & Typography Mark
+ * Pixvarse Executive Monogram & Typography Mark
  */
 export function Logo({ className = "", showTagline = false }: LogoProps) {
   return (
@@ -21,8 +21,8 @@ export function Logo({ className = "", showTagline = false }: LogoProps) {
       )}
       aria-label="Pixvarse Homepage"
     >
-      {/* Precision Geometric Prism Emblem */}
-      <div className="relative flex h-9 w-9 items-center justify-center rounded-xl bg-white/[0.04] border border-white/[0.12] backdrop-blur-md shadow-glow-emerald transition-all duration-300 group-hover:border-cyber-emerald group-hover:shadow-glow-emerald-lg">
+      {/* Precision Geometric Emblem */}
+      <div className="relative flex h-9 w-9 items-center justify-center rounded-xl bg-slate-900 text-white shadow-sm transition-all duration-200 group-hover:bg-blue-600">
         <svg
           viewBox="0 0 32 32"
           fill="none"
@@ -31,39 +31,33 @@ export function Logo({ className = "", showTagline = false }: LogoProps) {
         >
           <polygon
             points="16,3 28,10 28,22 16,29 4,22 4,10"
-            stroke="#00F5A0"
+            stroke="currentColor"
             strokeWidth="1.5"
             strokeLinejoin="round"
-            className="transition-opacity opacity-90 group-hover:opacity-100"
           />
           <polygon
             points="16,8 24,12.5 24,19.5 16,24 8,19.5 8,12.5"
-            stroke="#00D9F5"
+            stroke="currentColor"
             strokeWidth="1"
             strokeLinejoin="round"
-            strokeOpacity="0.6"
+            strokeOpacity="0.7"
           />
-          <path
-            d="M16 3V29M4 10L28 22M28 10L4 22"
-            stroke="#00F5A0"
-            strokeWidth="0.75"
-            strokeOpacity="0.4"
-          />
-          <circle cx="16" cy="16" r="2.5" fill="#00F5A0" />
+          <circle cx="16" cy="16" r="2.5" fill="currentColor" />
         </svg>
       </div>
 
       {/* Typography Wordmark */}
       <div className="flex flex-col">
         <div className="flex items-center gap-1">
-          <span className="font-display font-extrabold tracking-[-0.03em] text-lg sm:text-xl text-ink-headline leading-none group-hover:text-cyber-emerald transition-colors">
+          <span className="font-display font-bold tracking-tight text-lg sm:text-xl text-slate-900 leading-none group-hover:text-blue-600 transition-colors">
             Pixvarse
           </span>
-          <span className="h-1.5 w-1.5 rounded-full bg-cyber-emerald animate-pulse" />
+          <span className="h-1.5 w-1.5 rounded-full bg-blue-600" />
         </div>
+
         {showTagline && (
-          <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-ink-muted leading-tight mt-0.5">
-            Digital Studio
+          <span className="font-sans text-[11px] font-normal text-slate-500 tracking-normal mt-0.5">
+            Digital Engineering Studio
           </span>
         )}
       </div>
