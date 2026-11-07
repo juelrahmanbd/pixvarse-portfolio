@@ -33,13 +33,13 @@ export function Navbar() {
             : "bg-transparent py-5"
         )}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1560px] mx-auto px-4 sm:px-8">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Logo variant="light" showTagline={false} />
 
-            {/* Desktop Navigation Floating Pill */}
-            <nav className="hidden md:flex items-center gap-1 rounded-full p-1.5 border border-white/[0.08] bg-white/[0.03] backdrop-blur-xl shadow-glass-card">
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex items-center gap-2 border border-white/10 bg-black/60 backdrop-blur-xl px-2 py-1">
               {siteConfig.navigation.map((item) => {
                 const isActive = pathname === item.href;
                 return (
@@ -47,10 +47,10 @@ export function Navbar() {
                     key={item.href}
                     href={item.href}
                     className={cn(
-                      "relative px-4 py-1.5 text-xs font-mono font-medium tracking-wider uppercase transition-all duration-200 rounded-full select-none",
+                      "relative px-4 py-1.5 text-xs font-mono font-medium tracking-wider uppercase transition-all duration-200 select-none",
                       isActive
-                        ? "bg-white/[0.1] text-cyber-emerald shadow-sm"
-                        : "text-ink-secondary hover:text-ink-headline hover:bg-white/[0.04]"
+                        ? "bg-white text-black font-bold"
+                        : "text-ink-secondary hover:text-white hover:bg-white/[0.05]"
                     )}
                   >
                     {item.name}

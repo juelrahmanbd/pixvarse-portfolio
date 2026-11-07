@@ -11,35 +11,36 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Luxury Obsidian Canvas Tokens
+        // Luxury Obsidian Canvas Tokens (Huge Inc #050505 standard)
         canvas: {
-          DEFAULT: "#070709", // Deep luxury dark base
-          secondary: "#0B0C10", // Elevated secondary dark surface
-          elevated: "#12141A", // Subtle raised layer
+          DEFAULT: "#050505", // Stark unapologetic obsidian black
+          secondary: "#0A0A0A", // Elevated secondary stark dark
+          elevated: "#111111", // Subtle raised layer
         },
         // Elevated Surfaces & Obsidian Glass
         surface: {
-          obsidian: "rgba(255, 255, 255, 0.03)",
-          card: "rgba(255, 255, 255, 0.04)",
-          elevated: "rgba(255, 255, 255, 0.07)",
-          glass: "rgba(11, 12, 16, 0.75)",
-          active: "rgba(255, 255, 255, 0.10)",
+          obsidian: "rgba(255, 255, 255, 0.02)",
+          card: "rgba(255, 255, 255, 0.03)",
+          elevated: "rgba(255, 255, 255, 0.05)",
+          glass: "rgba(5, 5, 5, 0.85)",
+          active: "rgba(255, 255, 255, 0.08)",
         },
         // High-Contrast High-Tech Text Tokens
         ink: {
-          headline: "#F3F4F6", // Pure High-White
-          primary: "#E5E7EB", // Crisp Primary Body
-          secondary: "#9CA3AF", // Muted Fog Gray
-          muted: "#6B7280", // Subtle Caption Gray
-          faint: "#4B5563", // Hairline Metadata Gray
+          headline: "#FFFFFF", // Pure White
+          primary: "#F3F4F6", // Crisp Primary Body
+          secondary: "#A1A1AA", // Muted Fog Gray
+          muted: "#71717A", // Subtle Caption Gray
+          faint: "#3F3F46", // Hairline Metadata Gray
         },
         // High-Voltage Accent Color System
         cyber: {
           emerald: "#00F5A0", // Electric Cyber Emerald
+          magenta: "#FF0055", // Huge Inc Electric Magenta
           cyan: "#00D9F5", // Cyber Cyan
           amber: "#FF6B4A", // Warm Amber Glow
           emeraldGlow: "rgba(0, 245, 160, 0.25)",
-          cyanGlow: "rgba(0, 217, 245, 0.25)",
+          magentaGlow: "rgba(255, 0, 85, 0.35)",
         },
         // Border & Glass Edge Tokens
         edge: {

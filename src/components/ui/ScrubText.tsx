@@ -41,19 +41,19 @@ export function ScrubText({
       gsap.fromTo(
         words,
         {
-          color: "rgba(255, 255, 255, 0.16)",
-          opacity: 0.35,
+          opacity: 0.15,
+          color: "rgba(255, 255, 255, 0.25)",
         },
         {
-          color: "#FFFFFF",
           opacity: 1,
-          stagger: 0.1,
+          color: "#FFFFFF",
+          stagger: 0.08,
           ease: "none",
           scrollTrigger: {
             trigger: containerRef.current,
             start,
             end,
-            scrub: 1,
+            scrub: 1.2,
           },
         }
       );

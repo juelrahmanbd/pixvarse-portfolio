@@ -8,31 +8,31 @@
    ========================================================================== */
 
 :root {
-  /* Luxury Dark Canvas */
-  --canvas-base: #070709;
-  --canvas-secondary: #0B0C10;
-  --canvas-elevated: #12141A;
+  /* Huge Inc Brutalist Luxury Canvas */
+  --canvas-base: #050505;
+  --canvas-secondary: #0A0A0A;
+  --canvas-elevated: #111111;
 
-  /* Glassmorphic Surfaces */
-  --surface-obsidian: rgba(255, 255, 255, 0.03);
-  --surface-card: rgba(255, 255, 255, 0.04);
-  --surface-elevated: rgba(255, 255, 255, 0.07);
+  /* Stark Surfaces */
+  --surface-obsidian: rgba(255, 255, 255, 0.02);
+  --surface-card: rgba(255, 255, 255, 0.03);
+  --surface-elevated: rgba(255, 255, 255, 0.05);
 
-  /* High-Voltage Cyber Accents */
+  /* High-Voltage Accents */
   --cyber-emerald: #00F5A0;
+  --cyber-magenta: #FF0055;
   --cyber-cyan: #00D9F5;
-  --cyber-amber: #FF6B4A;
 
   /* High-Contrast Text Tokens */
-  --ink-headline: #F3F4F6;
-  --ink-primary: #E5E7EB;
-  --ink-secondary: #9CA3AF;
-  --ink-muted: #6B7280;
+  --ink-headline: #FFFFFF;
+  --ink-primary: #F3F4F6;
+  --ink-secondary: #A1A1AA;
+  --ink-muted: #71717A;
 
-  /* Obsidian & Glass Borders */
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-glass: rgba(255, 255, 255, 0.12);
-  --border-emerald: rgba(0, 245, 160, 0.35);
+  /* Razor-thin structural borders */
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --border-glass: rgba(255, 255, 255, 0.16);
+  --border-emerald: rgba(0, 245, 160, 0.5);
 
   /* Typography Scale Fallbacks */
   --font-display: var(--font-syne), var(--font-plus-jakarta), -apple-system, sans-serif;
