@@ -25,10 +25,10 @@ export function CTASection() {
           </div>
 
           {/* Main Title */}
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-display font-extrabold tracking-[-0.03em] leading-[1.1] text-ink-headline">
-            Have a High-Stakes Vision?{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyber-emerald via-[#00F5A0] to-cyber-cyan drop-shadow-[0_0_25px_rgba(0,245,160,0.35)]">
-              Let&apos;s Build It.
+          <h2 className="text-4xl sm:text-6xl md:text-7xl font-display font-black tracking-[-0.04em] uppercase leading-[0.9] text-ink-headline">
+            READY FOR <span className="text-stroke-white">DIGITAL</span> DOMINANCE?{" "}
+            <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-cyber-emerald via-[#5CFFB0] to-cyber-cyan drop-shadow-[0_0_35px_rgba(0,245,160,0.4)]">
+              LET&apos;S ENGINEER IT.
             </span>
           </h2>
 

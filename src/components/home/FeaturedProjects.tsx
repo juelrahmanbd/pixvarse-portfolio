@@ -1,32 +1,90 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { projectsData } from "@/data/projects";
-import { SectionHeading } from "../ui/SectionHeading";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { projectsData, CaseStudyData } from "@/data/projects";
 import { Button } from "../ui/Button";
-import { Badge } from "../ui/Badge";
 import { BorderBeam } from "../ui/BorderBeam";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function FeaturedProjects() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const progressBarRef = useRef<HTMLDivElement>(null);
+
   const featured = projectsData.filter((p) => p.featured).slice(0, 4);
 
-  return (
-    <section className="py-20 sm:py-28 bg-canvas relative overflow-hidden border-b border-edge-subtle">
-      {/* Ambient background glow */}
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-[600px] bg-cyber-emerald/5 blur-[160px] rounded-full pointer-events-none" />
+  useEffect(() => {
+    if (typeof window === "undefined" || !sectionRef.current || !trackRef.current) return;
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
-          <SectionHeading
-            eyebrow="SELECTED ARCHIVE // RECENT CASES"
-            title="Real-World Engineering."
-            highlight="Measurable Impact."
-            description="A curated catalog of enterprise WordPress platforms, custom web applications, and high-performance digital architectures."
-          />
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      const mm = gsap.matchMedia();
+
+      // Desktop & Tablet: Pinned Horizontal Scroll Gallery (Porsche Racing / Crav Burgers Standard)
+      mm.add("(min-width: 768px)", () => {
+        if (!trackRef.current || !sectionRef.current) return;
+
+        const scrollAmount = trackRef.current.scrollWidth - window.innerWidth + 160;
+
+        const pinTween = gsap.to(trackRef.current, {
+          x: -scrollAmount,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            pin: true,
+            start: "top top",
+            end: () => `+=${scrollAmount + 400}`,
+            scrub: 1.2,
+            invalidateOnRefresh: true,
+            onUpdate: (self) => {
+              if (progressBarRef.current) {
+                progressBarRef.current.style.width = `${self.progress * 100}%`;
+              }
+            },
+          },
+        });
+
+        return () => {
+          pinTween.kill();
+        };
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section
+      ref={sectionRef}
+      className="relative bg-canvas text-ink-primary overflow-hidden border-b border-edge-subtle"
+    >
+      {/* Background ambient lighting */}
+      <div className="absolute top-1/3 left-1/4 w-[700px] h-[700px] bg-cyber-emerald/[0.04] blur-[180px] rounded-full pointer-events-none" />
+
+      {/* Persistent Horizontal Gallery Header */}
+      <div className="pt-16 sm:pt-20 pb-6 px-4 sm:px-8 max-w-[1440px] mx-auto w-full flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/[0.08]">
+        <div>
+          <div className="flex items-center gap-2 mb-2 font-mono text-xs uppercase tracking-widest text-cyber-emerald font-semibold">
+            <span className="h-1.5 w-1.5 rounded-full bg-cyber-emerald animate-pulse" />
+            <span>02 // SELECTED ARCHIVE</span>
+          </div>
+
+          <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-black tracking-tight text-ink-headline uppercase leading-[0.9]">
+            FLAGSHIP <span className="text-stroke-white">CASE STUDIES</span>
+          </h2>
+        </div>
+
+        <div className="flex items-center gap-6">
+          <div className="hidden lg:flex items-center gap-3 text-xs font-mono text-ink-muted">
+            <span>[ SCROLL VERTICALLY TO SCRUB HORIZONTALLY ]</span>
+            <span className="text-cyber-emerald font-bold">&rarr;</span>
+          </div>
 
           <Button
             href="/work"
@@ -34,160 +92,250 @@ export function FeaturedProjects() {
             size="md"
             icon={<ArrowRight className="h-4 w-4" strokeWidth={1.5} />}
           >
-            Explore All Work ({projectsData.length})
+            All Work ({projectsData.length})
           </Button>
         </div>
+      </div>
 
-        {/* Asymmetric Bento Grid Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-7">
-          {featured.map((project, idx) => {
-            // Flagship layout: first card spans 2 columns, others span 1 column
-            const isFlagship = idx === 0;
+      {/* Progress Track Indicator */}
+      <div className="hidden md:block w-full h-[2px] bg-white/[0.06] relative">
+        <div
+          ref={progressBarRef}
+          className="absolute top-0 left-0 h-full bg-gradient-to-r from-cyber-emerald to-cyber-cyan w-0 transition-all duration-75"
+        />
+      </div>
 
-            return (
-              <BentoCaseCard
-                key={project.slug}
-                project={project}
-                isFlagship={isFlagship}
-                priority={idx < 2}
-              />
-            );
-          })}
+      {/* ====================================================================
+          HORIZONTAL TRACK (PINNED ON DESKTOP, FLUID SCROLL ON MOBILE)
+          ==================================================================== */}
+      <div className="py-12 sm:py-20 md:py-24">
+        <div
+          ref={trackRef}
+          className="flex flex-col md:flex-row items-stretch md:items-center gap-8 sm:gap-12 md:gap-16 px-4 sm:px-8 md:px-16 w-full md:w-max"
+        >
+          {featured.map((project, idx) => (
+            <KineticProjectCard
+              key={project.slug}
+              project={project}
+              index={idx}
+            />
+          ))}
+
+          {/* End Callout Card: Full Archive Exploration */}
+          <div className="w-full md:w-[480px] shrink-0 rounded-2xl sm:rounded-3xl bg-surface-elevated/70 border border-white/[0.12] p-8 sm:p-12 flex flex-col justify-between backdrop-blur-2xl shadow-2xl relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-48 h-48 bg-cyber-emerald/10 rounded-full blur-3xl pointer-events-none group-hover:bg-cyber-emerald/20 transition-all duration-700" />
+            
+            <div className="space-y-4">
+              <span className="text-[11px] font-mono uppercase tracking-widest text-cyber-emerald font-semibold block">
+                [ COMPLETE DOSSIER // ARCHIVE ]
+              </span>
+              <h3 className="text-3xl sm:text-4xl font-display font-black text-ink-headline uppercase leading-tight">
+                Explore All 06 Enterprise Deployments
+              </h3>
+              <p className="text-sm text-ink-secondary leading-relaxed font-sans font-normal">
+                Review verified technical case studies featuring custom ACF systems, WooCommerce checkout optimization, and Laravel application backends.
+              </p>
+            </div>
+
+            <div className="pt-8 space-y-4">
+              <Button
+                href="/work"
+                variant="primary"
+                size="lg"
+                className="w-full justify-center"
+                icon={<ArrowRight className="h-4 w-4" strokeWidth={1.5} />}
+              >
+                Open Portfolio Directory
+              </Button>
+
+              <Button
+                href="/contact"
+                variant="secondary"
+                size="md"
+                className="w-full justify-center text-xs font-mono uppercase tracking-wider"
+              >
+                Inquire for White-Label Specs
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
 }
 
-function BentoCaseCard({
+/**
+ * KineticProjectCard
+ * Overlapping depth, giant numbering, 3D mouse tilt & spotlight, and negative z-index typography
+ */
+function KineticProjectCard({
   project,
-  isFlagship,
-  priority,
+  index,
 }: {
-  project: (typeof projectsData)[0];
-  isFlagship: boolean;
-  priority: boolean;
+  project: CaseStudyData;
+  index: number;
 }) {
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [tilt, setTilt] = useState({ rx: 0, ry: 0, x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
-  const cardRef = useRef<HTMLElement>(null);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
-    setMousePos({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
-    });
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const xc = rect.width / 2;
+    const yc = rect.height / 2;
+
+    // Subtle 3D tilt calculation
+    const rx = ((y - yc) / yc) * -4;
+    const ry = ((x - xc) / xc) * 5;
+
+    setTilt({ rx, ry, x, y });
   };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setTilt({ rx: 0, ry: 0, x: 0, y: 0 });
+  };
+
+  const primaryMetric =
+    project.finalResult && project.finalResult.length > 0
+      ? project.finalResult[0]
+      : "100/100 Core Web Vitals & Sub-Second Latency";
 
   return (
     <article
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        transform: isHovered
+          ? `perspective(1000px) rotateX(${tilt.rx}deg) rotateY(${tilt.ry}deg)`
+          : "perspective(1000px) rotateX(0deg) rotateY(0deg)",
+        transition: isHovered ? "transform 0.1s ease-out" : "transform 0.5s ease-out",
+      }}
       className={cn(
-        "group relative rounded-2xl bg-white/[0.03] border border-white/[0.08] backdrop-blur-xl overflow-hidden transition-all duration-300 flex flex-col justify-between",
-        "hover:border-white/[0.18] hover:bg-white/[0.05] hover:shadow-2xl hover:shadow-black/70",
-        isFlagship ? "lg:col-span-2 min-h-[480px]" : "lg:col-span-1 min-h-[420px]"
+        "group relative w-full md:w-[75vw] lg:w-[68vw] max-w-[960px] shrink-0 rounded-2xl sm:rounded-3xl",
+        "bg-surface-elevated/70 border border-white/[0.12] backdrop-blur-2xl overflow-hidden shadow-2xl flex flex-col justify-between"
       )}
     >
-      {/* Interactive Cursor Spotlight Glow */}
+      {/* Dynamic Cursor Spotlight Glow */}
       <div
-        className="pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-300 group-hover:opacity-100 rounded-2xl"
+        className="pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-300 group-hover:opacity-100 rounded-3xl z-30"
         style={{
-          background: `radial-gradient(500px circle at ${mousePos.x}px ${mousePos.y}px, rgba(0, 245, 160, 0.08), transparent 80%)`,
+          background: `radial-gradient(600px circle at ${tilt.x}px ${tilt.y}px, rgba(0, 245, 160, 0.12), transparent 75%)`,
         }}
       />
 
-      {/* Flagship moving border beam */}
-      {isFlagship && isHovered && (
-        <BorderBeam size={280} duration={10} colorFrom="#00F5A0" colorTo="#00D9F5" />
-      )}
+      {/* Flagship Highlight Beam */}
+      {index === 0 && <BorderBeam size={320} duration={12} colorFrom="#00F5A0" colorTo="#00D9F5" />}
 
-      {/* Image Preview Container */}
-      <div
-        className={cn(
-          "relative w-full overflow-hidden bg-canvas-secondary border-b border-white/[0.08]",
-          isFlagship ? "aspect-[16/9] sm:aspect-[21/10]" : "aspect-[16/10]"
-        )}
-      >
-        <Image
-          src={project.thumbnail}
-          alt={project.title}
-          fill
-          sizes={isFlagship ? "(max-width: 1024px) 100vw, 66vw" : "(max-width: 1024px) 100vw, 33vw"}
-          className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-          priority={priority}
-        />
-
-        {/* Ambient Dark Gradient Vignette */}
-        <div className="absolute inset-0 bg-gradient-to-t from-canvas/90 via-canvas/20 to-transparent opacity-80 group-hover:opacity-50 transition-opacity duration-300" />
-
-        {/* Top Floating Metadata Badges */}
-        <div className="absolute top-4 left-4 flex items-center gap-2 z-10">
-          <Badge variant="emerald" size="sm">
-            {project.category}
-          </Badge>
-          <span className="rounded-full bg-black/60 backdrop-blur-md px-2.5 py-0.5 text-[10px] font-mono font-medium text-ink-headline border border-white/[0.1]">
-            {project.completionYear}
+      {/* Top Metadata Header Strip */}
+      <div className="flex flex-wrap items-center justify-between gap-3 p-5 sm:p-7 border-b border-white/[0.08] bg-black/40 text-xs font-mono">
+        <div className="flex items-center gap-3">
+          <span className="text-cyber-emerald font-black text-sm">
+            {`[ 0${index + 1} // ${project.category.toUpperCase()} ]`}
+          </span>
+          <span className="text-ink-muted hidden sm:inline-block">
+            {project.completionYear} • {project.clientIndustry}
           </span>
         </div>
 
-        {/* Hover Quick Action Pill */}
-        <div className="absolute bottom-4 right-4 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 z-10">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-cyber-emerald px-3.5 py-1.5 text-xs font-mono font-bold uppercase tracking-wider text-canvas shadow-glow-emerald">
-            <span>Case Study</span>
-            <ArrowUpRight className="h-3.5 w-3.5 stroke-[2.5]" strokeWidth={1.5} />
-          </span>
+        <div className="flex items-center gap-2 text-ink-secondary text-[11px]">
+          <span className="h-1.5 w-1.5 rounded-full bg-cyber-cyan" />
+          <span>{project.role}</span>
         </div>
       </div>
 
-      {/* Content Body */}
-      <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between relative z-10">
-        <div>
-          <div className="flex items-center justify-between text-xs font-mono text-ink-muted mb-2 font-medium">
-            <span>Role: {project.role}</span>
-            <span>{project.clientIndustry}</span>
+      {/* Monumental Giant Number Overlaid Behind Image */}
+      <div className="relative overflow-hidden">
+        <span
+          className="absolute -top-12 -left-6 sm:-top-16 sm:-left-8 text-[22vw] sm:text-[18vw] font-display font-black text-stroke-white opacity-20 pointer-events-none select-none -z-10 leading-none"
+          aria-hidden="true"
+        >
+          0{index + 1}
+        </span>
+
+        {/* Project Cover Visual Frame */}
+        <div className="relative h-[260px] sm:h-[360px] md:h-[420px] w-full overflow-hidden bg-black/80">
+          <Image
+            src={project.heroImage}
+            alt={project.title}
+            fill
+            sizes="(max-width: 768px) 100vw, 70vw"
+            priority={index < 2}
+            className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105 opacity-90 group-hover:opacity-100"
+          />
+
+          {/* Cinematic Gradient Scrim */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070709] via-black/30 to-transparent" />
+
+          {/* Floating High-Contrast Impact Metric Pill */}
+          <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 z-20 max-w-md">
+            <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-black/80 border border-cyber-emerald/40 backdrop-blur-md shadow-2xl text-xs font-mono text-ink-headline">
+              <Zap className="h-3.5 w-3.5 text-cyber-emerald shrink-0" strokeWidth={1.5} />
+              <span className="font-semibold text-cyber-emerald truncate">
+                {primaryMetric}
+              </span>
+            </div>
           </div>
 
-          <h3 className="text-xl sm:text-2xl font-display font-bold tracking-tight text-ink-headline group-hover:text-cyber-emerald transition-colors duration-200">
-            <Link href={`/work/${project.slug}`} className="focus:outline-none">
+          {/* Floating Direct Case Study Icon Pill */}
+          <Link
+            href={`/work/${project.slug}`}
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 z-20 flex h-12 w-12 items-center justify-center rounded-2xl bg-black/80 text-white border border-white/20 backdrop-blur-md group-hover:scale-110 group-hover:border-cyber-emerald group-hover:text-cyber-emerald transition-all shadow-2xl"
+            aria-label={`Open case study for ${project.title}`}
+          >
+            <ArrowUpRight className="h-5 w-5" strokeWidth={1.5} />
+          </Link>
+        </div>
+      </div>
+
+      {/* Bottom Content & Brutalist Case Study Link */}
+      <div className="p-6 sm:p-8 space-y-4 bg-gradient-to-b from-transparent to-black/40">
+        <div>
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-black text-ink-headline tracking-tight group-hover:text-cyber-emerald transition-colors">
+            <Link href={`/work/${project.slug}`} className="hover:underline decoration-cyber-emerald decoration-2 underline-offset-4">
               {project.title}
             </Link>
           </h3>
-
-          <p className="mt-2.5 text-sm text-ink-secondary leading-relaxed line-clamp-2 font-sans font-normal">
+          <p className="mt-2 text-xs sm:text-sm text-ink-secondary leading-relaxed font-sans line-clamp-2">
             {project.summary}
           </p>
         </div>
 
-        {/* Tech Badges & Exploration Trigger */}
-        <div className="mt-6 pt-4 border-t border-white/[0.06] flex flex-wrap items-center justify-between gap-3">
-          <div className="flex flex-wrap gap-1.5">
-            {project.technologies.slice(0, isFlagship ? 5 : 3).map((tech) => (
-              <span
-                key={tech}
-                className="rounded-md bg-white/[0.04] px-2 py-0.5 text-[11px] font-mono text-ink-secondary border border-white/[0.06]"
-              >
-                {tech}
-              </span>
-            ))}
-            {project.technologies.length > (isFlagship ? 5 : 3) && (
-              <span className="rounded-md bg-white/[0.02] border border-white/[0.06] px-1.5 py-0.5 text-[10px] font-mono text-ink-muted">
-                +{project.technologies.length - (isFlagship ? 5 : 3)}
-              </span>
-            )}
-          </div>
+        {/* Technology Pills Matrix */}
+        <div className="flex flex-wrap items-center gap-2 pt-1">
+          {project.technologies.slice(0, 5).map((tech, i) => (
+            <span
+              key={i}
+              className="px-2.5 py-1 rounded-lg bg-white/[0.04] border border-white/[0.08] text-[11px] font-mono text-ink-secondary font-medium"
+            >
+              {tech}
+            </span>
+          ))}
+          {project.technologies.length > 5 && (
+            <span className="text-[10px] font-mono text-ink-muted">
+              +{project.technologies.length - 5} MORE
+            </span>
+          )}
+        </div>
 
+        {/* Action Row */}
+        <div className="pt-3 border-t border-white/[0.08] flex items-center justify-between">
           <Link
             href={`/work/${project.slug}`}
-            className="inline-flex items-center gap-1 text-xs font-mono font-semibold uppercase tracking-wider text-cyber-emerald hover:text-white transition-colors"
+            className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-cyber-emerald font-bold hover:text-cyber-cyan transition-colors"
           >
-            <span>Read Study</span>
-            <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" strokeWidth={1.5} />
+            <span>[ REVIEW ARCHITECTURE &amp; RESULTS ]</span>
+            <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.5} />
           </Link>
+
+          <span className="text-[11px] font-mono text-ink-muted uppercase">
+            FLAGSHIP DOSSIER
+          </span>
         </div>
       </div>
     </article>
